@@ -76,7 +76,7 @@ Documentation baseline and first browser prototype created on 10 October 2026. N
 
 With a local clone, fetch and pull the latest changes in GitHub Desktop, then open `index.html` from the repository folder in a browser. You can also use GitHub's Code menu > Download ZIP and extract the files. No installation, server, paid AI API, or API keys are required to run the demo.
 
-The interface opens in **Estonian** by default. Use the **ET / EN** buttons in the header to switch to English or back. Switching language preserves entered data, selected banks, repeated entries and the current page. Form labels, bank checklists, validation messages and export review are bilingual; user-entered text is preserved.
+The interface opens in **Estonian** by default. Use the **ET / EN** buttons in the header to switch to English or back. Switching language preserves entered data, selected banks, repeated entries, attached files, demo permission choices and the current page. Form labels, bank checklists, validation messages and export review are bilingual; user-entered text is preserved.
 
 The expanded demo includes:
 
@@ -86,25 +86,28 @@ The expanded demo includes:
 - Main property, optional additional collateral, EIS target group and valuation metadata.
 - Conditional construction/renovation fields, and debt-level refinancing flags.
 - A checklist for every selected bank with missing researched items, unverified mappings and source links. F/D evidence does not establish mandatory bank requirements. All banks remain labelled "Needs bank verification".
-- Fictional annuity offer scenarios and a reviewed JSON export that includes outstanding gaps.
+- Separate statement/supporting-file sections for each applicant, valuation files for the main property and optional collateral, and per-person/per-bank EMTA demo permission choices.
+- Fictional annuity offer scenarios and reviewed JSON/ZIP exports that include outstanding gaps. JSON contains metadata; ZIP includes the original selected files.
+
+See [docs/document-permissions.md](docs/document-permissions.md) for file limits, scope, review and export behavior.
 
 Use **Laadi näidisandmed / Load fictional example** or **Alusta tühjalt / Start blank**. Go to **Pankade kontroll / Bank checks** at any time, even with incomplete answers. For export, choose at least one bank and review each fictional applicant profile plus the summary. Invalid values block download; missing answers can remain in an explicitly incomplete draft. Editing the application clears earlier review confirmations.
 
-Entries exist only in page memory. No data is submitted or uploaded. Co-applicants are entered on the same device; invitations, separate access, authentication and genuine bank consents are not implemented. The export remains a canonical summary, not a native bank form. No bank integrations, document uploads, offer parsing or negotiation drafts have been implemented.
+Entries, file references and demo permission choices exist only in page memory. No files or data are uploaded to a server or sent to a bank/EMTA. Reloading clears them. Co-applicants are entered on the same device; invitations, separate access, authentication and genuine bank consents are not implemented. The export remains a canonical summary, not a native bank form. Local file selection and ZIP packaging are implemented; server uploads, bank/EMTA integrations, genuine authorization, file-content/signature verification, offer parsing and negotiation drafts are not.
 
-Keep `index.html`, `app-model.js` and `app-i18n.js` together in the extracted folder. The page loads its local model and translation scripts and needs no external resources. JSON exports keep stable field keys and original application values, and include the selected `uiLanguage` plus localized checklist messages.
+Keep the repository folder structure, including `index.html`, `app-model.js`, `app-i18n.js`, `app-documents.js` and `vendor/`. The page loads local scripts and the bundled JSZip 3.10.1 library; no installation or external runtime resources are needed. JSON exports keep stable field keys and original application values, and include the selected `uiLanguage` plus localized checklist messages.
 
 ### Validation
 
-Run the dependency-free model and language regression checks with Node.js:
+Run the model, language and document regression checks with Node.js (no installation required):
 
 ```sh
-node --test tests/model.test.js tests/i18n.test.js
+node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js
 ```
 
-The 14 model tests cover missing versus unverified requirements, unknown versus zero/none, repeated debt gaps, co-applicant isolation, household definitions, employment end dates, original income currency/frequency, conditional construction, refinancing debt retention, statement coverage, valuation format/age, additional collateral, numeric contradictions and annuity calculations. Six additional language tests cover the Estonian default, both language directions, canonical data preservation, bank checklist and field translation coverage, and safe template values. JavaScript syntax, HTML structure, unique static IDs and absence of persistence/network calls were also checked.
+The 14 model tests cover missing versus unverified requirements, unknown versus zero/none, repeated debt gaps, co-applicant isolation, household definitions, employment end dates, original income currency/frequency, conditional construction, refinancing debt retention, statement coverage, valuation format/age, additional collateral, numeric contradictions and annuity calculations. Six additional language tests cover the Estonian default, both language directions, canonical data preservation, bank checklist and field translation coverage, and safe template values. The 12 document tests cover file isolation and limits, safe paths, inactive-owner exclusion, permission boundaries and withdrawal, preparation gaps, JSON metadata and ZIP original-byte preservation. There are 32 tests in total. JavaScript syntax, HTML structure, unique static IDs and absence of persistence/network calls were also checked.
 
-Automated browser launch failed in the current execution environment, so browser interactions and visual layout for this expanded version remain unverified. Manual checks: switch ET / EN on each page and confirm entries and selected banks are retained; add/remove repeated entries, toggle the co-applicant and purposes, inspect all six banks, change a reviewed draft and download its JSON. The original prototype was successfully opened and reviewed by the project owner.
+Automated browser launch failed in the current execution environment, so browser interactions and visual layout for this expanded version remain unverified. Manual checks: add/remove files for each person and property, change/withdraw each bank permission, extract the ZIP and check its original files; switch ET / EN on each page and confirm entries, files and selected banks are retained; add/remove repeated entries, toggle the co-applicant and purposes, inspect all six banks, change a reviewed draft and download its JSON. The original prototype was successfully opened and reviewed by the project owner.
 
 Suggested build order: shared form → conditional validation → exports → manually entered offer comparison → reviewed negotiation drafts. Validate mappings with banks and review the operating model before adding live submissions.
 

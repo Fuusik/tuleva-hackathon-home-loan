@@ -31,14 +31,15 @@ Steps involving bank submission, genuine co-applicant access and negotiation are
 
 | Area | Implemented demo | Future work / unresolved |
 | --- | --- | --- |
-| Shared profile | Primary and optional co-applicant identity, contacts and employment; repeated income, debts and separate credit limits; household and financing details | Genuine identity verification, separate access and control of disclosures |
-| Property and loan purpose | Main property, optional additional collateral, valuation metadata, EIS target group, construction/renovation questions and refinancing flags | Confirm eligibility rules, document acceptance and all purpose-specific branches with banks |
+| Shared profile | Primary and optional co-applicant identity, contacts and employment; repeated income, debts and separate credit limits; household and financing details; separate statement/supporting-file sections | Genuine identity verification, separate access and control of disclosures |
+| Property and loan purpose | Main property, optional additional collateral, valuation metadata and original files, EIS target group, construction/renovation questions and refinancing flags | Confirm eligibility rules, document acceptance and all purpose-specific branches with banks |
 | Bank checklists | Swedbank, SEB, LHV, Luminor, Coop Pank and Bigbank; missing researched items and unverified mappings shown separately | Complete, bank-confirmed field specifications and mandatory flags |
 | Comparison | Editable fictional annuity scenarios using one principal, term and assumed benchmark; margin, contract fee, monthly payment and scenario total | Real offer intake, benchmark/reset differences, APR as supplied, insurance/account conditions, expiry and early-repayment terms |
-| Export | Reviewed canonical JSON summary, including unresolved gaps and selected interface language; invalid values block download | Accepted bank-specific forms, declarations, consents, attachments and submission channels |
+| Export | Reviewed canonical JSON summary with file metadata, plus ZIP with original files; unresolved gaps and selected interface language included; invalid values block download | Accepted bank-specific forms, declarations, consents, attachments and submission channels |
+| EMTA permissions | Separate optional demo choices for each person and selected bank, with version/timestamp and refusal/withdrawal | Genuine authorization and queries; confirm each bank scope and accepted process |
 | Negotiation | Product concept only | Applicant-reviewed drafts using genuine supplied competing offers; no fabricated offers or automatic sending |
 
-The prototype uses synthetic information, works by opening `index.html`, and keeps entries only in page memory. Reloading clears them. There is no server, persistence, bank integration, document upload, authentication, paid AI API or API-key requirement.
+The prototype uses synthetic information, works by opening `index.html`, and keeps entries only in page memory. Reloading clears them. Selected document files and permission choices also stay in page memory. There is no server upload, persistence, bank/EMTA integration, genuine authorization, authentication, paid AI API or API-key requirement. [Document and permission details](document-permissions.md) explain limits and export behavior.
 
 ## Research model
 
@@ -62,6 +63,8 @@ Preserve separate meanings: credit limits versus loan balances; dependants versu
 - Missing information and verification gaps stay visible during review and export.
 - ET / EN switching preserves entered values, repeated rows and selected banks.
 - Invalid values cannot be downloaded; incomplete answers remain explicitly incomplete.
+- Applicant and valuation files can be added and removed; active originals go into a reviewed ZIP package.
+- Each person has separate bank-specific EMTA choices; the demo neither grants authorization nor makes a query.
 - Comparison results stay labelled fictional and use compatible calculation assumptions.
 - No demo action submits applicant information, documents or messages to a bank.
 

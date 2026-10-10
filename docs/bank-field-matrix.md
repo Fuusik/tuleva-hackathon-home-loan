@@ -50,6 +50,7 @@ Bigbank's generic application URL also surfaced a small-loan amount range; it wa
 | Preferred repayment date | ? | ? | ? | F | ? | ? |
 | Campaign code | F | D | F | F | ? | ? |
 | Bank-specific declarations / marketing | F | ? | F | F | ? | ? |
+| EMTA tax-certificate query permission (exact bank flow) | ? | ? | ? | ? | ? | ? |
 
 ## Important mapping differences
 
@@ -91,6 +92,14 @@ Energy class, used credit amount and model versioning are proposed additions; th
 | Refinancing | Existing loan and collateral; flag debt to be replaced | Coop export exception [S5]; balance/settlement documents proposed pending confirmation |
 | Guarantee / extra collateral | Scheme, eligibility evidence, owner and valuation | LHV [S3], Coop [S6], Bigbank [S7]; exact evidence pending |
 
+## Document and EMTA demo implementation
+
+The demo now accepts local statement/supporting files separately for each person and valuation files for each active property. Its reviewed ZIP preserves original file bytes; JSON contains metadata only. This does not verify document contents, signatures, covered accounts/periods or bank acceptance.
+
+EMTA describes tax-data certificates and consent-based requests by participating credit institutions [S9]. Each person can obtain a certificate, or follow a participating institution\'s accepted consent process. The demo records separate optional choices per person/bank, including refusal and withdrawal, with no real authorization or query. Exact scope, text, recipient and process remain ? for every shortlisted bank; no earlier mandatory-field flags are upgraded.
+
+See [document-permissions.md](document-permissions.md). Confirm genuine consent and bank-specific document handling before any live integration.
+
 ## Implementation and verification backlog
 
 1. Confirm complete forms for each bank using authorized walkthroughs or bank-provided specifications. Record exact field labels, option values, mandatory/conditional status, formats, limits and evidence date.
@@ -112,3 +121,4 @@ All links accessed or retrieved on 10 October 2026. Search-index text and live e
 - [S6 - Coop product and document checklist](https://www.cooppank.ee/eraklient/kodu/kodulaen)
 - [S7 - Bigbank home-loan terms](https://www.bigbank.ee/kodulaen/?tab=kodulaenu-tingimused)
 - [S8 - Swedbank home-loan entry, including co-applicant choice](https://www.swedbank.ee/private/credit/loans/home?language=EST)
+- [S9 - EMTA certificate and consent guidance](https://www.emta.ee/eraklient/e-teenused-maksutarkus/registrid-paringud/toendite-taotlemine)

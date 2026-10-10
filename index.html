@@ -8,14 +8,15 @@
   <style>
     :root{font-family:system-ui,sans-serif;color:#193b35;background:#f2f5ee;line-height:1.5}*{box-sizing:border-box}body{margin:0}header{padding:24px 6%;background:#193b35;color:white;display:flex;justify-content:space-between;align-items:center;gap:12px}main{max-width:1180px;margin:auto;padding:36px 24px}h1{font-size:clamp(30px,5vw,52px);letter-spacing:-2px;margin:8px 0}h2{margin:0 0 12px}h3{margin:20px 0 10px}p{margin:10px 0}.muted,small{color:#536d65}.badge{background:#ddec7c;color:#193b35;padding:8px 14px;border-radius:30px;font-size:14px}.toolbar,nav,.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:22px 0}button{padding:12px 18px;background:#193b35;color:white;border:1px solid #193b35;border-radius:8px;font:inherit;cursor:pointer}button.secondary,nav button{background:white;color:#193b35}button.small{padding:6px 12px;font-size:14px}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #799c00;outline-offset:3px}nav button[aria-current=page]{background:#193b35;color:white}.card{background:white;border:1px solid #d6dfd2;border-radius:16px;padding:24px;margin:18px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.wide{grid-column:1/-1}label.field{display:block;font-size:14px;font-weight:600}input:not([type=checkbox]),select,textarea{display:block;width:100%;padding:11px;margin-top:6px;border:1px solid #afbeb6;border-radius:7px;font:inherit;background:white;color:#193b35}textarea{min-height:90px;resize:vertical}input[type=checkbox]{accent-color:#193b35;width:18px;height:18px;vertical-align:middle;margin:0 8px 0 0}.check{display:flex;gap:0;align-items:start;margin:12px 0;font-size:14px}.check input{flex-shrink:0;margin-top:2px}fieldset{border:0;padding:0;margin:16px 0;min-width:0}legend{font-weight:700;margin-bottom:10px}.banks{display:flex;gap:12px;flex-wrap:wrap}.banks label{border:1px solid #bccabc;border-radius:8px;padding:9px 12px;font-size:14px}.notice{border-left:4px solid #b4cb42;padding:14px;background:#f3f6e8}.warn{border-left-color:#bf752b;background:#fff5e9}.error{border-left-color:#a43838;background:#fff0ee;color:#7a2424}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th,td{text-align:left;padding:12px;border-bottom:1px solid #ddd}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:430px;overflow:auto;font-size:13px;background:#f4f6f2;padding:14px;border-radius:8px}[hidden]{display:none!important}small{display:block;margin-top:8px}footer{margin-top:30px;color:#56716a}summary{cursor:pointer;font-weight:650;list-style-position:outside;margin-left:18px}details.card>summary{font-size:20px}.row{border:1px solid #d6dfd2;border-radius:10px;padding:16px;background:#fafbf8}.row legend{padding:0 5px}.row-top{display:flex;justify-content:flex-end;margin-bottom:10px}.status{font-size:14px;background:#fff1d8;border-radius:8px;padding:6px 10px;display:inline-block}.bank-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.bank-heading h3{margin:0}.counts{color:#536d65;margin:12px 0}.list{padding-left:23px}.list li{margin:6px 0;overflow-wrap:anywhere}.good{color:#326849}.warning-item{color:#79541b}.review-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.review-facts>div{background:#f4f6ef;padding:14px;border-radius:8px}.review-facts strong{display:block}.section-links{display:flex;gap:16px;flex-wrap:wrap}#feedback:empty{display:none}#feedback{padding:12px;background:#eef3df;border-radius:8px}.empty{padding:18px;border:1px dashed #afbeb6;border-radius:8px;color:#536d65}.inline-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.mobile-only{display:none}@media(max-width:680px){.grid,.review-facts{grid-template-columns:1fr}.wide{grid-column:auto}header{padding:18px}main{padding:24px 16px}.card{padding:18px}nav button{flex:1 1 40%;font-size:14px;padding:10px}.badge{font-size:12px}.banks label{flex:1 1 42%}}
     .header-tools{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}.language-switch{display:flex;gap:4px;padding:3px;border:1px solid #a8baaf;border-radius:9px}.language-switch button{padding:7px 10px;background:transparent;color:white;border:0;font-size:13px}.language-switch button[aria-pressed=true]{background:#ddec7c;color:#193b35}.language-switch button:focus-visible{outline-color:#ddec7c}@media(max-width:680px){header{flex-wrap:wrap}.header-tools{justify-content:flex-start}}
+    .document-section{border-top:1px solid #d6dfd2;margin-top:22px;padding-top:14px}.document-slot{padding:14px;background:#f4f6f2;border:1px solid #d6dfd2;border-radius:8px;margin:14px 0}.document-list{padding-left:20px}.document-list li{overflow-wrap:anywhere;margin:8px 0}.document-list button{margin-left:12px}input[type=file]{font-weight:400;font-size:13px}
   </style>
 </head>
 <body>
-<header><strong>ONE HOME LOAN</strong><div class="header-tools"><span class="badge">Hackathon demo &#183; v2</span><div class="language-switch" id="language-switch" role="group" aria-label="Interface language"><button type="button" data-language="et" aria-pressed="true">ET &#183; Eesti</button><button type="button" data-language="en" aria-pressed="false">EN &#183; English</button></div></div></header>
+<header><strong>ONE HOME LOAN</strong><div class="header-tools"><span class="badge">Hackathon demo &#183; v3</span><div class="language-switch" id="language-switch" role="group" aria-label="Interface language"><button type="button" data-language="et" aria-pressed="true">ET &#183; Eesti</button><button type="button" data-language="en" aria-pressed="false">EN &#183; English</button></div></div></header>
 <main>
   <p class="muted">ONE PROFILE &#183; A CLEARER DECISION</p><h1>Your next home starts here.</h1>
   <p class="muted">Prepare once. See what is missing. Compare on shared assumptions.</p>
-  <p class="notice">Use fictional information only. Nothing is submitted or uploaded. Entries stay in this page's memory and disappear on reload. Bank mappings are partly unverified.</p>
+  <p class="notice">Use fictional information only. Files and entries stay in this browser and disappear on reload. Nothing is sent to a bank or EMTA. Bank mappings are partly unverified.</p>
   <div class="toolbar"><button id="load-sample" class="secondary" type="button">Load fictional example</button><button id="start-blank" class="secondary" type="button">Start blank</button><span class="muted" id="revision">Draft 1</span></div>
   <p id="feedback" role="status" aria-live="polite"></p>
   <nav aria-label="Prototype pages"><button type="button" data-page="application" aria-current="page">1. Shared form</button><button type="button" data-page="checks">2. Bank checks</button><button type="button" data-page="compare">3. Sample offers</button><button type="button" data-page="review">4. Review & export</button></nav>
@@ -28,21 +29,27 @@
       <div id="primary-container"></div>
       <div class="card"><h2>Applying together?</h2><label class="check"><input type="checkbox" id="has-co">Include a fictional co-applicant</label><p class="muted">Both profiles are entered on this device for the demo. There is no invitation, separate sign-in or bank authentication.</p><div id="co-container" hidden></div></div>
       <div class="card"><h2>Your shared household</h2><p class="muted">Enter shared expenses once. Dependants and children under 18 are separate counts. Disposable money is a separate answer; we do not derive it from mixed-currency income.</p><div class="grid" id="household-fields"></div></div>
-      <details class="card" open><summary>Main property</summary><div class="grid" id="property-fields"></div><h3>Valuation metadata</h3><p class="muted">Track availability and original format only; documents are not attached.</p><div class="grid" id="valuation-fields"></div></details>
-      <div class="card"><label class="check"><input type="checkbox" id="has-collateral" data-path="financing.additionalCollateral">Include additional property as collateral</label><div id="collateral-branch" hidden><h3>Additional collateral</h3><div class="grid" id="collateral-fields"></div></div></div>
+      <details class="card" open><summary>Main property</summary><div class="grid" id="property-fields"></div><h3>Valuation metadata</h3><p class="muted">Add the original valuation file and record its date and format. Contents and signatures are not checked.</p><div class="grid" id="valuation-fields"></div><div id="property-documents"></div></details>
+      <div class="card"><label class="check"><input type="checkbox" id="has-collateral" data-path="financing.additionalCollateral">Include additional property as collateral</label><div id="collateral-branch" hidden><h3>Additional collateral</h3><div class="grid" id="collateral-fields"></div><div id="collateral-documents"></div></div></div>
       <div class="actions"><button type="submit">View bank checks</button></div>
     </form>
   </section>
   <section id="checks" hidden aria-labelledby="checks-title"><h2 id="checks-title">Research checks for your selected banks</h2><p class="notice">F = field visible in a public form. D = topic in official guidance. Neither proves that a field is mandatory. Every bank still needs verification, even when you fill all researched items.</p><div id="check-errors"></div><div id="bank-checks"></div><div class="actions"><button class="secondary" type="button" data-go="application">Edit application</button><button type="button" data-go="review">Review summary</button></div></section>
   <section id="compare" hidden aria-labelledby="compare-title"><div class="card"><h2 id="compare-title">Compare fictional offers</h2><p>All examples use an annuity schedule and the same assumed six-month benchmark. Amount and term come from your application. These are not quotes from the selected banks.</p><div class="grid"><label class="field">Assumed benchmark (%)<input id="benchmark" type="number" min="0" max="20" step="0.01" value="3"></label><label class="field">Scenario reference date<input id="reference-date" type="date" value="2026-10-10"></label></div><p class="muted">Rates stay constant in this scenario. Variable payments will change. Fees are separate; APR, insurance, account costs, expiry and early-repayment terms are unknown.</p><p id="comparison-message" class="notice" hidden></p><div class="scroll"><table><thead><tr><th>Fictional offer</th><th>Margin (%)</th><th>Contract fee (&#8364;)</th><th>Monthly scenario</th><th>Total payments + fee</th></tr></thead><tbody id="offers"></tbody></table></div><small>No ranking or recommendation. Special or interest-only schedules are not calculated in this comparison.</small></div></section>
-  <section id="review" hidden aria-labelledby="review-title"><div class="card"><h2 id="review-title">Review your demo summary</h2><p class="notice">This export is a shared summary with research gaps, not an accepted bank application. Incomplete answers can be exported as an explicitly incomplete draft.</p><div id="review-errors"></div><div class="review-facts" id="review-facts"></div><div id="review-persons"></div><div id="review-banks"></div><details><summary>Full JSON preview</summary><pre id="json-preview"></pre></details><label class="check"><input id="confirm" type="checkbox">I reviewed this fictional draft and understand that bank requirements remain unverified.</label><p><button id="export" type="button">Download demo JSON summary</button></p><p id="export-status" role="status" aria-live="polite"></p></div></section>
+  <section id="review" hidden aria-labelledby="review-title"><div class="card"><h2 id="review-title">Review your demo summary</h2><p class="notice">This export is a shared summary with research gaps, not an accepted bank application. Incomplete answers can be exported as an explicitly incomplete draft.</p><div id="review-errors"></div><div class="review-facts" id="review-facts"></div><div id="review-persons"></div><div id="review-banks"></div><div id="review-documents"></div><div id="review-permissions"></div><details><summary>Full JSON preview</summary><pre id="json-preview"></pre></details><label class="check"><input id="confirm" type="checkbox">I reviewed this fictional draft and understand that bank requirements remain unverified.</label><p><button id="export" type="button">Download demo JSON summary</button> <button id="export-package" type="button">Download ZIP with original files</button></p><p id="export-status" role="status" aria-live="polite"></p></div></section>
   <footer>Independent hackathon concept. No Tuleva or bank endorsement implied. <a href="https://github.com/Fuusik/tuleva-hackathon-home-loan/blob/main/docs/bank-field-matrix.md" target="_blank" rel="noopener noreferrer">Research and verification gaps</a>.</footer>
 </main>
+<script src="vendor/jszip.min.js"></script>
+<script src="app-documents.js"></script>
 <script src="app-model.js"></script>
 <script src="app-i18n.js"></script>
 <script>
 'use strict';
 const M = LoanModel;
+const D = DemoDocuments;
+const documentStore = D.createStore();
+const permissionRecords = new Map();
+let exportBusy = false;
 const I = AppI18n;
 const t = (key, vars) => I.t(key, vars);
 const translate = text => I.message(text);
@@ -93,7 +100,7 @@ const incomeFields = [choice('type', 'Income type', ['Salary', 'Self-employment'
 const debtFields = [field('type', 'Debt / obligation type'), field('lender', 'Lender / payee'), num('balance', 'Outstanding balance (\u20ac)'), num('monthlyPayment', 'Monthly payment (\u20ac)'), field('maturity', 'Maturity date', 'date'), field('refinanced', 'This debt is being refinanced', 'checkbox')];
 const creditFields = [field('type', 'Credit limit type'), field('lender', 'Lender'), num('limit', 'Authorised limit (\u20ac)'), num('usedAmount', 'Used amount (\u20ac) - optional')];
 const propertyFields = [choice('type', 'Property type', ['Apartment', 'House', 'Land', 'Other']), field('address', 'Property address', 'text', { wide: true }), field('country', 'Country'), field('owner', 'Owner'), choice('intendedUse', 'Intended use', ['Own home', 'Rental', 'Other']), num('estimatedValue', 'Estimated value (\u20ac)'), field('listingUrl', 'Listing URL (if available)', 'url'), choice('energyClass', 'Energy class (optional proposal)', ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'Unknown'])];
-const valuationFields = [choice('valuationStatus', 'Valuation availability', [['available', 'Available (not attached)'], ['missing', 'Not available'], ['unknown', 'Unknown']]), field('valuationDate', 'Valuation date', 'date'), choice('valuationFormat', 'Original file format', [['asice', 'ASiC-E (.asice)'], ['pdf', 'PDF'], ['other', 'Other']])];
+const valuationFields = [choice('valuationStatus', 'Valuation availability', [['available', 'Available / ready to add'], ['missing', 'Not available'], ['unknown', 'Unknown']]), field('valuationDate', 'Valuation date', 'date'), choice('valuationFormat', 'Original file format', [['asice', 'ASiC-E (.asice)'], ['pdf', 'PDF'], ['other', 'Other']])];
 function addRow(base, defs, item = {}) {
   const config = repeaters.get(base);
   const index = config.rows.children.length;
@@ -133,11 +140,18 @@ function renderApplicant(target, a, index) {
   collection(details, prefix, a, 'debts', 'debtsStatus', 'Debt / obligation', debtFields);
   collection(details, prefix, a, 'creditLimits', 'creditsStatus', 'Credit limit', creditFields);
   details.append(node('h3', 'Account statement metadata'));
-  const statements = node('div', undefined, 'grid'); fields(statements, [choice('status', 'Statement availability', [['available', 'Available (not attached)'], ['missing', 'Not available'], ['unknown', 'Unknown']]), num('months', 'Months covered', { step: '1', max: 120 }), field('allAccounts', 'Covers all existing accounts', 'checkbox')], prefix + '.statements', a.statements);
-  details.append(statements, node('small', 'No document uploads, identity checks or separate user access in this demo.'));
+  const statements = node('div', undefined, 'grid'); fields(statements, [choice('status', 'Statement availability', [['available', 'Available / ready to add'], ['missing', 'Not available'], ['unknown', 'Unknown']]), num('months', 'Months covered', { step: '1', max: 120 }), field('allAccounts', 'Covers all existing accounts', 'checkbox')], prefix + '.statements', a.statements);
+  details.append(statements, node('small', 'Added files remain in this browser only. No identity checks or separate user access in this demo.'));
+  const docs = node('div', undefined, 'document-section');
+  docs.append(node('h3', 'Applicant documents'), node('p', 'Use fictional documents. Add statements from all relevant accounts; set the covered months separately. Files are not inspected.', 'muted'));
+  for (const [kind, title] of [['statement', 'Bank statements'], ['income-evidence', 'Other income evidence'], ['tax-certificate', 'EMTA tax-data certificate (optional alternative)'], ['other', 'Other supporting files']]) renderDocumentSlot(docs, a.id, kind, title);
+  details.append(docs);
+  const permissions = node('div'); permissions.id = 'permissions-' + a.id; permissions.dataset.permissionOwner = a.id;
+  details.append(permissions);
   target.append(details);
 }
 function rebuild(d) {
+  documentStore.clear(); permissionRecords.clear();
   repeaters.clear(); $('banks').replaceChildren();
   for (const bank of M.banks) { const label = node('label'); const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.dataset.bank = bank; checkbox.checked = d.selectedBanks.includes(bank); label.append(checkbox, document.createTextNode(bank)); $('banks').append(label); }
   for (const id of ['loan-fields', 'guarantee-grid', 'eis-branch', 'construction-fields', 'household-fields', 'property-fields', 'valuation-fields', 'collateral-fields']) $(id).replaceChildren();
@@ -153,11 +167,14 @@ function rebuild(d) {
   fields($('valuation-fields'), valuationFields, 'property', d.property);
   fields($('collateral-fields'), [...propertyFields.filter(f => !['country', 'intendedUse', 'listingUrl', 'energyClass'].includes(f.key)), ...valuationFields], 'additionalProperty', d.additionalProperty);
   $('has-collateral').checked = d.financing.additionalCollateral;
+  $('property-documents').replaceChildren(); renderDocumentSlot($('property-documents'), 'property', 'valuation', 'Main property valuation file');
+  $('collateral-documents').replaceChildren(); renderDocumentSlot($('collateral-documents'), 'additionalProperty', 'valuation', 'Additional collateral valuation file');
   syncBranches(); changed();
 }
 function pathInput(path) { return [...form.querySelectorAll('[data-path]')].find(el => el.dataset.path === path); }
 function branch(el, enabled) { el.hidden = !enabled; el.querySelectorAll('input,select,textarea,button').forEach(x => x.disabled = !enabled); }
 function syncBranches() {
+  renderPermissions();
   branch($('co-container'), $('has-co').checked);
   const purpose = pathInput('loan.purpose').value;
   branch($('construction-branch'), ['construction', 'renovation'].includes(purpose));
@@ -184,6 +201,8 @@ function read() {
     set(d, input.dataset.path, value);
   }
   d.selectedBanks = [...form.querySelectorAll('[data-bank]:checked')].map(el => el.dataset.bank);
+  d.documents = documentStore.manifest(d);
+  for (const a of d.applicants) a.emtaPermissions = D.permissionsFor(permissionRecords, a.id, d.selectedBanks);
   return d;
 }
 function changed() {
@@ -192,7 +211,12 @@ function changed() {
   for (const input of $('review-persons').querySelectorAll('[data-review-person]')) input.checked = false;
   if (currentPage === 'checks') renderChecks();
 }
-form.addEventListener('input', () => { syncBranches(); changed(); });
+form.addEventListener('input', event => {
+  const path = event.target.dataset.path || '';
+  const identity = path.match(/^applicants\.(0|1)\.(firstName|lastName|personalId)$/);
+  if (identity) { D.clearPersonPermissions(permissionRecords, identity[1] === '0' ? 'primary' : 'co'); renderPermissions(true); }
+  syncBranches(); changed();
+});
 form.addEventListener('change', () => { syncBranches(); });
 form.onsubmit = event => { event.preventDefault(); show('checks'); };
 function invalidMessages(d) {
@@ -224,6 +248,7 @@ function checkCard(d, bank) {
   const uu = node('ul', undefined, 'list'); check.unverified.forEach(text => uu.append(node('li', text, 'warning-item'))); unknown.append(uu); card.append(unknown);
   const covered = node('details'); covered.append(node('summary', 'Filled researched groups (not confirmed bank-ready)')); const filled = node('ul', undefined, 'list'); check.observed.filter(g => !g.missing.length).forEach(g => filled.append(node('li', '[' + g.evidence + '] ' + g.label))); covered.append(filled); card.append(covered);
   check.notes.forEach(text => card.append(node('p', text, 'notice warn')));
+  renderPreparation(card, check.preparation);
   if (bank === 'Coop Pank' && d.loan.purpose === 'refinancing') {
     const preserved = d.applicants.flatMap(a => a.debts.filter(r => r.refinanced).map(r => t(a.role) + ': ' + (r.lender || t('Unnamed lender'))));
     card.append(node('p', preserved.length ? t('Refinanced loans retained in the summary: {loans}', { loans: preserved.join('; ') }) : t('No debt is marked as being refinanced yet.'), 'muted', true));
@@ -267,6 +292,7 @@ function renderReview() {
   $('review-banks').replaceChildren();
   if (!d.selectedBanks.length) $('review-banks').append(node('p', 'Select at least one bank before downloading the demo summary.', 'notice warn'));
   d.selectedBanks.forEach(b => { const c = M.bankCheck(d, b); $('review-banks').append(node('p', t('{bank}: {n} researched items to review; {u} unverified topics. Needs bank verification.', { bank: b, n: c.missingCount, u: c.unverified.length }), 'notice warn', true)); });
+  renderDocumentReview(d);
   $('json-preview').textContent = JSON.stringify(reviewPayload, null, 2); $('confirm').checked = false; $('export-status').textContent = '';
 }
 function show(page) {
@@ -277,9 +303,12 @@ function show(page) {
 }
 document.querySelectorAll('[data-page]').forEach(b => b.onclick = () => show(b.dataset.page));
 document.querySelectorAll('[data-go]').forEach(b => b.onclick = () => show(b.dataset.go));
-$('load-sample').onclick = () => { if (window.confirm(t('Replace this draft with the fictional example? Current entries will be lost.'))) { rebuild(sampleForUI()); show('application'); $('feedback').textContent = t('Fictional example loaded. Documents and bank verification are intentionally incomplete.'); } };
-$('start-blank').onclick = () => { if (window.confirm(t('Clear this draft and start blank?'))) { rebuild(M.blank()); show('application'); $('feedback').textContent = t('Blank draft started. No data has been saved or sent.'); } };
-$('export').onclick = () => {
+$('load-sample').onclick = () => { if (window.confirm(t('Replace this draft with the fictional example? Current entries, files and permission choices will be lost.'))) { rebuild(sampleForUI()); show('application'); $('feedback').textContent = t('Fictional example loaded. Documents and bank verification are intentionally incomplete.'); } };
+$('start-blank').onclick = () => { if (window.confirm(t('Clear this draft, files and permission choices and start blank?'))) { rebuild(M.blank()); show('application'); $('feedback').textContent = t('Blank draft started. No data has been saved or sent.'); } };
+$('export').onclick = () => exportDraft(false);
+$('export-package').onclick = () => exportDraft(true);
+async function exportDraft(includeFiles) {
+  if (exportBusy) return;
   const d = read(); const errs = invalidMessages(d);
   if (errs.length) { $('export-status').textContent = t('Correct invalid values in the shared form before download. Missing answers may remain as unknown.'); return; }
   if (!d.selectedBanks.length) { $('export-status').textContent = t('Select at least one bank before download.'); return; }
@@ -288,9 +317,105 @@ $('export').onclick = () => {
   if (!$('confirm').checked || !reviewed.every(x => x.checked)) { $('export-status').textContent = t('Review each fictional applicant profile and tick the summary confirmation.'); return; }
   d.applicants.forEach(a => a.demoReviewed = true);
   const payload = localizedSummary(d); payload.demoReview = { revision: d.revision, reviewedAt: payload.createdAt, applicantIds: d.applicants.map(a => a.id), selectedBanks: d.selectedBanks, bankConsentObtained: false };
-  const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })); const a = document.createElement('a'); a.href = url; a.download = 'home-loan-demo-summary-v2.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-  $('export-status').textContent = t('Demo summary downloaded with missing items and verification gaps. Nothing was sent to a bank.');
-};
+  const snapshot = documentStore.snapshot(d);
+  exportBusy = true; $('export').disabled = true; $('export-package').disabled = true;
+  try {
+    $('export-status').textContent = t('Preparing local download...');
+    const data = includeFiles ? await D.buildPackage(payload, snapshot, JSZip) : JSON.stringify(payload, null, 2);
+    if (revision !== d.revision) { $('export-status').textContent = t('The draft changed. Review it again before download.'); return; }
+    if (!$('confirm').checked || ![...$('review-persons').querySelectorAll('[data-review-person]')].every(input => input.checked)) { $('export-status').textContent = t('Review each fictional applicant profile and tick the summary confirmation.'); return; }
+    const url = URL.createObjectURL(new Blob([data], { type: includeFiles ? 'application/zip' : 'application/json' }));
+    const a = document.createElement('a'); a.href = url; a.download = includeFiles ? 'home-loan-demo-package-v3.zip' : 'home-loan-demo-summary-v3.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    $('export-status').textContent = t(includeFiles ? 'ZIP downloaded with original files and demo permission choices. Nothing was sent to a bank or EMTA.' : 'JSON downloaded with file metadata only. Use ZIP to include original files. Nothing was sent to a bank or EMTA.');
+  } catch (error) {
+    $('export-status').textContent = t('Could not prepare the local package. Review the files and try again.');
+  } finally {
+    exportBusy = false; $('export').disabled = false; $('export-package').disabled = false;
+  }
+}
+function selectedBanks() { return [...form.querySelectorAll('[data-bank]:checked')].map(el => el.dataset.bank); }
+function fileSize(bytes) { return new Intl.NumberFormat(I.getLocale() === 'et' ? 'et-EE' : 'en-GB', { maximumFractionDigits: 1 }).format(bytes / 1024) + ' KB'; }
+function renderDocumentSlot(target, ownerId, kind, title) {
+  const box = node('div', undefined, 'document-slot'); box.dataset.documentOwner = ownerId; box.dataset.documentKind = kind;
+  const input = document.createElement('input'); input.type = 'file'; input.multiple = true; input.accept = (kind === 'valuation' ? ['pdf','asice','bdoc','ddoc','jpg','jpeg','png'] : D.extensions).map(x => '.' + x).join(',');
+  input.id = 'documents-' + ownerId + '-' + kind;
+  input.hidden = true;
+  const label = node('label', undefined, 'field'); label.htmlFor = input.id;
+  const heading = node('span', title); heading.id = input.id + '-title'; label.append(heading, input);
+  const choose = node('button', 'Add files', 'secondary small'); choose.type = 'button'; choose.id = input.id + '-choose'; choose.setAttribute('aria-labelledby', choose.id + ' ' + heading.id); choose.onclick = () => input.click();
+  const status = node('p', undefined, 'muted'); status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
+  const list = node('ul', undefined, 'document-list'); box.append(label, choose, node('small', 'Maximum 20 MB per file, 50 MB and 30 files in total. Original signed containers are preserved.'), status, list); target.append(box);
+  input.onchange = () => {
+    const errors = []; let added = 0;
+    for (const file of input.files) {
+      try { documentStore.add(file, ownerId, kind); added++; }
+      catch (error) { errors.push(file.name + ': ' + t(error.message)); }
+    }
+    input.value = '';
+    if (added && kind === 'statement') { pathInput('applicants.' + (ownerId === 'primary' ? '0' : '1') + '.statements.status').value = 'available'; }
+    if (added && kind === 'valuation') {
+      pathInput(ownerId + '.valuationStatus').value = 'available';
+      const records = documentStore.list(ownerId, kind);
+      pathInput(ownerId + '.valuationFormat').value = records.some(r => D.extension(r.filename) === 'asice') ? 'asice' : records.every(r => D.extension(r.filename) === 'pdf') ? 'pdf' : 'other';
+    }
+    status.textContent = [added ? t('{n} files added locally.', { n: added }) : '', ...errors].filter(Boolean).join(' ');
+    renderFileList(box);
+    if (added) changed();
+  };
+  renderFileList(box);
+}
+function renderFileList(box) {
+  const list = box.querySelector('ul'); list.replaceChildren();
+  const rows = documentStore.list(box.dataset.documentOwner, box.dataset.documentKind);
+  if (!rows.length) list.append(node('li', 'No files added.', 'muted'));
+  for (const meta of rows) {
+    const row = node('li'); const description = node('span', meta.filename + ' (' + fileSize(meta.size) + ')', undefined, true);
+    const remove = node('button', 'Remove', 'secondary small'); remove.type = 'button'; remove.setAttribute('aria-label', t('Remove file {name}', { name: meta.filename }));
+    remove.onclick = () => { documentStore.remove(meta.id); renderFileList(box); syncBranches(); changed(); };
+    row.append(description, remove); list.append(row);
+  }
+}
+function renderAllDocumentLists() { form.querySelectorAll('[data-document-owner]').forEach(renderFileList); }
+function renderPermissions(force = false) {
+  const banks = selectedBanks(), signature = banks.join('|') + '|' + I.getLocale();
+  for (const ownerId of ['primary','co']) {
+    const target = $('permissions-' + ownerId); if (!target || !force && target.dataset.signature === signature) continue;
+    target.dataset.signature = signature; target.replaceChildren();
+    target.append(node('h3', 'Permission for EMTA queries'), node('p', 'Choose separately for each applicant and selected bank. Demo choices do not authorize a real query. Each person must authorize their own data in the accepted bank or state-portal flow.', 'notice'));
+    target.append(node('p', 'Tax-data certificate scope: employment register entries, declared income and tax-debt information. Exact data blocks and the bank authorization process remain unverified.', 'muted'));
+    const source = node('a', 'EMTA guidance on certificates and permissions'); source.href = D.permissionSource; source.target = '_blank'; source.rel = 'noopener noreferrer'; target.append(source);
+    if (!banks.length) target.append(node('p', 'Select banks above to configure demo permission choices.', 'empty'));
+    const grid = node('div', undefined, 'grid');
+    for (const permission of D.permissionsFor(permissionRecords, ownerId, banks)) {
+      const label = node('label', undefined, 'field'); const select = document.createElement('select'); select.id = 'permission-' + ownerId + '-' + M.banks.indexOf(permission.bank); label.htmlFor = select.id;
+      for (const [value, text] of [['','Not selected'],['allow-demo','I wish to allow this query (demo)'],['refuse','I do not allow this query'],['withdraw','Withdraw my demo choice']]) { const option = node('option', text); option.value = value; select.append(option); }
+      select.value = permission.status; select.oninput = () => D.recordPermission(permissionRecords, ownerId, permission.bank, select.value);
+      label.append(node('span', permission.bank, undefined, true), select); grid.append(label);
+    }
+    target.append(grid, node('small', 'Purpose: assess this loan application. Permission choices are optional, never preselected, and are recorded with a version and timestamp. Add an EMTA certificate as an alternative if needed.'));
+  }
+}
+function permissionLabel(status) { return t(status === 'allow-demo' ? 'Wish to allow (demo only)' : status === 'refuse' ? 'Declined' : status === 'withdraw' ? 'Withdrawn (demo only)' : 'Not selected'); }
+function renderPreparation(target, preparation) {
+  const box = node('div', undefined, 'document-section'); box.append(node('h3', 'Files and EMTA permission choices'), node('p', t('{n} files selected in this draft.', { n: preparation.documentCount }), 'muted', true));
+  const gaps = node('ul', undefined, 'list'); preparation.missingDocuments.forEach(text => gaps.append(node('li', text)));
+  if (!preparation.missingDocuments.length) gaps.append(node('li', 'Statement and valuation files are added locally. Contents and bank acceptance remain unverified.', 'good'));
+  box.append(gaps);
+  for (const p of preparation.permissionStatuses) box.append(node('p', t(p.role) + ': ' + permissionLabel(p.status), undefined, true));
+  preparation.notices.forEach(text => box.append(node('small', text))); target.append(box);
+}
+function documentKind(kind) { return t(({statement:'Bank statements','income-evidence':'Other income evidence','tax-certificate':'EMTA tax-data certificate (optional alternative)',other:'Other supporting files',valuation:'Valuation report'})[kind]); }
+function ownerLabel(ownerId) { return t(({primary:'Primary applicant',co:'Co-applicant',property:'Main property',additionalProperty:'Additional collateral'})[ownerId]); }
+function renderDocumentReview(d) {
+  const target = $('review-documents'); target.replaceChildren(); target.append(node('h3', 'Files included in the ZIP'));
+  target.append(node('p', 'JSON contains file metadata only. ZIP contains the original files shown below. Files for an inactive co-applicant or additional collateral are excluded.', 'notice'));
+  const list = node('ul', undefined, 'list');
+  for (const meta of d.documents) list.append(node('li', ownerLabel(meta.ownerId) + ' / ' + documentKind(meta.kind) + ': ' + meta.filename + ' (' + fileSize(meta.size) + ')', undefined, true));
+  if (!d.documents.length) list.append(node('li', 'No files added.', 'muted')); target.append(list);
+  const permissions = $('review-permissions'); permissions.replaceChildren(); permissions.append(node('h3', 'EMTA choices by applicant and bank'));
+  for (const a of d.applicants) for (const p of a.emtaPermissions) permissions.append(node('p', t(a.role) + ' / ' + p.bank + ': ' + permissionLabel(p.status), undefined, true));
+  permissions.append(node('p', 'No real authorization has been obtained and no EMTA query has been made. Unselected, declined or withdrawn choices remain visible; an incomplete demo can still be exported.', 'notice warn'));
+}
 function sampleForUI() {
   const d = M.sample();
   if (I.getLocale() === 'et') {
@@ -309,7 +434,7 @@ function localizedSummary(d) {
   payload.uiLanguage = I.getLocale();
   payload.mappingStatus = translate(payload.mappingStatus);
   payload.validationErrors = payload.validationErrors.map(translate);
-  payload.bankChecks = payload.bankChecks.map(check => ({ ...check, status: translate(check.status), observed: check.observed.map(g => ({ ...g, label: translate(g.label), missing: g.missing.map(translate) })), unverified: check.unverified.map(translate), notes: check.notes.map(translate) }));
+  payload.bankChecks = payload.bankChecks.map(check => ({ ...check, status: translate(check.status), observed: check.observed.map(g => ({ ...g, label: translate(g.label), missing: g.missing.map(translate) })), unverified: check.unverified.map(translate), notes: check.notes.map(translate), preparation: { ...check.preparation, missingDocuments: check.preparation.missingDocuments.map(translate), notices: check.preparation.notices.map(translate) } }));
   return payload;
 }
 function applyLanguage(language) {
@@ -328,6 +453,7 @@ function applyLanguage(language) {
   document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
   $('revision').textContent = t('Draft {n}', { n: revision });
   $('export-status').textContent = '';
+  renderAllDocumentLists(); renderPermissions(true); syncBranches();
   if (currentPage === 'checks') renderChecks();
   if (currentPage === 'compare') calculate();
   if (currentPage === 'review') {
@@ -345,4 +471,3 @@ applyLanguage('et');
 </script>
 </body>
 </html>
-

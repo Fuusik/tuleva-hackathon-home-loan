@@ -1,9 +1,9 @@
 /* Shared demo model and research checks. Works offline in a browser and in Node. */
 (function (root, factory) {
-  const api = factory();
+  const api = factory(typeof module === 'object' && module.exports ? require('./app-documents.js') : root.DemoDocuments);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.LoanModel = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (Documents) {
   'use strict';
   const banks = ['Swedbank', 'SEB', 'LHV', 'Luminor', 'Coop Pank', 'Bigbank'];
   const sources = {
@@ -19,10 +19,10 @@
     return { id, role, firstName: '', lastName: '', personalId: '', idIssuer: '', residency: '', country: '', address: '', postalCode: '', email: '', phone: '', language: '', maritalStatus: '', education: '', relationship: '', demoReviewed: false,
       employment: { status: '', employer: '', sector: '', occupation: '', type: '', tenureMonths: null, endDate: '', noFixedEnd: false },
       incomesStatus: '', incomes: [], debtsStatus: '', debts: [], creditsStatus: '', creditLimits: [],
-      statements: { status: '', months: null, allAccounts: false } };
+      emtaPermissions: [], statements: { status: '', months: null, allAccounts: false } };
   }
   function blank() {
-    return { schemaVersion: 2, applicationId: 'home-loan-demo', revision: 1, selectedBanks: [],
+    return { schemaVersion: 3, documents: [], applicationId: 'home-loan-demo', revision: 1, selectedBanks: [],
       loan: { purpose: 'purchase', amount: null, termYears: null, price: null, ownContribution: null, contributionSource: '', repaymentSchedule: 'annuity', paymentDay: null, campaignCode: '', notes: '' },
       household: { dependants: null, childrenUnder18: null, monthlyExpenses: null, disposableAmount: null },
       applicants: [applicant('primary', 'Primary applicant')],
@@ -159,8 +159,9 @@
     if (bank === 'Swedbank') unknown.push('Exact income fields beyond the visible income stage; shared income detail checks are proposed');
     if (bank === 'Coop Pank') unknown.push('Exact debt-detail fields beyond the documented obligations topic');
     unknown.push('Mandatory flags, dynamic branches, exact option lists, native declarations and submission acceptance');
+    unknown.push('EMTA query scope, bank-specific consent text and genuine authorization channel');
     return { bank, source: sources[bank], sourceId: sourceIds[bank], researchDate: '2026-10-10', status: 'Needs bank verification', completeBankApplication: false,
-      observed, missingCount: observed.reduce((n, g) => n + g.missing.length, 0), unverified: [...new Set(unknown)], notes };
+      preparation: Documents.preparation(d, bank), observed, missingCount: observed.reduce((n, g) => n + g.missing.length, 0), unverified: [...new Set(unknown)], notes };
   }
   function errors(d) {
     const out = [];
@@ -188,7 +189,9 @@
   }
   function exportSummary(d, createdAt = new Date().toISOString()) {
     const copy = JSON.parse(JSON.stringify(d));
+    copy.documents = Documents.activeManifest(copy);
     for (const a of copy.applicants) {
+      a.emtaPermissions = (a.emtaPermissions || []).filter(p => copy.selectedBanks.includes(p.bank)).map(p => ({ ...p, genuineAuthorization: false, queryExecuted: false }));
       if (a.incomesStatus !== 'provided') a.incomes = [];
       if (a.debtsStatus !== 'provided') a.debts = [];
       if (a.creditsStatus !== 'provided') a.creditLimits = [];
@@ -199,7 +202,7 @@
     if (copy.financing.guarantee !== 'EIS') delete copy.financing.targetGroup;
     return { demo: true, completeBankApplication: false, createdAt, application: copy,
       validationErrors: errors(d), bankChecks: d.selectedBanks.map(b => bankCheck(d, b, createdAt.slice(0, 10))),
-      mappingStatus: 'Partial research mapping; not a native application or bank approval', documentsAttached: false };
+      mappingStatus: 'Partial research mapping; not a native application or bank approval', documentsAttached: false, filesIncluded: false, fileExportMode: 'metadata-only-json', documentsSelectedInBrowser: copy.documents.length, bankConsentObtained: false, emtaQueriesExecuted: false };
   }
   return { banks, sources, sourceIds, groups, applicant, blank, sample, has, payment, errors, bankCheck, exportSummary };
 });

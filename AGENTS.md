@@ -7,6 +7,7 @@ Applies to this repository. The user's current instructions take precedence over
 - [README.md](README.md): purpose, setup, current features and collaboration.
 - [docs/project-brief.md](docs/project-brief.md): consumer problem, intended journey, implemented scope and open questions.
 - [docs/decisions.md](docs/decisions.md): confirmed decisions, implementation baseline and proposed workflow.
+- [docs/document-permissions.md](docs/document-permissions.md): browser-local files, demo EMTA choices and JSON/ZIP exports.
 - [docs/bank-field-matrix.md](docs/bank-field-matrix.md): evidence, mapping differences, sources and verification gaps.
 
 The bank matrix is a dated research baseline. It does not certify production requirements. Keep proposals, observed fields and bank-confirmed requirements distinct.
@@ -18,17 +19,22 @@ The bank matrix is a dated research baseline. It does not certify production req
 | `index.html` | Buildless page, styles and browser controller |
 | `app-model.js` | Shared data defaults, conditional checks, validation, annuity calculation and canonical summary; usable in browser and Node |
 | `app-i18n.js` | Estonian/English translations and composed messages |
+| `app-documents.js` | Local File references, demo permission records, preparation checks and ZIP packaging |
+| `vendor/jszip.min.js` | Pinned JSZip 3.10.1; keep its license and local loading |
+| `tests/documents.test.js` | File/permission isolation, limits, export and original-byte checks |
 | `tests/model.test.js` | Model regression checks |
 | `tests/i18n.test.js` | Language defaults, translation coverage and stable data checks |
 
-Keep the existing offline, dependency-free runtime unless the requested task changes that scope. Do not add a paid AI service or credentials as a hidden requirement. Keep model rules in the model, presentation in the page and translations in the translation module.
+Keep the existing offline runtime without installation or server requirements. JSZip is bundled locally with its license; do not switch to a CDN or hide a new service/dependency. Do not add a paid AI service or credentials as a hidden requirement. Keep model rules in the model, presentation in the page and translations in the translation module.
 
 Use UTF-8 files. Verify Estonian characters and euro symbols survive writing and reading. Keep canonical field keys and option values stable; UI language changes only labels and descriptive messages. Do not translate free-text user values or rebuild the form during a language switch.
 
 ## Product boundaries
 
 - Estonian is the default; provide a visible ET / EN switch. Translate new labels, options, validation messages, checklist text and export-review text in both languages.
-- Use fictional examples. Do not add bank submissions, autonomous messages, live eligibility/approval claims, authentication, account-data access, real document collection, persistence, analytics or integrations as incidental changes to this demo.
+- Use fictional examples. Do not add bank submissions, autonomous messages, live eligibility/approval claims, authentication, account-data access, server uploads, persistence, analytics or integrations as incidental changes to this demo.
+- Local document selection and ZIP packaging are authorized demo features. Use fictional documents; no automatic upload, parsing or signature/acceptance claims. Keep original signed-container bytes unchanged and exclude inactive owners from exports. File changes invalidate review.
+- EMTA choices are optional, unselected by default and separate per person/bank. Include decline/withdrawal and version/time; clear a person\'s choices when identity fields change. Export always records genuine authorization and query execution as false. Never treat the demo choice as a valid bank/state-portal consent.
 - No bank or Tuleva endorsement, partnership, submission API or acceptance of exported summaries has been established.
 - Keep the primary and co-applicant profiles independent. The current co-applicant flow is on one device; review ticks are demo acknowledgements, not real bank consent.
 - Keep selected-bank missing items and unverified mappings visible through review and export. A completed checklist must still show that bank verification is needed.
@@ -47,17 +53,18 @@ Do not infer a complete field list from a product page, a small-loan form or one
 
 ## Checks appropriate to the change
 
-For model or translation changes, run:
+For model, translation or document-module changes, run:
 
 ```sh
-node --test tests/model.test.js tests/i18n.test.js
+node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js
 node --check app-model.js
 node --check app-i18n.js
+node --check app-documents.js
 ```
 
-For controller changes, also check the inline script's syntax and open `index.html` in a browser when available. Browser checks should exercise changed behavior, including relevant ET / EN transitions, preserved entries, repeated rows, optional co-applicant, purpose branches, selected banks and review/export invalidation. Confirm no unintended network calls or persistence were added.
+For controller changes, also check the inline script's syntax and open `index.html` in a browser when available. Browser checks should exercise changed behavior, including relevant ET / EN transitions, preserved entries/files/choices, file selection/removal, ZIP byte fidelity, permission withdrawal, repeated rows, optional co-applicant, purpose branches, selected banks and review/export invalidation. Confirm no unintended network calls or persistence were added.
 
-If a browser cannot run, report that limitation; passing Node tests is not evidence of visual or interaction verification. The existing expanded demo has 20 Node tests; automated browser interaction/layout verification remains outstanding.
+If a browser cannot run, report that limitation; passing Node tests is not evidence of visual or interaction verification. The existing expanded demo has 32 Node tests; automated browser interaction/layout verification remains outstanding.
 
 For documentation-only changes, check factual consistency, file paths, relative links and the distinction between current and planned behavior. Do not add tests that merely repeat the prose.
 
