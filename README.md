@@ -52,7 +52,15 @@ Keep original offer documents, provenance, validity dates and missing values vis
 
 ## Repository status
 
-Documentation baseline created on 10 October 2026. No application code, bank integrations or deployment has been implemented. No runtime or paid AI API is required to read these documents. A future implementation should document its actual setup and costs here.
+Documentation baseline and first browser prototype created on 10 October 2026. No bank integration or hosted deployment has been implemented.
+
+### Run the prototype
+
+Download the repository using GitHub's Code menu > Download ZIP, extract it, and open `index.html` in a browser. No installation, server, paid AI API, or API keys are required.
+
+The prototype provides a partial shared form, conditional construction/renovation and refinancing questions, fictional annuity offer scenarios, and a reviewed JSON summary download. Entries exist only in page memory. It does not implement a complete bank form, document upload, co-applicant access, bank submission, offer document parsing, or negotiation drafts.
+
+JavaScript syntax and the annuity formula's zero-rate, reference-payment and rate-sensitivity cases were checked. Browser interaction and visual QA have not yet been performed.
 
 Suggested build order: shared form  conditional validation  exports  manually entered offer comparison  reviewed negotiation drafts. Validate mappings with banks and review the operating model before adding live submissions.
 
