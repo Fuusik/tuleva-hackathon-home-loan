@@ -58,11 +58,35 @@ Documentation baseline and first browser prototype created on 10 October 2026. N
 
 Download the repository using GitHub's Code menu > Download ZIP, extract it, and open `index.html` in a browser. No installation, server, paid AI API, or API keys are required.
 
-The prototype provides a partial shared form, conditional construction/renovation and refinancing questions, fictional annuity offer scenarios, and a reviewed JSON summary download. Entries exist only in page memory. It does not implement a complete bank form, document upload, co-applicant access, bank submission, offer document parsing, or negotiation drafts.
+The expanded demo includes:
 
-JavaScript syntax and the annuity formula's zero-rate, reference-payment and rate-sensitivity cases were checked. Browser interaction and visual QA have not yet been performed.
+- Separate primary-applicant and co-applicant identities, contacts and employment details.
+- Repeatable income, debt and credit-limit entries per person. Explicit "none" answers remain distinct from unknown answers; zero values are retained.
+- Household expenses, dependants and children under 18 as separate values.
+- Main property, optional additional collateral, EIS target group and valuation metadata.
+- Conditional construction/renovation fields, and debt-level refinancing flags.
+- A checklist for every selected bank with missing researched items, unverified mappings and source links. F/D evidence does not establish mandatory bank requirements. All banks remain labelled "Needs bank verification".
+- Fictional annuity offer scenarios and a reviewed JSON export that includes outstanding gaps.
 
-Suggested build order: shared form  conditional validation  exports  manually entered offer comparison  reviewed negotiation drafts. Validate mappings with banks and review the operating model before adding live submissions.
+Use **Load fictional example** or **Start blank**. Go to **Bank checks** at any time, even with incomplete answers. For export, choose at least one bank and review each fictional applicant profile plus the summary. Invalid values block download; missing answers can remain in an explicitly incomplete draft. Editing the application clears earlier review confirmations.
+
+Entries exist only in page memory. No data is submitted or uploaded. Co-applicants are entered on the same device; invitations, separate access, authentication and genuine bank consents are not implemented. The export remains a canonical summary, not a native bank form. No bank integrations, document uploads, offer parsing or negotiation drafts have been implemented.
+
+Keep `index.html` and `app-model.js` together in the extracted folder. The page loads its local model script and needs no external resources.
+
+### Validation
+
+Run the dependency-free model regression checks with Node.js:
+
+```sh
+node --test tests/model.test.js
+```
+
+The 14 tests cover missing versus unverified requirements, unknown versus zero/none, repeated debt gaps, co-applicant isolation, household definitions, employment end dates, original income currency/frequency, conditional construction, refinancing debt retention, statement coverage, valuation format/age, additional collateral, numeric contradictions and annuity calculations. JavaScript syntax, HTML structure, unique static IDs and absence of persistence/network calls were also checked.
+
+Automated browser launch failed in the current execution environment, so browser interactions and visual layout for this expanded version remain unverified. Manual checks: add/remove repeated entries, toggle the co-applicant and purposes, inspect all six banks, change a reviewed draft and download its JSON. The original prototype was successfully opened and reviewed by the project owner.
+
+Suggested build order: shared form → conditional validation → exports → manually entered offer comparison → reviewed negotiation drafts. Validate mappings with banks and review the operating model before adding live submissions.
 
 ## Demo acceptance criteria
 
