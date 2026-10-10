@@ -2,6 +2,22 @@
 
 One application. Multiple Estonian banks. Comparable offers. Better-informed negotiation.
 
+## Shared project context
+
+Collaborators and their coding assistants can use this repository without access to another person's ChatGPT history. The docs summarize the project discussions and the current implementation; they are not a transcript of private chats.
+
+| File | What to read it for |
+| --- | --- |
+| [README.md](README.md) | Purpose, target users, setup and current demo status |
+| [docs/project-brief.md](docs/project-brief.md) | Problem, value proposition, intended journey, scope and open questions |
+| [docs/decisions.md](docs/decisions.md) | Confirmed decisions, implementation baseline and proposed team workflow |
+| [docs/bank-field-matrix.md](docs/bank-field-matrix.md) | Bank research, dated sources and mappings still needing verification |
+| [AGENTS.md](AGENTS.md) | Coding-assistant conventions, demo boundaries and relevant checks |
+
+Start with this README and the project brief, then read the decisions and relevant bank matrix sections. Coding assistants should read AGENTS.md before changing code. Update the affected context files when an accepted decision changes.
+
+The recommended team workflow is one task-specific branch per parallel task, focused changes, relevant checks and a pull request for review before merging to `main`. An explicit owner instruction to commit directly to `main` still applies. See [docs/decisions.md](docs/decisions.md) for the distinction between agreed product decisions and proposed team practices.
+
 ## Idea
 
 We help people buying, building or refinancing a home reduce repeated paperwork and make informed borrowing decisions by creating one reusable application, a clear comparison of bank offers and a guided negotiation workflow.
@@ -10,7 +26,7 @@ Today, applicants repeat similar information across different bank forms and rec
 
 This is a hackathon concept associated with the Tuleva hackathon project. It does not imply that Tuleva or any bank endorses the service or has agreed to integrate with it.
 
-## User journey
+## Intended end-to-end journey
 
 1. Choose purchase, construction, renovation or refinancing.
 2. Enter household, income, obligations, property and financing information once. Invite a co-applicant to complete their own information.
@@ -19,7 +35,7 @@ This is a hackathon concept associated with the Tuleva hackathon project. It doe
 5. Add received offers and compare costs and conditions on the same assumptions.
 6. Prepare a factual negotiation request, review it and decide whether to send it.
 
-## Hackathon MVP
+## Target hackathon MVP (partly implemented)
 
 - A guided shared application with conditional questions and a document checklist.
 - Bank-specific completeness checks based on documented mappings.
@@ -27,6 +43,8 @@ This is a hackathon concept associated with the Tuleva hackathon project. It doe
 - Manual entry of offers, with clearly labelled fictional examples for the demo.
 - Comparison of margin, benchmark and reset period, repayment schedule, fees, monthly payment, insurance/account conditions, early repayment terms and offer expiry.
 - A negotiation draft that uses actual competing offers only when supplied by the applicant.
+
+The bullets above describe the target scope. The implemented demo is described under Repository status below; genuine co-applicant access, bank-specific accepted exports, real offer intake and negotiation drafts are not implemented.
 
 The demo uses synthetic data. Real bank submission, identity verification, credit decisions, account-data access and autonomous negotiation are outside the initial MVP.
 
@@ -56,7 +74,7 @@ Documentation baseline and first browser prototype created on 10 October 2026. N
 
 ### Run the prototype
 
-Download the repository using GitHub's Code menu > Download ZIP, extract it, and open `index.html` in a browser. No installation, server, paid AI API, or API keys are required.
+With a local clone, fetch and pull the latest changes in GitHub Desktop, then open `index.html` from the repository folder in a browser. You can also use GitHub's Code menu > Download ZIP and extract the files. No installation, server, paid AI API, or API keys are required to run the demo.
 
 The interface opens in **Estonian** by default. Use the **ET / EN** buttons in the header to switch to English or back. Switching language preserves entered data, selected banks, repeated entries and the current page. Form labels, bank checklists, validation messages and export review are bilingual; user-entered text is preserved.
 
