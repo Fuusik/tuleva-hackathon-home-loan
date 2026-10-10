@@ -1,68 +1,42 @@
-# Shared application, recipient readiness, simulation and comparison
+# Shared application and offer workflow — v5
 
-Implemented on 10 October 2026 following the owner's four priorities. Reducing repeated bank applications remains the main purpose; comparing later offers strengthens that journey.
+Implemented 10 October 2026. Everything is browser-local and demo-only.
 
-## Try the demo
+## Manual walkthrough
 
-1. Open `index.html`. The built-in fictional applicant profile is prefilled. Use **Laadi näidisandmed / Load fictional example** to reset it. Files and EMTA choices are deliberately not fabricated or preselected.
-2. In **Ühine taotlus / Shared form**, inspect and edit financing, each applicant, household, property and evidence. At the bottom, review all five shared-data sections. Any application edit clears these confirmations. Both fictional profiles are entered on this device.
-3. In **Pankade valmisolek / Bank readiness**, shared research gaps appear once. Each selected bank shows existing answers, its additional researched topics, file/EMTA preparation and unknown requirements. Missing supported extra fields can be entered here; they update the same canonical field in the shared form. Use the shared form for repeated entries, documents and other changes. F/D are research evidence, not verified mandatory flags.
-4. In **Edastamise simulatsioon / Transmission simulation**, select LHV and Luminor, keep fictional `DEMO-...` identifiers and `example.test` emails, and review every active person's mapped data for each bank separately. Click **Simuleeri edastamist / Simulate local transmission** for each. A status and timestamp record a local simulation. No request, email, original file, authorization or bank receipt exists. Incomplete and unverified mappings remain visible.
-5. In **Pakkumiste võrdlus / Offer comparison**, completing both current simulations enables the fictional examples. Manual demo entry is also available independently. Add the original offer source/reference, validity, terms, costs and conditions. These are fictional examples, never offers from LHV or Luminor.
-6. In **Ülevaade ja eksport / Review & export**, inspect the current dataset, simulation records, offer assumptions/results and outstanding gaps. Review each fictional person and the summary to download JSON or a ZIP. JSON contains document metadata; ZIP includes the selected original active-owner files. Invalid application or offer values block export; unknown answers remain explicit.
+1. Open index.html, then **Laenu eesmärk / Loan goal**. Check banks, amount, budget and one term input: whole years or months. Move to **Andmed ja allikad / Data and sources**. Enter values, or start blank and try each simulated source. Existing entries must survive; files are not parsed and no registry is queried.
+2. Enable a co-applicant and select them in the source selector. Their examples, files and EMTA choices must remain independent. In **Kontrolli vastuseid / Check answers**, filter unanswered fields, then restore the full view to correct existing answers. Hidden answers remain in the dataset. Source badges and the counters indicate example-prefill/manual/missing, not identity or factual verification.
+3. Check five shared sections. In bank readiness, fill a supported extra and confirm it updates the same shared field. Missing files, statement period/account coverage, optional EMTA choices and unverified requirements remain visible.
+4. Select any/all six banks. Review every person's mapped data for each recipient; run each local simulation. LHV/Luminor are deeper partial illustrations. Swedbank/SEB/Coop/Bigbank are preparation summaries; their unmapped data is not a verified native form. Coop's illustrative refinancing view excludes debts flagged for replacement while canonical data retains them. Nothing is transmitted, authorized or received by a bank.
+5. Open comparison. Selected simulations enable generic fictional offers; historical cases and manual demo intake also work independently. Loading a case asks before replacing financing fields/offers; it retains local files, clears shared/recipient/export reviews and starts a fresh case negotiation draft. Budget/property and benchmark/reset assumptions are fictional or marked assumptions. Historical prices are not live quotes.
+6. Compare original financing with equal-amount/equal-term modelling. Inspect evidence, decision stages, inherited fields, funding gaps, original-term interest and term extension. Select two offers/current-loan alternatives. Test 0/2/4% sensitivity, breach surcharge, percentage fees, temporary account pricing, capped reimbursement and switching exit cost. Blank unknown fees must prevent complete totals. An unconfirmed reimbursement is excluded.
+7. Add an improved version; original price remains in history. Choose one to three different favourite banks, competitor offers and shared fields. Prepare requests, edit message/fictional example.test recipient and review each. Changing recipient, content, offers, assumptions or disclosure selection withdraws review or makes the request stale. One simulated round is permitted; no email or attachment is sent.
+8. After the round, record contact, next action, deadline, questions and reply notes. Add a reply with date/margin and only reconfirmed other fields; unchanged fields stay inherited. The original request snapshot survives and later offers make it stale without starting another automatic round. Download the local handoff JSON; it contains financing/offers/actions and document metadata, no original-file bytes or applicant identity profile.
+9. Select an offer in contract checking and manually enter draft terms/reference. Inspect matching, changed, missing and unknown promises; inherited evidence remains marked. There is no document parsing, signature/validity verification or legal approval.
+10. Switch ET/EN throughout: canonical entries, source selections, offers, draft messages, manually entered reply fields, files and choices must survive. User-entered/previously loaded descriptive text is preserved, including already prepared letter text.
+11. Review/export: invalid values block download, incomplete answers stay explicit. Profile/summary review is required. Extract ZIP to verify original bytes and active-owner metadata. Edit during packaging to confirm an outdated download is cancelled. Reload/reset clears all page-memory state.
 
-Switching ET / EN preserves application values, local files, EMTA choices, shared reviews, per-recipient simulation reviews, simulations, manually entered offers and assumptions. User-entered and already loaded sample text is not translated. Reload/reset clears page-memory state. Offers remain visible with a warning after an application edit, while shared reviews and simulations are cleared; changed amount/term also prevents an equivalent comparison.
+## Cost definitions
 
-## One dataset and provenance
+EUR annuity, constant selected benchmark/margin and monthly intervals. The selected benchmark is an assumption, not fetched Euribor. Unsupported currencies, benchmark/reset mismatches and special schedules are withheld. Live expired offers are withheld; historical cases remain visibly historical snapshots.
 
-Prefill currently means a built-in synthetic profile, not extraction from documents or a registry. The shared review records the source (`fictional-example` or `blank`), current draft revision, section acknowledgements and timestamps. It does not certify factual accuracy. All normal fields remain editable, and blank differs from zero/none.
+Original financing uses the offer's amount/term and user budget/own funds. Normalised calculations deliberately substitute a common principal/term and never establish bank willingness to lend those amounts. Original-term payments/interest are separate scenarios; do not call their differences same-term savings.
 
-Bank extra questions write through to the existing form field. Their controls are shown only while the corresponding shared answer is absent and the conditional branch is active. The shared-versus-extra grouping is a UI design boundary, not a universal bank-confirmed list. Unknown banks/fields do not become mandatory or disappear.
+- Upfront costs: contract, valuation, notary, state, guarantee and other costs; switching additionally requires a stated exit cost.
+- Percentage contract fee: principal × percentage, bounded by entered optional minimum/maximum. For normalisation it uses the model principal.
+- Confirmed reimbursement: subtract at most the eligible entered cost and cap, once. Unconfirmed rebates do not reduce totals.
+- Recurring costs: selected insurance, account and other costs. Temporary account pricing applies only during its stated months; later price must be known for complete totals. Compare insurance cover/requirements separately; a premium buys protection.
+- Horizon borrowing cost = interest + net upfront costs + recurring costs over the capped horizon. It excludes repaid principal; remaining principal is shown.
+- Full-term outflow = loan payments + net upfront + recurring costs; it includes principal. APR is only as supplied.
+- Simple payback = additional known upfront cost / positive monthly outflow reduction, only with complete stable same-term costs and no temporary account pricing. This is limited cash-flow arithmetic, not full economic benefit.
+- Conditional breach view adds surcharge from month one for a stress scenario; it does not model the actual date/discretion of a bank action.
 
-`app-workflow.js` contains the review and partial recipient mappings; `app-stages-ui.js` renders them. `app-offers.js` handles comparison. `app-stage-i18n.js` supplements the existing bilingual translations. Schema version is 4.
+Unknown costs suppress complete totals/payback; labelled known-cost subtotals and interest-only differences can be shown. Past costs should not be charged again when comparing continuation with future alternatives. Financed fees, variable future benchmarks, premium changes and special schedules need further modelling. No ranking, realised savings, promised service return or forecast is produced.
 
-## Two different illustrative mappings
+## Implementation and export
 
-| Aspect | LHV illustration | Luminor illustration |
-| --- | --- | --- |
-| Layout | Person-centred: identities, income, obligations and credit limits; financing and property | Loan request, applicants with income currencies, household and collateral |
-| Household | All dependants and expenses | Children under 18 and separately entered disposable money |
-| Credit limits | Separate from amortising debts | Exact recipient mapping remains unverified |
-| Term | Amount/term mapping explicitly unresolved | Years converted to months in the illustrative mapping |
-| Income | Original values and frequencies | Original net values, currency and frequency, without conversion |
-| Evidence and permission | Metadata and only that recipient's demo choices | Metadata and only that recipient's demo choices |
+Schema v5 adds provenance, all-six recipient simulations, historical case/version state, cost assumptions, one demo negotiation snapshot, personal actions and manual contract comparison. Original files and per-person/per-bank optional EMTA choices follow [document-permissions.md](document-permissions.md).
 
-Both adapters retain source links, evidence date, missing researched items and unresolved mappings. They are intentionally partial demonstrations based on [the matrix](bank-field-matrix.md), not exact live schemas, accepted files or browser automation against a bank. Actual declarations, co-applicant procedures, signing and submission channels remain unresolved. Neither adapter claims receipt, complete bank readiness or genuine consent.
+Modules: app-model/documents/workflow/offers; app-cases for anonymised cases; app-negotiation for one-round/version/contract rules; app-guided-ui and app-offer-journey-ui for new flows; app-stages-ui and the inline controller compose them. Both stage dictionaries and app-v5-i18n are merged into app-i18n.
 
-## Cost comparison
-
-All calculated examples use EUR annuity payments with the same principal, term, benchmark period and reset interval. Different currencies, principal/term, benchmark/reset period or special schedules are withheld from the equivalent calculation. Expired offers are flagged and withheld. The common benchmark is an editable assumption, not a fetched Euribor rate. Rate reset is six months in this demo scenario; it is checked against each offer. No ranking or recommendation is made.
-
-- Upfront: contract, valuation, notary, state, guarantee and other fees.
-- Recurring: chosen home/life/loan-protection insurance, account and other monthly costs.
-- Other terms: provided APR, source/reference, expiry, insurance obligations/cover, early repayment and other conditions.
-- Use explicit 0 for an absent cost; blank is unknown. Avoid double-counting insurance cover or a fee that is already in another line. Enter costs paid separately; financed fees need a future model.
-
-With monthly annuity payment `P`, remaining balance `B`, monthly rate `r` and horizon `h` months:
-
-```text
-next balance = max(0, B + B*r - P)
-horizon interest = sum of monthly B*r
-horizon borrowing cost = horizon interest + upfront costs + recurring costs*h
-monthly outflow = P + recurring costs
-full-term outflow = P*termMonths + upfront costs + recurring costs*termMonths
-```
-
-Horizon is capped at the loan term. Horizon borrowing cost excludes repaid principal; remaining principal is displayed alongside it. Full-term outflow includes principal. Exit/early-repayment charges are not automatically included; review the entered terms separately. Notary/valuation and similar transaction costs are included for each alternative scenario, not summed across banks.
-
-The benchmark, margin and entered costs stay constant over the scenario. Future changes and different insurance coverage are not priced. An unknown fee prevents a complete monthly/horizon/full-term total; a labelled known-cost subtotal may still be shown. Missing non-cost terms remain listed even when arithmetic is possible. APR is recorded as supplied, never computed or represented by these totals.
-
-Cost categories were checked against Finantsinspektsioon's consumer guidance on 10 October 2026: [interest and fees](https://www.minuraha.ee/et/pangandus/laenud/intress-ja-muud-laenamisega-seotud-tasud), [home loans](https://www.minuraha.ee/et/pangandus/laenud/eluasemelaen). The sample amounts are invented, not statutory fee calculations or bank prices.
-
-## Review and verification
-
-Application edits invalidate shared section reviews, recipient reviews, simulations and export review. Offer/assumption changes invalidate export review without changing the application revision. Any such edit during asynchronous ZIP preparation cancels that old download even if the user reviews the new state meanwhile. Unchecking a shared or recipient simulation acknowledgement removes the affected simulation evidence.
-
-The Node suite has 50 tests: the original 32 plus 8 workflow and 10 comparison tests. These cover stale reviews, conditional extras, per-person mappings, local-only result flags, unknown-versus-zero fees, full cost components, principal separation, incompatible offers, expiry, provided APR and translations. Syntax/static checks complement them. Browser interaction and visual QA remain unverified because the browser infrastructure did not start; do the steps above manually before a presentation.
-
-Live integrations, real document extraction, received-offer parsing, persistence, genuine separate co-applicant access, negotiation messages and production authorization remain future work. [Document and permission details](document-permissions.md) continue to apply.
+The suite has 72 passing Node tests. Syntax/static/local-resource/Unicode/translation/network-boundary checks also pass. Browser infrastructure was unavailable; interaction and visual verification are still outstanding and are not inferred from Node results.

@@ -1,87 +1,43 @@
 # Project brief
 
-Last updated: 10 October 2026.
+Last updated: 10 October 2026, v5.
 
-## What we are building
+## Problem and value
 
-One reusable home-loan profile for multiple Estonian banks, followed by comparable offers and a guided, applicant-reviewed negotiation workflow.
+Consumers repeat applicant, household, income, obligation, property and document work in several bank forms. The effort discourages multiple applications. Received offers also differ in amount, approval stage, conditions and costs. Build one reusable, user-checked application for multiple Estonian banks, followed by transparent comparison and one reviewed negotiation round.
 
-The main consumers are Estonian-speaking people buying, building, renovating or refinancing a home. The interface opens in Estonian and offers English through an ET / EN switch. This is an independent Tuleva hackathon concept; bank or Tuleva endorsement and integration have not been established.
+Estonian consumers are the main audience. Estonian is the default; English remains available. No bank/Tuleva endorsement or integration has been established. Reduced work and better outcomes remain product hypotheses; one private household case demonstrates possible differences, not representative market savings or the service's causal impact.
 
-## Problem and value proposition
+## Implemented journey
 
-Applicants repeat similar household, employment, income, debt and property information in different bank forms. Differences between application fields and offer conditions make it difficult to know what is missing and compare alternatives fairly.
+1. Loan goal and bank selection, then data/source examples and answer checking. Simulated sources fill blanks only; manual entry remains available. Identity alone does not supply all financial data.
+2. A shared primary/co-applicant profile, repeated income/debt/credit-limit rows, conditional financing/property branches, documents and optional recipient-specific demo EMTA choices. Both people use one device.
+3. One shared review and separate recipient/person reviews. Six local simulations preserve evidence gaps; only LHV/Luminor have deeper partial form mappings.
+4. Offer intake or three historical demos; original financing, versions, decision/evidence stages, conditional pricing and total-cost limitations remain visible. Equal-sum modelling is explicitly hypothetical.
+5. One editable, reviewed final-offer request round for one to three favourite banks. The user selects competing terms to disclose. No messages or attachments are sent.
+6. Personal handoff with contacts, next actions, questions, manually added replies/version history and a local downloadable summary. Manual contract comparison highlights missing/changed promises.
+7. Reviewed JSON/ZIP export preserving original active files and recording demo-only state, provenance, assumptions, simulations, negotiation and contract checks.
 
-**Value proposition:** We help people seeking a home loan reduce repeated paperwork and make better-informed borrowing decisions by creating one reusable application, transparent bank checklists and an offer comparison on shared assumptions.
+## Boundaries
 
-This summarizes the project discussions; it is not a verbatim transcription of the workshop sheets. Reduced effort, better offers and demand for the service remain hypotheses to validate with users.
+Buildless and offline: open index.html; no paid service, keys or installation. Page memory only, with no uploads, persistence, bank/EMTA access or genuine consent. Simulated identity, registry and file-reading data are synthetic. Incomplete answers remain explicit; invalid application/offer values block export. Application edits invalidate review/simulation; offer, disclosure and assumption edits invalidate relevant request/export review.
 
-## Intended end-to-end journey
+Original financing and hypothetical rate economics are separate. Costs remain unknown until supplied; zero is explicit. Historical terms are dated, some follow-up fields are inherited/unconfirmed, and remaining-month estimates are identified. Constant EUR annuity calculations do not handle variable future benchmarks, financed fees or special schedules. No ranking, legal certification or actual-savings claim is made.
 
-1. Choose the loan purpose and banks to consider.
-2. Complete a shared applicant and household profile, including an optional co-applicant.
-3. Review missing researched information and requirements still needing bank verification.
-4. Review the data prepared for each bank and follow its accepted application route.
-5. Add received offers and compare their costs and conditions using the same assumptions.
-6. Prepare a factual negotiation request and let the applicant review and choose whether to send it.
+## Acceptance and verification
 
-Steps involving bank submission, genuine co-applicant access and negotiation are future work. In the current demo, both fictional profiles are entered on one device and nothing is sent to a bank.
+- Shared answers and files are reused, with source badges and unanswered-field filtering.
+- All selected banks retain missing and unverified topics; recipient choices remain isolated.
+- Original amount/term and funding gaps remain visible alongside normalised costs.
+- Conditional products, incomplete costs and version/evidence differences are visible.
+- One request round requires review; further communication belongs to the person.
+- Contract matches/missing/changes are aids, never bank or legal verification.
+- ET/EN keeps canonical values, files, choices and page state.
 
-## Current prototype and future scope
+72 Node tests and syntax/static/translation checks pass. Browser interaction/layout verification remains outstanding; use [workflow-demo.md](workflow-demo.md) for manual checks.
 
-| Area | Implemented demo | Future work / unresolved |
-| --- | --- | --- |
-| Shared profile | Fictional prefill, source/revision-bound user section review; primary and optional co-applicant identity, contacts and employment; repeated income, debts and separate credit limits; household and financing details; separate statement/supporting-file sections | Genuine identity verification, separate access and control of disclosures |
-| Property and loan purpose | Main property, optional additional collateral, valuation metadata and original files, EIS target group, construction/renovation questions and refinancing flags | Confirm eligibility rules, document acceptance and all purpose-specific branches with banks |
-| Bank checklists | Six selected-bank readiness views with reused shared answers, bank-specific researched extras (editable where supported), file/permission preparation and unverified mappings | Complete, bank-confirmed field specifications and mandatory flags |
-| Comparison | Manual demo offers and post-simulation fictional examples; upfront/recurring fees, insurance/account costs, validity, provided APR and conditions; compatible constant-rate annuity scenarios | Received-offer documents/parsing, variable rates, special schedules and verified comprehensive terms |
-| Transmission simulation | Two partial illustrative LHV/Luminor form mappings from one reviewed dataset, separately reviewed per person/recipient, with local-only status/timestamps | Bank-confirmed schemas, genuine authorization and accepted submission channels |
-| Export | Reviewed canonical JSON summary with file metadata, plus ZIP with original files; unresolved gaps and selected interface language included; invalid values block download | Accepted bank-specific forms, declarations, consents, attachments and submission channels |
-| EMTA permissions | Separate optional demo choices for each person and selected bank, with version/timestamp and refusal/withdrawal | Genuine authorization and queries; confirm each bank scope and accepted process |
-| Negotiation | Product concept only | Applicant-reviewed drafts using genuine supplied competing offers; no fabricated offers or automatic sending |
+## Next production questions
 
-The prototype uses synthetic information, works by opening `index.html`, and keeps entries only in page memory. Reloading clears them. Selected document files and permission choices also stay in page memory. There is no server upload, persistence, bank/EMTA integration, genuine authorization, authentication, paid AI API or API-key requirement. [Document and permission details](document-permissions.md) explain limits and export behavior.
+Confirm full bank fields/channels and document acceptance; test abandonment and repeated-work reduction with users; determine genuine applicant/co-applicant control, source permissions and integrations; support offer documents and other pricing schedules; resolve regulatory/security/retention design and business model. Pricing and launch hosting are not agreed.
 
-## Research model
-
-[The bank field matrix](bank-field-matrix.md) is the research baseline. Its six banks are an initial shortlist, not a complete register of lenders.
-
-The original idea was to collect enough information for the most complex bank form. The research instead supports building the union of observed fields and checking each bank separately: no single most complex bank has been verified, and a long form does not prove coverage of other banks.
-
-- **F:** a field was visible in a public form/PDF.
-- **D:** a document or topic appeared in official guidance.
-- **?:** the mapping has not been verified.
-
-F and D do not establish that a field is mandatory. Unknown is not the same as absent, zero or an explicit "none". Filling every implemented field does not make an application bank-ready. Every bank retains a verification warning.
-
-Preserve separate meanings: credit limits versus loan balances; dependants versus children under 18; household disposable money versus income; original currencies and frequencies; canonical refinanced debts versus recipient-specific export rules. The current JSON export is canonical and does not implement a native Coop export.
-
-## Demo success criteria
-
-- A fictional applicant can enter shared information once and see checklists for selected banks.
-- A co-applicant's identity, finances and evidence remain separate.
-- Relevant questions appear for construction, renovation, refinancing and additional collateral.
-- Missing information and verification gaps stay visible during review and export.
-- ET / EN switching preserves entered values, repeated rows and selected banks.
-- Invalid values cannot be downloaded; incomplete answers remain explicitly incomplete.
-- Applicant and valuation files can be added and removed; active originals go into a reviewed ZIP package.
-- Each person has separate bank-specific EMTA choices; the demo neither grants authorization nor makes a query.
-- The same reviewed dataset feeds two visibly different local form simulations, with no bank receipt or transmission claim.
-- Comparison includes upfront/recurring costs and terms, keeps unknown costs distinct from zero, and withholds incompatible calculations.
-- No demo action submits applicant information, documents or messages to a bank.
-
-## Open questions and next work
-
-1. Do users find the shared profile easier, and where do they abandon or misunderstand it?
-2. Which fields, options, formats and mandatory/conditional rules do banks actually require? Confirm each purpose and co-applicant branch.
-3. Which banks accept a shared summary, through which channels, and under what agreements?
-4. How will each person review and control their own data and bank-specific declarations in a live service?
-5. How should offer intake handle benchmark periods, repayment schedules, costs and missing terms without implying a false ranking?
-6. What operating model, regulatory review and data-handling design are needed before a live launch?
-7. What sustainable business model avoids conflicts with the applicant's interests? Pricing and revenue are not agreed.
-
-The current implementation follows the owner's four priorities: one user-reviewed shared dataset, recipient readiness, two fictional local form simulations and detailed offer comparison after simulation. See [workflow-demo.md](workflow-demo.md). Next validate with users/banks and develop received-offer intake and reviewed negotiation drafts. Bank verification and live-service design remain separate workstreams.
-
-## Shared context
-
-This file is a project summary, not an archive of private chats. [decisions.md](decisions.md) records decisions and their status. [../README.md](../README.md) explains setup and collaboration. [../AGENTS.md](../AGENTS.md) guides coding assistants. Update these files when an accepted decision changes so collaborators do not need access to another person's ChatGPT history.
+Shared context lives in [decisions.md](decisions.md), [bank-field-matrix.md](bank-field-matrix.md), [demo-cases.md](demo-cases.md), [../README.md](../README.md) and [../AGENTS.md](../AGENTS.md); private chats are not required to work on the repository.

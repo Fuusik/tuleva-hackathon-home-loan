@@ -1,124 +1,58 @@
-# Tuleva Hackathon - One Home Loan Application
+# Tuleva Hackathon — One Home Loan Application
 
-One application. Multiple Estonian banks. Comparable offers. Better-informed negotiation.
+One reusable application for Estonian banks, transparent offer comparison and a reviewed final-offer request.
+
+The main problem is repeated application work: consumers enter similar information and documents in several bank journeys, often giving up before collecting comparable offers. Our demo keeps one checked dataset, shows recipient-specific gaps and helps the applicant compare and negotiate later offers. It is an independent hackathon concept; no Tuleva or bank endorsement, integration or acceptance is established.
+
+## Run and try v5
+
+In GitHub Desktop, use **Fetch origin**, then **Pull origin** when offered. Open `index.html` from the repository folder and refresh with Ctrl+F5. Alternatively, download and extract GitHub's Code > Download ZIP. Keep all local scripts and `vendor/` beside the page. No installation, server, paid AI API or credentials are required to run it.
+
+The interface starts in **Estonian**, with **ET / EN** in the header. Data is held in page memory; reload discards it. Use fictional identities, `DEMO-...` identifiers, `example.test` emails and fictional documents.
+
+1. **Shared form:** start with the loan goal, then data/source examples and checking. Source badges distinguish built-in examples, simulated Smart-ID/EMTA/statement data, manual entries and missing answers. Simulated sources fill blank fields only. Filtering hides answered fields without deleting them. Smart-ID buttons do not authenticate; no files are parsed or registries queried.
+2. **Readiness:** see shared gaps once, bank-specific researched extras, separate applicant/co-applicant documents and optional per-person/per-bank demo EMTA choices. Every bank still has unverified requirements.
+3. **Simulation:** review the shared sections and each active person for each selected bank. All six banks have local previews. LHV/Luminor are deeper partial forms; the other four are preparation summaries with unmapped shared data and explicit gaps. No information, file, consent or request is transmitted.
+4. **Comparison:** enter demo offers or load one of three anonymised historical cases: 2020 purchase, 2025 house purchase or 2025 existing-loan improvement. Case loading replaces financing fields/offers after confirmation, retains local files and clears review. Case terms are historical; identities, property budgets and model assumptions are synthetic or explicitly estimated.
+5. **Final-offer round:** choose up to three favourite banks, choose competitor offers and fields to disclose, prepare editable requests and review each fictional recipient. Simulate one round, then take over communication. Add replies manually as new versions, record contacts/actions/questions and download a local handoff summary.
+6. **Contract and export:** manually compare promised terms with draft terms; matching entries do not establish legal validity. Review current profiles and summary to download JSON metadata or a ZIP preserving active original-file bytes.
+
+See [the walkthrough](docs/workflow-demo.md) for details and [the historical examples](docs/demo-cases.md) for data limitations.
+
+## Comparison behaviour
+
+- Original financing is separate from hypothetical equal-amount/equal-term modelling. Different offered amounts remain visible with funding and own-funds gaps. Normalisation never increases a bank's lending decision.
+- Offer date, decision stage, evidence, previous version and inherited/unconfirmed terms stay visible. A later margin does not reconfirm earlier amounts, terms or fees. Manual edits remain marked as demo entries.
+- Supports constant-rate EUR annuity scenarios, remaining terms in months, selected benchmark/reset assumptions, upfront/recurring costs, percentage contract fees, temporary account pricing, capped reimbursements and explicit switching exit costs.
+- Conditional income routing shows share, duration and breach surcharge. The breach view assumes the surcharge from month one as a stress scenario, not a prediction.
+- Compare another offer or the current loan; display original-term interest, term extension, same-term interest differences, complete horizon-cost differences and limited simple cash-flow payback. 0%, 2% and 4% are sensitivity assumptions.
+- Blank costs are unknown; explicit zero is an absent cost. Unknown costs prevent complete totals and payback. Interest-only differences and known-cost subtotals are labelled. Horizon cost excludes repaid principal; full-term outflow includes it. APR is recorded as supplied, never calculated here.
+- No cheapest-bank ranking, approval recommendation, future Euribor forecast, realised-savings claim or guaranteed service return. Pricing, including any proposed €99 fee, is not agreed.
 
 ## Shared project context
 
-Collaborators and their coding assistants can use this repository without access to another person's ChatGPT history. The docs summarize the project discussions and the current implementation; they are not a transcript of private chats.
-
-| File | What to read it for |
+| File | Purpose |
 | --- | --- |
-| [README.md](README.md) | Purpose, target users, setup and current demo status |
-| [docs/project-brief.md](docs/project-brief.md) | Problem, value proposition, intended journey, scope and open questions |
-| [docs/decisions.md](docs/decisions.md) | Confirmed decisions, implementation baseline and proposed team workflow |
-| [docs/bank-field-matrix.md](docs/bank-field-matrix.md) | Bank research, dated sources and mappings still needing verification |
-| [AGENTS.md](AGENTS.md) | Coding-assistant conventions, demo boundaries and relevant checks |
+| [docs/project-brief.md](docs/project-brief.md) | Problem, consumer journey, implemented scope and open questions |
+| [docs/decisions.md](docs/decisions.md) | Accepted decisions and current baseline |
+| [docs/bank-field-matrix.md](docs/bank-field-matrix.md) | Dated research, evidence and unverified mappings |
+| [docs/document-permissions.md](docs/document-permissions.md) | Files, demo permission choices and exports |
+| [docs/workflow-demo.md](docs/workflow-demo.md) | Walkthrough and calculation boundaries |
+| [docs/demo-cases.md](docs/demo-cases.md) | Anonymised historical terms and modelling assumptions |
+| [AGENTS.md](AGENTS.md) | Coding-assistant boundaries and checks |
 
-Start with this README and the project brief, then read the decisions and relevant bank matrix sections. Coding assistants should read AGENTS.md before changing code. Update the affected context files when an accepted decision changes.
-
-The recommended team workflow is one task-specific branch per parallel task, focused changes, relevant checks and a pull request for review before merging to `main`. An explicit owner instruction to commit directly to `main` still applies. See [docs/decisions.md](docs/decisions.md) for the distinction between agreed product decisions and proposed team practices.
-
-## Idea
-
-We help people buying, building or refinancing a home reduce repeated paperwork and make informed borrowing decisions by creating one reusable application, a clear comparison of bank offers and a guided negotiation workflow.
-
-Today, applicants repeat similar information across different bank forms and receive offers with different structures. Our proposed service collects a shared applicant profile once, maps it to each bank's requirements and helps applicants compare the complete cost and conditions of borrowing.
-
-This is a hackathon concept associated with the Tuleva hackathon project. It does not imply that Tuleva or any bank endorses the service or has agreed to integrate with it.
-
-## Intended end-to-end journey
-
-1. Choose purchase, construction, renovation or refinancing.
-2. Enter household, income, obligations, property and financing information once. Invite a co-applicant to complete their own information.
-3. Select banks and review the information prepared for each recipient.
-4. Export an application package and follow the bank's application process. A future integration could support authorized submission.
-5. Add received offers and compare costs and conditions on the same assumptions.
-6. Prepare a factual negotiation request, review it and decide whether to send it.
-
-## Target hackathon MVP (partly implemented)
-
-- A guided shared application with conditional questions and a document checklist.
-- Bank-specific completeness checks based on documented mappings.
-- Exportable application summaries; label them as summaries, not accepted native bank forms.
-- Manual entry of offers, with clearly labelled fictional examples for the demo.
-- Comparison of margin, benchmark and reset period, repayment schedule, fees, monthly payment, insurance/account conditions, early repayment terms and offer expiry.
-- A negotiation draft that uses actual competing offers only when supplied by the applicant.
-
-The bullets above describe the target scope. The implemented demo is described under Repository status below; genuine co-applicant access, accepted bank exports, received-offer parsing and negotiation drafts are not implemented. Manual demo offer intake and local transmission simulations are now implemented.
-
-The demo uses synthetic data. Real bank submission, identity verification, credit decisions, account-data access and autonomous negotiation are outside the initial MVP.
-
-## Application design
-
-Use the union of verified bank requirements rather than assuming that one bank's longest form covers every other bank. Keep reusable core data separate from bank-specific declarations, permissions and attachments. Ask conditional questions only when relevant to the selected loan purpose and banks.
-
-The research baseline and proposed field model are in [docs/bank-field-matrix.md](docs/bank-field-matrix.md). Unknown mappings remain explicitly unverified.
-
-## Offer comparison
-
-Compare the same principal, term, benchmark date and repayment assumptions. Show initial and later payments separately for interest-only or special schedules. Show APR as provided by the bank alongside separately disclosed costs; do not assume APR includes every transaction or insurance expense. An indicative calculation is not a binding offer or a prediction of future Euribor.
-
-Keep original offer documents, provenance, validity dates and missing values visible. Let the applicant choose priorities rather than labelling the lowest margin as automatically the best offer.
-
-## Trust and launch requirements
-
-- Never request or store internet-bank passwords, Smart-ID PINs or Mobile-ID PINs.
-- In a production design, use secure storage, access controls, retention/deletion rules and an audit trail. Keep financial information out of logs and analytics.
-- Require recipient-specific review before disclosure. Co-applicants must control their own disclosures. Marketing choices must be separate and optional.
-- Confirm permitted submission channels and bank acceptance of exported data. Public forms are not evidence of a submission API or integration agreement.
-- Resolve the service's regulatory classification before a live launch. Finantsinspektsioon describes mortgage credit intermediation as a regulated activity; the exact model needs review, including assistance before a credit agreement. A free demo alone does not establish a production exemption. See [Finantsinspektsioon](https://fi.ee/et/pangandus-ja-krediit/krediidivaldkonna-tegevuslubade-taotlemine/krediidivahendaja-tegevusluba).
-
-## Repository status
-
-Documentation baseline and first browser prototype created on 10 October 2026. No bank integration or hosted deployment has been implemented.
-
-### Run the prototype
-
-With a local clone, fetch and pull the latest changes in GitHub Desktop, then open `index.html` from the repository folder in a browser. You can also use GitHub's Code menu > Download ZIP and extract the files. No installation, server, paid AI API, or API keys are required to run the demo.
-
-The interface opens in **Estonian** by default. Use the **ET / EN** buttons in the header to switch to English or back. Switching language preserves entered data, selected banks, repeated entries, attached files, demo permission choices and the current page. Form labels, bank checklists, validation messages and export review are bilingual; user-entered text is preserved.
-
-The expanded demo includes:
-
-- Separate primary-applicant and co-applicant identities, contacts and employment details.
-- Repeatable income, debt and credit-limit entries per person. Explicit "none" answers remain distinct from unknown answers; zero values are retained.
-- Household expenses, dependants and children under 18 as separate values.
-- Main property, optional additional collateral, EIS target group and valuation metadata.
-- Conditional construction/renovation fields, and debt-level refinancing flags.
-- A checklist for every selected bank with missing researched items, unverified mappings and source links. F/D evidence does not establish mandatory bank requirements. All banks remain labelled "Needs bank verification".
-- Separate statement/supporting-file sections for each applicant, valuation files for the main property and optional collateral, and per-person/per-bank EMTA demo permission choices.
-- A user-reviewed shared dataset with a labelled fictional prefill source and revision-bound section confirmations.
-- Recipient readiness: reusable shared answers, only each bank's additional researched topics, editable missing extras and permission/file preparation.
-- Two different illustrative LHV/Luminor form mappings and timestamped local transmission simulations with separate per-person recipient review. Nothing is sent.
-- Manual demo offer intake and post-simulation fictional offers with upfront/recurring costs, insurance, account costs, APR as supplied, expiry and conditions. Unknown fees and incompatible offers stay visible.
-- Reviewed JSON/ZIP exports including shared review, simulations, offer assumptions/results and unresolved gaps. JSON contains metadata; ZIP includes original active files.
-
-See [docs/workflow-demo.md](docs/workflow-demo.md) for the five-page demo walkthrough, mappings and cost definitions, and [docs/document-permissions.md](docs/document-permissions.md) for file limits and permissions.
-
-Use **Laadi näidisandmed / Load fictional example** or **Alusta tühjalt / Start blank**. Go to **Pankade valmisolek / Bank readiness** at any time, even with incomplete answers. For export, choose at least one bank and review each fictional applicant profile plus the summary. Invalid values block download; missing answers can remain in an explicitly incomplete draft. Editing the application clears earlier review confirmations.
-
-Entries, file references and demo permission choices exist only in page memory. No files or data are uploaded to a server or sent to a bank/EMTA. Reloading clears them. Co-applicants are entered on the same device; invitations, separate access, authentication and genuine bank consents are not implemented. The export remains a canonical summary, not a native bank form. Local file selection and ZIP packaging are implemented; server uploads, bank/EMTA integrations, genuine authorization, file-content/signature verification, received-offer parsing and negotiation drafts are not.
-
-Keep the repository folder structure, including `index.html`, `app-model.js`, `app-i18n.js`, `app-documents.js`, `app-workflow.js`, `app-offers.js`, `app-stages-ui.js`, `app-stage-i18n.js` and `vendor/`. The page loads local scripts and the bundled JSZip 3.10.1 library; no installation or external runtime resources are needed. JSON exports keep stable field keys and original application values, and include the selected `uiLanguage` plus localized checklist messages.
-
-### Validation
-
-Run the 50 model, language, document, workflow and comparison checks with Node.js:
+## Validation
 
 ```sh
-node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js tests/workflow.test.js tests/offers.test.js
+node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js tests/workflow.test.js tests/offers.test.js tests/journey.test.js
 ```
 
-The original 32 tests cover the shared model, languages and document/permission boundaries. Eight workflow tests cover current-revision review, recipient extras, distinct illustrative mappings, co-applicant isolation and simulated-only results. Ten comparison tests cover all cost categories, unknown versus zero, interest/principal separation, compatible assumptions, expiry, invalid inputs, provided APR and bilingual labels. JavaScript syntax, static HTML structure, local dependencies and translation coverage are also checked.
+There are 72 passing Node tests: the original 50 plus 22 covering six-bank recipient isolation, remaining months, case-study arithmetic/privacy, conditional costs, normalisation, one reviewed round, stale requests, versions and contract comparison. JavaScript syntax, static IDs/local dependencies, Unicode, translation coverage and absence of network/persistence hooks are checked separately.
 
-Browser infrastructure was unavailable, so interactions and visual layout remain unverified. Follow [the demo walkthrough](docs/workflow-demo.md) manually: fill a missing bank extra and confirm it updates the shared form; check the five shared sections; simulate both recipients; load/edit offers; test ET / EN preservation and review invalidation; add/remove files and extract the ZIP. No bank request or server upload should occur.
+Browser interaction and visual layout remain unverified: the browser infrastructure was unavailable. Follow the manual walkthrough before a presentation; Node tests do not prove the page's interaction or layout.
 
-Next: validate complete mappings and submission channels with banks, test the workflow with users, and then design genuine authorization, secure storage, offer intake and applicant-reviewed negotiation. No hosted deployment is configured.
+## Production boundaries and collaboration
 
-## Demo acceptance criteria
+Live identity verification, permitted registry/open-banking access, document extraction, separate co-applicant accounts, secure storage, accepted submission channels, genuine authorization, email sending and offer parsing remain future work. Never request bank passwords or Smart-ID/Mobile-ID PINs. Confirm the operating model, regulatory classification, agreements, security and data-retention rules before a live launch; see [Finantsinspektsioon's credit-intermediation entry](https://fi.ee/et/pangandus-ja-krediit/krediidivaldkonna-tegevuslubade-taotlemine/krediidivahendaja-tegevusluba).
 
-- A fictional household can complete a purchase application without re-entering shared information for each selected bank.
-- Missing and unverified requirements are visible before export.
-- Construction and refinancing reveal their own follow-up questions.
-- Offers with different benchmark periods or repayment schedules cannot silently appear equivalent.
-- No demo action sends personal information or messages to a bank.
+Use GitHub for shared context. Prefer focused task branches and pull requests for parallel collaborator work; explicit owner instructions to commit to main still apply. Fetch/pull before editing, preserve unrelated changes and update affected docs. There is no hosted deployment or bank integration.

@@ -102,7 +102,11 @@ See [document-permissions.md](document-permissions.md). Confirm genuine consent 
 
 ## Illustrative mappings in the demo
 
-The owner requested demonstrations of two different recipient forms. LHV and Luminor now have partial local adapters from the same reviewed dataset. They illustrate the documented differences above, preserve missing/unknown mappings and never submit anything. LHV amount/term mapping remains unresolved. Luminor's term-to-months transformation is an illustrative adapter choice, not a verified live schema. There is no upgrade to evidence or mandatory flags. See [workflow-demo.md](workflow-demo.md).
+The owner initially requested two recipient-form demonstrations and later expanded the demo to all six banks. LHV and Luminor retain deeper partial local adapters from the same reviewed dataset; Swedbank, SEB, Coop and Bigbank have preparation summaries with explicit unmapped shared data, not certified native forms. They illustrate the documented differences above, preserve missing/unknown mappings and never submit anything. LHV amount/term mapping remains unresolved. Luminor's whole-year/month term representation is an illustrative adapter choice, not a verified live schema. The Coop illustrative refinancing view excludes marked replacement debts separately while canonical data retains them; this does not establish a complete Coop form. There is no upgrade to evidence or mandatory flags. See [workflow-demo.md](workflow-demo.md).
+
+## Historical cases are not current requirements
+
+The v5 comparison demos use owner-authorised, anonymised 2020/2025 terms documented in [demo-cases.md](demo-cases.md). Historical salary-routing, valuation, statement-period and co-applicant observations do not upgrade any F/D/? cell or mandatory flag. Private emails and identities are excluded from the repository. Simulated Smart-ID/EMTA/statement source buttons use synthetic data and establish no integration or access entitlement.
 
 ## Implementation and verification backlog
 

@@ -13,7 +13,7 @@ The shared form now accepts multiple files for each fictional applicant:
 
 The main property and optional additional collateral each have a separate valuation-file section. PDF, signed containers and image files can be added for valuations; account/supporting sections additionally accept CSV, XLS/XLSX and XML. Accepted picker types are demo formats, not a guarantee that a bank accepts them.
 
-Files are held as browser File references. There is no server upload, persistence, parsing, signature validation, virus scan or automatic bank submission. Use fictional documents. Reload, Start blank and Load fictional example discard the selected files and demo permission choices.
+Files are held as browser File references. There is no server upload, persistence, parsing, signature validation, virus scan or automatic bank submission. The simulated statement-reading/source buttons do not inspect selected files; their synthetic values never prove file availability, coverage or consent. Use fictional documents. Reload, Start blank and Load fictional example discard the selected files and demo permission choices.
 
 Limits: 20 MiB per file, 50 MiB and 30 files across the whole draft, including currently hidden sections. Remove a file to release its reference. Both profiles are still entered on the same device; this does not authenticate a co-applicant.
 
@@ -57,10 +57,10 @@ Invalid values block download. Missing documents or unselected/declined/withdraw
 
 `app-documents.js` manages local file references, permission choices, preparation checks and ZIP generation. The ZIP library is pinned, bundled locally at `vendor/jszip.min.js` (JSZip 3.10.1) with [its license](../vendor/JSZip-LICENSE.md), used under the MIT option. It needs no runtime download, account or API.
 
-The 12 document regression tests cover owner/category isolation, type/size/count limits, duplicates and safe paths, inactive-owner exclusion, per-bank/person choices and withdrawal/reset, metadata versus file evidence, remaining verification warnings, JSON metadata-only export, ZIP byte/Unicode fidelity and package failures. The complete model/language/document/workflow/offer suite now has 50 tests.
+The 12 document regression tests cover owner/category isolation, type/size/count limits, duplicates and safe paths, inactive-owner exclusion, per-bank/person choices and withdrawal/reset, metadata versus file evidence, remaining verification warnings, JSON metadata-only export, ZIP byte/Unicode fidelity and package failures. The complete model/language/document/workflow/offer/journey suite now has 72 tests.
 
 Automated browser QA remains unavailable in the current execution environment. Manual review: add a statement for each person; switch ET/EN; add/remove valuation files; toggle co-applicant/collateral; choose/refuse/withdraw permissions for different banks; edit an identity; re-review and extract the downloaded ZIP to check its manifest and original files.
 
 ## Shared workflow additions
 
-Schema v4 summaries also include source/revision-bound shared section reviews, local-only illustrative LHV/Luminor simulation records and entered demo offer assumptions/results. These additions do not change file limits, byte fidelity, genuine permission flags or recipient/owner isolation. Original files are included only in the reviewed ZIP, never in a simulation transmission. See [workflow-demo.md](workflow-demo.md).
+Schema v5 summaries also include field provenance, source/revision-bound shared reviews, all-six local simulation records, historical/version offer state, cost assumptions/results, one simulated negotiation round, personal actions and manual contract checks. LHV/Luminor are deeper partial forms; the other four previews are preparation summaries. These additions do not change file limits, byte fidelity, genuine permission flags or recipient/owner isolation. Original files are included only in the reviewed ZIP, never in a simulation transmission. See [workflow-demo.md](workflow-demo.md).

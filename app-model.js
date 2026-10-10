@@ -22,8 +22,8 @@
       emtaPermissions: [], statements: { status: '', months: null, allAccounts: false } };
   }
   function blank() {
-    return { schemaVersion: 4, documents: [], applicationId: 'home-loan-demo', revision: 1, selectedBanks: [],
-      loan: { purpose: 'purchase', amount: null, termYears: null, price: null, ownContribution: null, contributionSource: '', repaymentSchedule: 'annuity', paymentDay: null, campaignCode: '', notes: '' },
+    return { schemaVersion: 5, documents: [], applicationId: 'home-loan-demo', revision: 1, selectedBanks: [],
+      loan: { purpose: 'purchase', amount: null, termYears: null, termMonths: null, price: null, ownContribution: null, contributionSource: '', repaymentSchedule: 'annuity', paymentDay: null, campaignCode: '', notes: '' },
       household: { dependants: null, childrenUnder18: null, monthlyExpenses: null, disposableAmount: null },
       applicants: [applicant('primary', 'Primary applicant')],
       property: { type: '', address: '', country: '', intendedUse: '', owner: '', estimatedValue: null, listingUrl: '', energyClass: '', valuationStatus: '', valuationDate: '', valuationFormat: '' },
@@ -61,7 +61,7 @@
     if (!a[key].length) return ['Add at least one ' + label.toLowerCase() + ' item'];
     return a[key].flatMap((row, i) => missingFields(row, fields, label + ' ' + (i + 1) + ': '));
   }
-  const core = d => missingFields(d.loan, [['purpose', 'Loan purpose'], ['amount', 'Loan amount'], ['termYears', 'Term']]);
+  const core = d => [...missingFields(d.loan, [['purpose', 'Loan purpose'], ['amount', 'Loan amount']]), ...(!has(d.loan.termYears)&&!has(d.loan.termMonths)?['Term']:[])];
   const identity = d => people(d, a => missingFields(a, [['firstName', 'First name'], ['lastName', 'Last name'], ['personalId', 'Demo personal ID'], ['email', 'Email'], ['phone', 'Phone'], ['address', 'Current address']]));
   const incomes = (d, currency) => people(d, a => listMissing(a, 'incomes', 'incomesStatus', [['type', 'Income type'], ['amount', 'Net amount'], ['frequency', 'Frequency'], ...(currency ? [['currency', 'Currency']] : [])], 'Income'));
   const employment = (d, contract) => people(d, a => {
@@ -170,6 +170,8 @@
       if (has(d.loan[key]) && (!(d.loan[key] > 0) || !Number.isFinite(d.loan[key]))) out.push(label + ' must be greater than zero.');
     }
     if (has(d.loan.termYears) && (!Number.isInteger(d.loan.termYears) || d.loan.termYears < 1 || d.loan.termYears > 30)) out.push('Term must be a whole number from 1 to 30 years (demo range).');
+    if (has(d.loan.termMonths) && (!Number.isInteger(d.loan.termMonths) || d.loan.termMonths < 1 || d.loan.termMonths > 360)) out.push('Term must be a whole number from 1 to 360 months (demo range).');
+    if (has(d.loan.termMonths) && has(d.loan.termYears) && d.loan.termMonths !== d.loan.termYears*12) out.push('Year and month terms disagree; use one term input.');
     if (has(d.loan.paymentDay) && (!Number.isInteger(d.loan.paymentDay) || d.loan.paymentDay < 1 || d.loan.paymentDay > 31)) out.push('Payment day must be 1-31.');
     nonnegative(d.loan.ownContribution, 'Own contribution');
     if (has(d.loan.ownContribution) && has(d.loan.price) && d.loan.ownContribution > d.loan.price) out.push('Own contribution cannot exceed the stated price / budget.');

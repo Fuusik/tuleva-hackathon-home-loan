@@ -9,10 +9,11 @@
     :root{font-family:system-ui,sans-serif;color:#193b35;background:#f2f5ee;line-height:1.5}*{box-sizing:border-box}body{margin:0}header{padding:24px 6%;background:#193b35;color:white;display:flex;justify-content:space-between;align-items:center;gap:12px}main{max-width:1180px;margin:auto;padding:36px 24px}h1{font-size:clamp(30px,5vw,52px);letter-spacing:-2px;margin:8px 0}h2{margin:0 0 12px}h3{margin:20px 0 10px}p{margin:10px 0}.muted,small{color:#536d65}.badge{background:#ddec7c;color:#193b35;padding:8px 14px;border-radius:30px;font-size:14px}.toolbar,nav,.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:22px 0}button{padding:12px 18px;background:#193b35;color:white;border:1px solid #193b35;border-radius:8px;font:inherit;cursor:pointer}button.secondary,nav button{background:white;color:#193b35}button.small{padding:6px 12px;font-size:14px}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #799c00;outline-offset:3px}nav button[aria-current=page]{background:#193b35;color:white}.card{background:white;border:1px solid #d6dfd2;border-radius:16px;padding:24px;margin:18px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.wide{grid-column:1/-1}label.field{display:block;font-size:14px;font-weight:600}input:not([type=checkbox]),select,textarea{display:block;width:100%;padding:11px;margin-top:6px;border:1px solid #afbeb6;border-radius:7px;font:inherit;background:white;color:#193b35}textarea{min-height:90px;resize:vertical}input[type=checkbox]{accent-color:#193b35;width:18px;height:18px;vertical-align:middle;margin:0 8px 0 0}.check{display:flex;gap:0;align-items:start;margin:12px 0;font-size:14px}.check input{flex-shrink:0;margin-top:2px}fieldset{border:0;padding:0;margin:16px 0;min-width:0}legend{font-weight:700;margin-bottom:10px}.banks{display:flex;gap:12px;flex-wrap:wrap}.banks label{border:1px solid #bccabc;border-radius:8px;padding:9px 12px;font-size:14px}.notice{border-left:4px solid #b4cb42;padding:14px;background:#f3f6e8}.warn{border-left-color:#bf752b;background:#fff5e9}.error{border-left-color:#a43838;background:#fff0ee;color:#7a2424}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th,td{text-align:left;padding:12px;border-bottom:1px solid #ddd}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:430px;overflow:auto;font-size:13px;background:#f4f6f2;padding:14px;border-radius:8px}[hidden]{display:none!important}small{display:block;margin-top:8px}footer{margin-top:30px;color:#56716a}summary{cursor:pointer;font-weight:650;list-style-position:outside;margin-left:18px}details.card>summary{font-size:20px}.row{border:1px solid #d6dfd2;border-radius:10px;padding:16px;background:#fafbf8}.row legend{padding:0 5px}.row-top{display:flex;justify-content:flex-end;margin-bottom:10px}.status{font-size:14px;background:#fff1d8;border-radius:8px;padding:6px 10px;display:inline-block}.bank-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.bank-heading h3{margin:0}.counts{color:#536d65;margin:12px 0}.list{padding-left:23px}.list li{margin:6px 0;overflow-wrap:anywhere}.good{color:#326849}.warning-item{color:#79541b}.review-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.review-facts>div{background:#f4f6ef;padding:14px;border-radius:8px}.review-facts strong{display:block}.section-links{display:flex;gap:16px;flex-wrap:wrap}#feedback:empty{display:none}#feedback{padding:12px;background:#eef3df;border-radius:8px}.empty{padding:18px;border:1px dashed #afbeb6;border-radius:8px;color:#536d65}.inline-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.mobile-only{display:none}@media(max-width:680px){.grid,.review-facts{grid-template-columns:1fr}.wide{grid-column:auto}header{padding:18px}main{padding:24px 16px}.card{padding:18px}nav button{flex:1 1 40%;font-size:14px;padding:10px}.badge{font-size:12px}.banks label{flex:1 1 42%}}
     .header-tools{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}.language-switch{display:flex;gap:4px;padding:3px;border:1px solid #a8baaf;border-radius:9px}.language-switch button{padding:7px 10px;background:transparent;color:white;border:0;font-size:13px}.language-switch button[aria-pressed=true]{background:#ddec7c;color:#193b35}.language-switch button:focus-visible{outline-color:#ddec7c}@media(max-width:680px){header{flex-wrap:wrap}.header-tools{justify-content:flex-start}}
     .document-section{border-top:1px solid #d6dfd2;margin-top:22px;padding-top:14px}.document-slot{padding:14px;background:#f4f6f2;border:1px solid #d6dfd2;border-radius:8px;margin:14px 0}.document-list{padding-left:20px}.document-list li{overflow-wrap:anywhere;margin:8px 0}.document-list button{margin-left:12px}input[type=file]{font-weight:400;font-size:13px}
+    .source-badge{font-size:11px;font-weight:400;color:#667a6e}.mini-table{white-space:normal}.mini-table th,.mini-table td{vertical-align:top}.source-badge:empty{display:none}
   </style>
 </head>
 <body>
-<header><strong>ONE HOME LOAN</strong><div class="header-tools"><span class="badge">Hackathon demo &#183; v4</span><div class="language-switch" id="language-switch" role="group" aria-label="Interface language"><button type="button" data-language="et" aria-pressed="true">ET &#183; Eesti</button><button type="button" data-language="en" aria-pressed="false">EN &#183; English</button></div></div></header>
+<header><strong>ONE HOME LOAN</strong><div class="header-tools"><span class="badge">Hackathon demo &#183; v5</span><div class="language-switch" id="language-switch" role="group" aria-label="Interface language"><button type="button" data-language="et" aria-pressed="true">ET &#183; Eesti</button><button type="button" data-language="en" aria-pressed="false">EN &#183; English</button></div></div></header>
 <main>
   <p class="muted">ONE PROFILE &#183; A CLEARER DECISION</p><h1>Your next home starts here.</h1>
   <p class="muted">Prepare once. See what is missing. Compare on shared assumptions.</p>
@@ -23,6 +24,7 @@
   <section id="application" aria-labelledby="application-title">
     <h2 id="application-title">Shared application</h2>
     <p class="muted">Blank answers stay unknown. The checklist uses researched topics, not a confirmed list of mandatory bank fields. You can inspect checks before completing the form.</p>
+    <div id="guided-controls"></div>
     <form id="profile" novalidate>
       <div class="card" id="bank-selection"><h2>Banks to consider</h2><div class="banks" id="banks"></div></div>
       <div class="card" id="financing-card"><h2>Your financing</h2><div class="grid" id="loan-fields"></div><div id="guarantee-fields"><h3>Guarantee and collateral</h3><div class="grid" id="guarantee-grid"></div><div id="eis-branch" hidden></div></div><div id="construction-branch" hidden><h3>Construction / renovation</h3><p class="muted">A stage budget should separate own funds and loan funds. Permit status can be unknown or not applicable; this demo does not verify evidence.</p><div class="grid" id="construction-fields"></div></div><div id="refinancing-branch" hidden><p class="notice">Mark each loan being refinanced in the relevant applicant's debt list. Keep it in the shared profile. Coop's native application has a different display rule, shown in its checklist.</p></div></div>
@@ -36,8 +38,8 @@
     <div id="dataset-review" class="card"></div>
   </section>
   <section id="checks" hidden aria-labelledby="checks-title"><h2 id="checks-title">Research checks for your selected banks</h2><p class="notice">F = field visible in a public form. D = topic in official guidance. Neither proves that a field is mandatory. Every bank still needs verification, even when you fill all researched items.</p><div id="check-errors"></div><div id="shared-readiness" class="card"></div><div id="bank-checks"></div><div class="actions"><button class="secondary" type="button" data-go="application">Edit application</button><button type="button" data-go="review">Review summary</button><button type="button" data-go="simulation">Open transmission simulation</button></div></section>
-  <section id="simulation" hidden aria-labelledby="simulation-title"><h2 id="simulation-title">Two bank forms, one shared dataset</h2><p class="notice">Local simulation with fictional information only. These are illustrative layouts based on research, not working bank forms. No request, file or consent is sent. Missing and unverified mappings stay in the preview.</p><p class="muted">Select LHV and Luminor in the shared form. Use DEMO identifiers and example.test email addresses. Review each person's information separately for each recipient. Bank declarations and actual co-applicant processes remain unimplemented.</p><p id="simulation-progress" role="status"></p><div id="simulation-forms"></div></section>
-  <section id="compare" hidden aria-labelledby="compare-title"><div class="card"><h2 id="compare-title">Compare fictional offers</h2><p>After the local application simulation, load fictional offers or enter demo offer terms manually. These are not bank quotes. Unknown costs stay unknown; 0 means an explicitly absent cost.</p><p id="offer-stage-status" class="notice" role="status"></p><div class="actions"><button id="load-offers" type="button">Load fictional offers after simulation</button><button id="add-offer" class="secondary" type="button">Add demo offer manually</button></div><div class="grid"><label class="field">Assumed benchmark (%)<input id="benchmark" type="number" min="0" max="20" step="0.01" value="3"></label><label class="field">Scenario reference date<input id="reference-date" type="date" value="2026-10-10"></label><label class="field">Cost horizon (years)<input id="horizon-years" type="number" min="1" max="30" step="1" value="5"></label><label class="field">Shared benchmark period<select id="comparison-period"><option value="3M">3M</option><option value="6M" selected>6M</option><option value="12M">12M</option></select></label></div><p class="muted">This scenario assumes a constant benchmark, margin and entered costs, with a six-month rate reset. Different amounts, terms, currencies, benchmark/reset periods and special schedules are not combined. Rates and insurance costs can change.</p><p class="notice">Cost over the chosen horizon means interest plus entered fees and recurring costs. Repaid principal is excluded; remaining principal is shown separately. Full-term outflow includes repaid principal. Unknown fees prevent a complete total. Bank-provided APR is recorded separately, never calculated here.</p><div class="scroll"><table><caption>Cost comparison on shared assumptions</caption><thead><tr><th>Fictional offer</th><th>Loan payment / month</th><th>Known upfront costs</th><th>Monthly outflow with costs</th><th>Cost over chosen horizon</th><th>Remaining principal</th><th>Full-term outflow</th></tr></thead><tbody id="offer-results"></tbody></table></div><small>No ranking or recommendation. Compare insurance cover and contractual conditions alongside cost.</small></div><div id="offer-gaps"></div><div id="offer-inputs"></div></section>
+  <section id="simulation" hidden aria-labelledby="simulation-title"><h2 id="simulation-title">Six bank simulations, one shared dataset</h2><p class="notice">Local simulation with fictional information only. These are illustrative layouts based on research, not working bank forms. No request, file or consent is sent. Missing and unverified mappings stay in the preview.</p><p class="muted">Select any of the six banks in the shared form. Review each fictional person for each selected recipient. LHV and Luminor have deeper partial mappings; the other previews are preparation summaries with unverified native fields.</p><p id="simulation-progress" role="status"></p><div id="simulation-forms"></div></section>
+  <section id="compare" hidden aria-labelledby="compare-title"><div class="card"><h2 id="compare-title">Compare demo and historical offers</h2><p>After the local application simulation, load fictional offers or enter demo offer terms manually. These are not bank quotes. Unknown costs stay unknown; 0 means an explicitly absent cost.</p><p id="offer-stage-status" class="notice" role="status"></p><div id="case-controls"></div><div class="actions"><button id="load-offers" type="button">Load fictional offers after simulation</button><button id="add-offer" class="secondary" type="button">Add demo offer manually</button></div><div class="grid"><label class="field">Assumed benchmark (%)<input id="benchmark" type="number" min="0" max="20" step="0.01" value="3"></label><label class="field">Scenario reference date<input id="reference-date" type="date" value="2026-10-10"></label><label class="field">Shared reset interval (months)<input id="comparison-reset" type="number" min="1" max="60" step="1" value="6"></label><label class="field">Cost horizon (years)<input id="horizon-years" type="number" min="1" max="30" step="1" value="5"></label><label class="field">Shared benchmark period<select id="comparison-period"><option value="3M">3M</option><option value="6M" selected>6M</option><option value="12M">12M</option></select></label></div><div id="comparison-controls"></div><p class="muted">This scenario assumes a constant benchmark, margin and entered costs, with the selected rate reset. Different currencies, benchmark/reset periods and special schedules are not combined. Equal-amount modelling is explicitly hypothetical. Rates and insurance costs can change.</p><p class="notice">Cost over the chosen horizon means interest plus entered fees and recurring costs. Repaid principal is excluded; remaining principal is shown separately. Full-term outflow includes repaid principal. Unknown fees prevent a complete total. Bank-provided APR is recorded separately, never calculated here.</p><div class="scroll"><table><caption>Cost comparison on shared assumptions</caption><thead><tr><th>Fictional offer</th><th>Loan payment / month</th><th>Known upfront costs</th><th>Monthly outflow with costs</th><th>Cost over chosen horizon</th><th>Remaining principal</th><th>Full-term outflow</th></tr></thead><tbody id="offer-results"></tbody></table></div><small>No ranking or recommendation. Compare insurance cover and contractual conditions alongside cost.</small></div><div id="offer-insights"></div><div id="negotiation"></div><div id="contract-check"></div><div id="offer-gaps"></div><div id="offer-inputs"></div></section>
   <section id="review" hidden aria-labelledby="review-title"><div class="card"><h2 id="review-title">Review your demo summary</h2><p class="notice">This export is a shared summary with research gaps, not an accepted bank application. Incomplete answers can be exported as an explicitly incomplete draft.</p><div id="review-errors"></div><div class="review-facts" id="review-facts"></div><div id="review-persons"></div><div id="review-banks"></div><div id="review-documents"></div><div id="review-permissions"></div><div id="review-workflow"></div><details><summary>Full JSON preview</summary><pre id="json-preview"></pre></details><label class="check"><input id="confirm" type="checkbox">I reviewed this fictional draft and understand that bank requirements remain unverified.</label><p><button id="export" type="button">Download demo JSON summary</button> <button id="export-package" type="button">Download ZIP with original files</button></p><p id="export-status" role="status" aria-live="polite"></p></div></section>
   <footer>Independent hackathon concept. No Tuleva or bank endorsement implied. <a href="https://github.com/Fuusik/tuleva-hackathon-home-loan/blob/main/docs/bank-field-matrix.md" target="_blank" rel="noopener noreferrer">Research and verification gaps</a>.</footer>
 </main>
@@ -45,9 +47,14 @@
 <script src="app-documents.js"></script>
 <script src="app-model.js"></script>
 <script src="app-stage-i18n.js"></script>
+<script src="app-v5-i18n.js"></script>
 <script src="app-i18n.js"></script>
 <script src="app-workflow.js"></script>
 <script src="app-offers.js"></script>
+<script src="app-cases.js"></script>
+<script src="app-negotiation.js"></script>
+<script src="app-guided-ui.js"></script>
+<script src="app-offer-journey-ui.js"></script>
 <script src="app-stages-ui.js"></script>
 <script>
 'use strict';
@@ -57,6 +64,7 @@ const documentStore = D.createStore();
 const permissionRecords = new Map();
 let exportBusy = false;
 let stageUI = null;
+let guidedUI = null;
 const I = AppI18n;
 const t = (key, vars) => I.t(key, vars);
 const translate = text => I.message(text);
@@ -163,7 +171,7 @@ function rebuild(d, source = 'fictional-example') {
   repeaters.clear(); $('banks').replaceChildren();
   for (const bank of M.banks) { const label = node('label'); const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.dataset.bank = bank; checkbox.checked = d.selectedBanks.includes(bank); label.append(checkbox, document.createTextNode(bank)); $('banks').append(label); }
   for (const id of ['loan-fields', 'guarantee-grid', 'eis-branch', 'construction-fields', 'household-fields', 'property-fields', 'valuation-fields', 'collateral-fields']) $(id).replaceChildren();
-  fields($('loan-fields'), [choice('purpose', 'Loan purpose', [['purchase', 'Purchase'], ['construction', 'Construction'], ['renovation', 'Renovation'], ['refinancing', 'Refinancing']]), num('amount', 'Loan amount (\u20ac)', { min: 1 }), num('termYears', 'Term (years)', { min: 1, max: 30, step: '1' }), num('price', 'Purchase price / project budget (\u20ac)', { min: 1 }), num('ownContribution', 'Own contribution (\u20ac)'), field('contributionSource', 'Source of own contribution'), choice('repaymentSchedule', 'Preferred schedule (demo choice)', [['annuity', 'Annuity'], ['special', 'Special / interest-only schedule'], ['unsure', 'Undecided']]), num('paymentDay', 'Preferred payment day', { min: 1, max: 31, step: '1' }), field('campaignCode', 'Campaign code (optional)'), field('notes', 'Additional notes', 'textarea', { wide: true })], 'loan', d.loan);
+  fields($('loan-fields'), [choice('purpose', 'Loan purpose', [['purchase', 'Purchase'], ['construction', 'Construction'], ['renovation', 'Renovation'], ['refinancing', 'Refinancing']]), num('amount', 'Loan amount (\u20ac)', { min: 1 }), num('termYears', 'Term (years)', { min: 1, max: 30, step: '1' }), num('termMonths', 'Term in months (alternative)', { min: 1, max: 360, step: '1' }), num('price', 'Purchase price / project budget (\u20ac)', { min: 1 }), num('ownContribution', 'Own contribution (\u20ac)'), field('contributionSource', 'Source of own contribution'), choice('repaymentSchedule', 'Preferred schedule (demo choice)', [['annuity', 'Annuity'], ['special', 'Special / interest-only schedule'], ['unsure', 'Undecided']]), num('paymentDay', 'Preferred payment day', { min: 1, max: 31, step: '1' }), field('campaignCode', 'Campaign code (optional)'), field('notes', 'Additional notes', 'textarea', { wide: true })], 'loan', d.loan);
   fields($('guarantee-grid'), [choice('guarantee', 'Guarantee / other financing', [['none', 'None'], ['EIS', 'EIS (former KredEx)'], ['MES', 'MES co-loan'], ['unsure', 'Undecided']])], 'financing', d.financing);
   addField($('eis-branch'), field('targetGroup', 'EIS target group (eligibility not verified)'), 'financing', d.financing);
   fields($('construction-fields'), [field('stageBudget', 'Stage budget with own / loan funding split', 'textarea', { wide: true }), choice('permitStatus', 'Permit status', [['available', 'Available'], ['pending', 'Pending'], ['not-applicable', 'Not applicable'], ['unknown', 'Unknown']]), num('currentValue', 'Current property valuation (\u20ac)'), num('futureValue', 'Future property valuation (\u20ac)')], 'construction', d.construction);
@@ -177,7 +185,7 @@ function rebuild(d, source = 'fictional-example') {
   $('has-collateral').checked = d.financing.additionalCollateral;
   $('property-documents').replaceChildren(); renderDocumentSlot($('property-documents'), 'property', 'valuation', 'Main property valuation file');
   $('collateral-documents').replaceChildren(); renderDocumentSlot($('collateral-documents'), 'additionalProperty', 'valuation', 'Additional collateral valuation file');
-  syncBranches(); changed(); if (stageUI) stageUI.reset(source);
+  syncBranches(); changed(); if (stageUI) stageUI.reset(source); if (guidedUI) guidedUI.reset(source);
 }
 function pathInput(path) { return [...form.querySelectorAll('[data-path]')].find(el => el.dataset.path === path); }
 function branch(el, enabled) { el.hidden = !enabled; el.querySelectorAll('input,select,textarea,button').forEach(x => x.disabled = !enabled); }
@@ -217,7 +225,7 @@ function changed() {
   revision++; $('revision').textContent = t('Draft {n}', { n: revision });
   reviewPayload = null; $('confirm').checked = false; $('export-status').textContent = '';
   for (const input of $('review-persons').querySelectorAll('[data-review-person]')) input.checked = false;
-  if (stageUI) stageUI.invalidate();
+  if (stageUI) stageUI.invalidate(); if (guidedUI) guidedUI.refresh();
   if (currentPage === 'checks') renderChecks();
 }
 function invalidateExport() {
@@ -226,9 +234,10 @@ function invalidateExport() {
 }
 form.addEventListener('input', event => {
   const path = event.target.dataset.path || '';
+  if(path==='loan.termYears')pathInput('loan.termMonths').value='';if(path==='loan.termMonths')pathInput('loan.termYears').value='';
   const identity = path.match(/^applicants\.(0|1)\.(firstName|lastName|personalId)$/);
   if (identity) { D.clearPersonPermissions(permissionRecords, identity[1] === '0' ? 'primary' : 'co'); renderPermissions(true); }
-  syncBranches(); changed();
+  syncBranches(); changed(); if (guidedUI) guidedUI.edited(path);
 });
 form.addEventListener('change', () => { syncBranches(); });
 form.onsubmit = event => { event.preventDefault(); show('checks'); };
@@ -298,7 +307,7 @@ async function exportDraft(includeFiles) {
     if (revision !== d.revision || generation !== reviewGeneration) { $('export-status').textContent = t('The draft changed. Review it again before download.'); return; }
     if (!$('confirm').checked || ![...$('review-persons').querySelectorAll('[data-review-person]')].every(input => input.checked)) { $('export-status').textContent = t('Review each fictional applicant profile and tick the summary confirmation.'); return; }
     const url = URL.createObjectURL(new Blob([data], { type: includeFiles ? 'application/zip' : 'application/json' }));
-    const a = document.createElement('a'); a.href = url; a.download = includeFiles ? 'home-loan-demo-package-v4.zip' : 'home-loan-demo-summary-v4.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const a = document.createElement('a'); a.href = url; a.download = includeFiles ? 'home-loan-demo-package-v5.zip' : 'home-loan-demo-summary-v5.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
     $('export-status').textContent = t(includeFiles ? 'ZIP downloaded with original files and demo permission choices. Nothing was sent to a bank or EMTA.' : 'JSON downloaded with file metadata only. Use ZIP to include original files. Nothing was sent to a bank or EMTA.');
   } catch (error) {
     $('export-status').textContent = t('Could not prepare the local package. Review the files and try again.');
@@ -405,10 +414,11 @@ function sampleForUI() {
 function localizedSummary(d) {
   const payload = M.exportSummary(d);
   payload.uiLanguage = I.getLocale();
+  if (guidedUI) payload.dataProvenance = guidedUI.exportState();
   if (stageUI) {
     const state = stageUI.exportState();
     state.transmissionSimulation.records = state.transmissionSimulation.records.map(record => ({ ...record, status: translate(record.status), form: { ...record.form, omittedOrUnverified: record.form.omittedOrUnverified.map(translate), missingResearchItems: record.form.missingResearchItems.map(translate) } }));
-    state.offerComparison.offers = state.offerComparison.offers.map(offer => ({ ...offer, scenario: { ...offer.scenario, invalid: offer.scenario.invalid.map(translate), missing: offer.scenario.missing.map(translate), warnings: offer.scenario.warnings.map(translate), assumption: translate(offer.scenario.assumption) } }));
+    state.offerComparison.offers = state.offerComparison.offers.map(offer => ({ ...offer, scenario: { ...offer.scenario, invalid: offer.scenario.invalid.map(translate), missing: offer.scenario.missing.map(translate), warnings: offer.scenario.warnings.map(translate), notices: (offer.scenario.notices||[]).map(translate), assumption: translate(offer.scenario.assumption) } }));
     Object.assign(payload, state);
   }
   payload.mappingStatus = translate(payload.mappingStatus);
@@ -433,7 +443,7 @@ function applyLanguage(language) {
   $('revision').textContent = t('Draft {n}', { n: revision });
   $('export-status').textContent = '';
   renderAllDocumentLists(); renderPermissions(true); syncBranches();
-  if (stageUI) stageUI.translatePage();
+  if (stageUI) stageUI.translatePage(); if (guidedUI) guidedUI.translate();
   if (currentPage === 'checks') renderChecks();
   if (currentPage === 'compare') calculate();
   if (currentPage === 'review') {
@@ -446,8 +456,9 @@ document.querySelectorAll('[data-language]').forEach(button => button.onclick = 
   applyLanguage(button.dataset.language);
   $('feedback').textContent = t(button.dataset.language === 'et' ? 'Language changed to Estonian.' : 'Language changed to English.');
 });
-stageUI = createStageUI({W:LoanWorkflow,O:LoanOffers,M,I,read,t,node,money,pathInput,show,renderPreparation,invalidMessages,invalidateExport,currentPage:()=>currentPage});
+stageUI = createStageUI({W:LoanWorkflow,O:LoanOffers,M,I,read,t,node,money,pathInput,show,renderPreparation,invalidMessages,invalidateExport,currentPage:()=>currentPage,loadFinancingCase:(meta,banks)=>{for(const [key,value] of Object.entries({purpose:meta.id==='existing2025'?'refinancing':'purchase',amount:meta.principal,termYears:'',termMonths:meta.months,price:meta.principal,ownContribution:0,contributionSource:t('Fictional case financing assumption')})){const input=pathInput('loan.'+key);input.value=value;}document.querySelectorAll('[data-bank]').forEach(input=>input.checked=banks.includes(input.dataset.bank));syncBranches();changed();if(guidedUI){guidedUI.mark(['purpose','amount','termMonths','price','ownContribution','contributionSource'].map(key=>'loan.'+key),'Fictional case financing assumption');}}});
 stageUI.initialize();
+guidedUI = createGuidedUI({M,t,node,pathInput,read,changed,syncBranches,clearIdentityChoices:owner=>{D.clearPersonPermissions(permissionRecords,owner);renderPermissions(true);},addIncome:(prefix,row)=>addRow(prefix+'.incomes',incomeFields,row)});
 rebuild(sampleForUI());
 applyLanguage('et');
 </script>
