@@ -4,13 +4,13 @@ One reusable application for Estonian banks, transparent offer comparison and a 
 
 The main problem is repeated application work: consumers enter similar information and documents in several bank journeys, often giving up before collecting comparable offers. Our demo keeps one checked dataset, shows recipient-specific gaps and helps the applicant compare and negotiate later offers. It is an independent hackathon concept; no Tuleva or bank endorsement, integration or acceptance is established.
 
-## Run and try v5
+## Run and try v5.1
 
 In GitHub Desktop, use **Fetch origin**, then **Pull origin** when offered. Open `index.html` from the repository folder and refresh with Ctrl+F5. Alternatively, download and extract GitHub's Code > Download ZIP. Keep all local scripts and `vendor/` beside the page. No installation, server, paid AI API or credentials are required to run it.
 
 The interface starts in **Estonian**, with **ET / EN** in the header. Data is held in page memory; reload discards it. Use fictional identities, `DEMO-...` identifiers, `example.test` emails and fictional documents.
 
-1. **Shared form:** start with the loan goal, then data/source examples and checking. Source badges distinguish built-in examples, simulated Smart-ID/EMTA/statement data, manual entries and missing answers. Simulated sources fill blank fields only. Filtering hides answered fields without deleting them. Smart-ID buttons do not authenticate; no files are parsed or registries queried.
+1. **Shared form:** the automatic-prefill overview and demo buttons are visible from the first step. Choose **Vaata välju ja nende võimalikke allikaid / View fields and their potential sources** to reveal applicant fields. Each field separates a possible future source (Smart-ID identity, separately permitted EMTA employment information or statement suggestions) from the current value's provenance. Manual answers and confirmations remain explicit. Start blank to try the demo buttons: they fill blanks only and explain when no value changed. Filtering hides answered fields without deleting them. No authentication, file reading or registry query occurs.
 2. **Readiness:** see shared gaps once, bank-specific researched extras, separate applicant/co-applicant documents and optional per-person/per-bank demo EMTA choices. Every bank still has unverified requirements.
 3. **Simulation:** review the shared sections and each active person for each selected bank. All six banks have local previews. LHV/Luminor are deeper partial forms; the other four are preparation summaries with unmapped shared data and explicit gaps. No information, file, consent or request is transmitted.
 4. **Comparison:** enter demo offers or load one of three anonymised historical cases: 2020 purchase, 2025 house purchase or 2025 existing-loan improvement. Case loading replaces financing fields/offers after confirmation, retains local files and clears review. Case terms are historical; identities, property budgets and model assumptions are synthetic or explicitly estimated.
@@ -44,10 +44,10 @@ See [the walkthrough](docs/workflow-demo.md) for details and [the historical exa
 ## Validation
 
 ```sh
-node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js tests/workflow.test.js tests/offers.test.js tests/journey.test.js
+node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js tests/workflow.test.js tests/offers.test.js tests/journey.test.js tests/prefill.test.js
 ```
 
-There are 72 passing Node tests: the original 50 plus 22 covering six-bank recipient isolation, remaining months, case-study arithmetic/privacy, conditional costs, normalisation, one reviewed round, stale requests, versions and contract comparison. JavaScript syntax, static IDs/local dependencies, Unicode, translation coverage and absence of network/persistence hooks are checked separately.
+There are 77 passing Node tests: the original 72 plus five source-policy checks. They verify that identity suggestions do not imply financial access, employment suggestions do not establish contract type/tenure, statements do not establish debt balances/credit limits/all-account coverage, and confirmations remain manual. JavaScript syntax, static IDs/local dependencies, Unicode, translation coverage and absence of network/persistence hooks are checked separately.
 
 Browser interaction and visual layout remain unverified: the browser infrastructure was unavailable. Follow the manual walkthrough before a presentation; Node tests do not prove the page's interaction or layout.
 

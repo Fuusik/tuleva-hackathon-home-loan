@@ -57,7 +57,7 @@ Invalid values block download. Missing documents or unselected/declined/withdraw
 
 `app-documents.js` manages local file references, permission choices, preparation checks and ZIP generation. The ZIP library is pinned, bundled locally at `vendor/jszip.min.js` (JSZip 3.10.1) with [its license](../vendor/JSZip-LICENSE.md), used under the MIT option. It needs no runtime download, account or API.
 
-The 12 document regression tests cover owner/category isolation, type/size/count limits, duplicates and safe paths, inactive-owner exclusion, per-bank/person choices and withdrawal/reset, metadata versus file evidence, remaining verification warnings, JSON metadata-only export, ZIP byte/Unicode fidelity and package failures. The complete model/language/document/workflow/offer/journey suite now has 72 tests.
+The 12 document regression tests cover owner/category isolation, type/size/count limits, duplicates and safe paths, inactive-owner exclusion, per-bank/person choices and withdrawal/reset, metadata versus file evidence, remaining verification warnings, JSON metadata-only export, ZIP byte/Unicode fidelity and package failures. The complete model/language/document/workflow/offer/journey suite now has 77 tests.
 
 Automated browser QA remains unavailable in the current execution environment. Manual review: add a statement for each person; switch ET/EN; add/remove valuation files; toggle co-applicant/collateral; choose/refuse/withdraw permissions for different banks; edit an identity; re-review and extract the downloaded ZIP to check its manifest and original files.
 

@@ -1,6 +1,6 @@
 # Project brief
 
-Last updated: 10 October 2026, v5.
+Last updated: 10 October 2026, v5.1 (prefill visibility correction).
 
 ## Problem and value
 
@@ -10,7 +10,7 @@ Estonian consumers are the main audience. Estonian is the default; English remai
 
 ## Implemented journey
 
-1. Loan goal and bank selection, then data/source examples and answer checking. Simulated sources fill blanks only; manual entry remains available. Identity alone does not supply all financial data.
+1. Loan goal and bank selection, with a visible automatic-prefill overview from the first step, then data/source examples and answer checking. Each field separates potential future source availability from its current value's provenance. Simulated sources fill blanks only; manual entry remains available. Identity alone does not supply all financial data.
 2. A shared primary/co-applicant profile, repeated income/debt/credit-limit rows, conditional financing/property branches, documents and optional recipient-specific demo EMTA choices. Both people use one device.
 3. One shared review and separate recipient/person reviews. Six local simulations preserve evidence gaps; only LHV/Luminor have deeper partial form mappings.
 4. Offer intake or three historical demos; original financing, versions, decision/evidence stages, conditional pricing and total-cost limitations remain visible. Equal-sum modelling is explicitly hypothetical.
@@ -26,7 +26,7 @@ Original financing and hypothetical rate economics are separate. Costs remain un
 
 ## Acceptance and verification
 
-- Shared answers and files are reused, with source badges and unanswered-field filtering.
+- Shared answers and files are reused, with visible potential-source hints, distinct current-value provenance and unanswered-field filtering. Source controls are not hidden in the first step; demo actions explain when nothing was changed.
 - All selected banks retain missing and unverified topics; recipient choices remain isolated.
 - Original amount/term and funding gaps remain visible alongside normalised costs.
 - Conditional products, incomplete costs and version/evidence differences are visible.
@@ -34,7 +34,7 @@ Original financing and hypothetical rate economics are separate. Costs remain un
 - Contract matches/missing/changes are aids, never bank or legal verification.
 - ET/EN keeps canonical values, files, choices and page state.
 
-72 Node tests and syntax/static/translation checks pass. Browser interaction/layout verification remains outstanding; use [workflow-demo.md](workflow-demo.md) for manual checks.
+77 Node tests and syntax/static/translation checks pass. Browser interaction/layout verification remains outstanding; use [workflow-demo.md](workflow-demo.md) for manual checks.
 
 ## Next production questions
 

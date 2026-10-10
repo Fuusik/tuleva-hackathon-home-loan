@@ -41,6 +41,10 @@ These are the current design choices, not a claim of bank confirmation. All were
 | B10 | Keep EMTA choices separate for each applicant and selected bank. | Nothing is preselected. Record status, time and demo text version; permit refusal/withdrawal. A demo choice never becomes genuine authorization. Exact bank scope and the accepted process remain unverified. |
 | B11 | Keep six illustrative previews separate from the canonical dataset. | Research-backed partial form differences are demonstrated for LHV/Luminor; the other four previews are preparation summaries with unmapped shared data and gaps. Preserve income currency, household meanings and unknown mappings; adapters are partial and never sent. |
 
+## Prefill visibility correction — v5.1, 10 October 2026
+
+The owner could not see the promised automatic-prefill references. The previous first step hid the source controls, and provenance badges described only the current fictional value. Keep the overview and demo actions visible from the initial loan-goal step. Individual fields now show a potential future source separately from current-value provenance, with manual entry/confirmation explicit for other fields. A source demo opens the data step, fills blanks only and explains when nothing changed. EMTA examples no longer invent contract type or exact tenure. No integration, genuine access/permission, field extraction or bank requirement is established by these hints.
+
 ## Collaboration workflow
 
 The project chats proposed the following team workflow; it is a recommended convention, not an enforced GitHub branch rule:

@@ -31,6 +31,7 @@ The bank matrix is a dated research baseline. It does not certify production req
 | `app-cases.js` | Historical terms without private identities or email URLs |
 | `app-negotiation.js` | One reviewed local round, versions and manual contract checks |
 | `app-guided-ui.js` / `app-offer-journey-ui.js` | Guided sources, offer insights, request review and personal handoff |
+| `app-prefill.js` / `tests/prefill.test.js` | Future source suggestions, financial-access boundaries and bilingual policy checks |
 | `tests/journey.test.js` | Six-bank, historical-cost, disclosure and negotiation invariants |
 | `tests/workflow.test.js` / `tests/offers.test.js` | Review/mapping and comprehensive cost checks |
 | `tests/documents.test.js` | File/permission isolation, limits, export and original-byte checks |
@@ -46,6 +47,7 @@ Use UTF-8 files. Verify Estonian characters and euro symbols survive writing and
 - Estonian is the default; provide a visible ET / EN switch. Translate new labels, options, validation messages, checklist text and export-review text in both languages.
 - Local-only previews for all six banks are authorized. Preserve deeper partial LHV/Luminor forms, preparation-only labels for the other four and all gaps. Require current shared review plus each fictional person's recipient review. Always record no real transmission/receipt/authorization; never point adapters at a bank endpoint.
 - Guided source examples and anonymised historical offer terms are authorized. Fill blank fields only, mark source/estimates/inherited/manual edits and retain manual entry. Do not authenticate, query registries or parse actual files. Never commit private email URLs, identity/profile data or accounts from the owner's report.
+- Keep the source overview/actions visible in the initial loan-goal step. Separate potential future source hints from current-value provenance. Identity is not financial access; employment hints require a separate permitted source. Statements do not establish debt balances, credit limits or all-account coverage; acknowledgements remain manual. Explain no-op demo actions without invalidating review.
 - One reviewed local final-offer round is authorized. The user chooses up to three different banks and competitor fields; fictional recipients use example.test. Relevant edits invalidate review or mark the request stale. Do not repeat a completed round; preserve its snapshot when manually adding replies. Personal handoff and manually entered contract checks must never assert sending, legal verification or bank approval.
 - Use fictional examples. Do not add bank submissions, autonomous messages, live eligibility/approval claims, authentication, account-data access, server uploads, persistence, analytics or integrations as incidental changes to this demo.
 - Local document selection and ZIP packaging are authorized demo features. Use fictional documents; no automatic upload, parsing or signature/acceptance claims. Keep original signed-container bytes unchanged and exclude inactive owners from exports. File changes invalidate review.
@@ -71,7 +73,7 @@ Do not infer a complete field list from a product page, a small-loan form or one
 For model, translation or document-module changes, run:
 
 ```sh
-node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js tests/workflow.test.js tests/offers.test.js tests/journey.test.js
+node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js tests/workflow.test.js tests/offers.test.js tests/journey.test.js tests/prefill.test.js
 node --check app-model.js
 node --check app-i18n.js
 node --check app-documents.js
@@ -83,12 +85,13 @@ node --check app-v5-i18n.js
 node --check app-cases.js
 node --check app-negotiation.js
 node --check app-guided-ui.js
+node --check app-prefill.js
 node --check app-offer-journey-ui.js
 ```
 
 For controller changes, also check the inline script's syntax and open `index.html` in a browser when available. Browser checks should exercise changed behavior, including relevant ET / EN transitions, preserved entries/files/choices, file selection/removal, ZIP byte fidelity, permission withdrawal, repeated rows, optional co-applicant, purpose branches, selected banks and review/export invalidation. Confirm no unintended network calls or persistence were added.
 
-If a browser cannot run, report that limitation; passing Node tests is not evidence of visual or interaction verification. The expanded demo has 72 Node tests; automated browser interaction/layout verification remains outstanding. Exercise guided source/fill/filter behaviour, all-six simulations, case replacement, cost scenarios, one-round stale/disclosure guards, manual replies, contract checks and ET/EN preservation before a presentation.
+If a browser cannot run, report that limitation; passing Node tests is not evidence of visual or interaction verification. The expanded demo has 77 Node tests; automated browser interaction/layout verification remains outstanding. Exercise guided source/fill/filter behaviour, all-six simulations, case replacement, cost scenarios, one-round stale/disclosure guards, manual replies, contract checks and ET/EN preservation before a presentation.
 
 For documentation-only changes, check factual consistency, file paths, relative links and the distinction between current and planned behavior. Do not add tests that merely repeat the prose.
 
