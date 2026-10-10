@@ -1,104 +1,40 @@
 # Coding assistant instructions
 
-Applies to this repository. The user's current instructions take precedence over these project conventions. Use repository documents as shared context; do not assume access to the owner's private chats.
+Read [README.md](README.md), [docs/project-brief.md](docs/project-brief.md), [docs/decisions.md](docs/decisions.md), [docs/bank-field-matrix.md](docs/bank-field-matrix.md), [docs/document-permissions.md](docs/document-permissions.md) and [docs/workflow-demo.md](docs/workflow-demo.md) before changing this project. Latest owner instructions supersede older descriptions. Current baseline: **v6**, continuous form, no historical household examples.
 
-## Read before making changes
+## Architecture
 
-- [README.md](README.md): purpose, setup, current features and collaboration.
-- [docs/project-brief.md](docs/project-brief.md): consumer problem, intended journey, implemented scope and open questions.
-- [docs/decisions.md](docs/decisions.md): confirmed decisions, implementation baseline and proposed workflow.
-- [docs/workflow-demo.md](docs/workflow-demo.md): shared review, recipient mappings, simulation and cost definitions.
-- [docs/document-permissions.md](docs/document-permissions.md): browser-local files, demo EMTA choices and JSON/ZIP exports.
-- [docs/bank-field-matrix.md](docs/bank-field-matrix.md): evidence, mapping differences, sources and verification gaps.
-- [docs/demo-cases.md](docs/demo-cases.md): anonymised historical terms, private-source limitations and model assumptions.
+Keep the buildless offline runtime: index.html, local UMD modules and bundled JSZip/license. No installation/server/paid service/CDN/credentials as hidden requirements. Model/application/documents/workflow/offers/negotiation contain domain rules; UI modules/controller compose them; translation modules supply bilingual labels. app-application defines demo preparation requirements, not certified bank mandatory flags.
 
-The bank matrix is a dated research baseline. It does not certify production requirements. Keep proposals, observed fields and bank-confirmed requirements distinct.
-
-## Files and implementation conventions
-
-| File | Responsibility |
-| --- | --- |
-| `index.html` | Buildless page, styles and browser controller |
-| `app-model.js` | Shared data defaults, conditional checks, validation, annuity calculation and canonical summary; usable in browser and Node |
-| `app-i18n.js` | Estonian/English translations and composed messages |
-| `app-documents.js` | Local File references, demo permission records, preparation checks and ZIP packaging |
-| `vendor/jszip.min.js` | Pinned JSZip 3.10.1; keep its license and local loading |
-| `app-workflow.js` | Shared review, recipient readiness and partial illustrative adapters |
-| `app-offers.js` | Offer intake defaults, compatibility and cost scenario calculations |
-| `app-stages-ui.js` | Shared review, readiness, simulation and comparison UI |
-| `app-stage-i18n.js` | New bilingual-stage label dictionary merged into app-i18n |
-| `app-v5-i18n.js` | Guided-flow, case-study and negotiation label dictionary |
-| `app-cases.js` | Historical terms without private identities or email URLs |
-| `app-negotiation.js` | One reviewed local round, versions and manual contract checks |
-| `app-guided-ui.js` / `app-offer-journey-ui.js` | Guided sources, offer insights, request review and personal handoff |
-| `app-prefill.js` / `tests/prefill.test.js` | Future source suggestions, financial-access boundaries and bilingual policy checks |
-| `tests/journey.test.js` | Six-bank, historical-cost, disclosure and negotiation invariants |
-| `tests/workflow.test.js` / `tests/offers.test.js` | Review/mapping and comprehensive cost checks |
-| `tests/documents.test.js` | File/permission isolation, limits, export and original-byte checks |
-| `tests/model.test.js` | Model regression checks |
-| `tests/i18n.test.js` | Language defaults, translation coverage and stable data checks |
-
-Keep the existing offline runtime without installation or server requirements. JSZip is bundled locally with its license; do not switch to a CDN or hide a new service/dependency. Do not add a paid AI service or credentials as a hidden requirement. Keep model rules in the model, presentation in the page and translations in the translation module.
-
-Use UTF-8 files. Verify Estonian characters and euro symbols survive writing and reading. Keep canonical field keys and option values stable; UI language changes only labels and descriptive messages. Do not translate free-text user values or rebuild the form during a language switch.
+Use UTF-8. Canonical paths/option values remain stable across ET/EN; translate labels/options/messages/checklists, not user text or data. Switching language must not rebuild the form or discard entries, original files or choices.
 
 ## Product boundaries
 
-- Estonian is the default; provide a visible ET / EN switch. Translate new labels, options, validation messages, checklist text and export-review text in both languages.
-- Local-only previews for all six banks are authorized. Preserve deeper partial LHV/Luminor forms, preparation-only labels for the other four and all gaps. Require current shared review plus each fictional person's recipient review. Always record no real transmission/receipt/authorization; never point adapters at a bank endpoint.
-- Guided source examples and anonymised historical offer terms are authorized. Fill blank fields only, mark source/estimates/inherited/manual edits and retain manual entry. Do not authenticate, query registries or parse actual files. Never commit private email URLs, identity/profile data or accounts from the owner's report.
-- Keep the source overview/actions visible in the initial loan-goal step. Separate potential future source hints from current-value provenance. Identity is not financial access; employment hints require a separate permitted source. Statements do not establish debt balances, credit limits or all-account coverage; acknowledgements remain manual. Explain no-op demo actions without invalidating review.
-- One reviewed local final-offer round is authorized. The user chooses up to three different banks and competitor fields; fictional recipients use example.test. Relevant edits invalidate review or mark the request stale. Do not repeat a completed round; preserve its snapshot when manually adding replies. Personal handoff and manually entered contract checks must never assert sending, legal verification or bank approval.
-- Use fictional examples. Do not add bank submissions, autonomous messages, live eligibility/approval claims, authentication, account-data access, server uploads, persistence, analytics or integrations as incidental changes to this demo.
-- Local document selection and ZIP packaging are authorized demo features. Use fictional documents; no automatic upload, parsing or signature/acceptance claims. Keep original signed-container bytes unchanged and exclude inactive owners from exports. File changes invalidate review.
-- EMTA choices are optional, unselected by default and separate per person/bank. Include decline/withdrawal and version/time; clear a person\'s choices when identity fields change. Export always records genuine authorization and query execution as false. Never treat the demo choice as a valid bank/state-portal consent.
-- No bank or Tuleva endorsement, partnership, submission API or acceptance of exported summaries has been established.
-- Keep the primary and co-applicant profiles independent. The current co-applicant flow is on one device; review ticks are demo acknowledgements, not real bank consent.
-- Keep selected-bank missing items and unverified mappings visible through review and export. A completed checklist must still show that bank verification is needed.
-- Export remains a shared canonical summary. Keep refinanced debts and their flags. Do not apply Coop's native-form exclusion to the canonical JSON; a future bank adapter must implement recipient rules separately.
-- Maintain explicit missing versus zero/none, original income currency/frequency, debt versus credit limit, dependants versus children under 18, and disposable money versus income.
-- Respect conditional employment, construction/renovation, refinancing, EIS and additional-collateral branches. Preserve inactive draft entries where the current controller supports it; exclude irrelevant data from the exported model.
-- Invalid values block download; incomplete answers may remain explicitly incomplete. Require a selected bank and review of each fictional profile and the summary. Application edits invalidate review.
-- Keep comparison examples fictional/historical, without a bank ranking or recommendation. The calculator supports constant-rate EUR annuity scenarios only. Explicit equal-principal/equal-month normalisation is a hypothetical scenario, separate from original financing and own-funds gaps. Different benchmark/reset/currency and special schedules remain incompatible. Show original-term interest and extension separately. Unknown fees prevent complete totals/payback; separate interest/fees from repaid and remaining principal. Conditional stress assumptions, temporary prices, capped rebates and exit costs stay explicit. Record APR as supplied, never derive it from scenario totals. Offer/assumption edits invalidate export review, including an in-flight ZIP. Never claim realised or representative savings from a private household case.
-- Never request or store internet-bank passwords, Smart-ID PINs, Mobile-ID PINs, API keys or genuine identity documents.
+- Estonian default, visible English switch. One continuous goal → applicants → home/financing → documents → review form, freely scrollable; no separate data/source/review modes. Relevant purpose/co-applicant/employment/financial branches only. Optional information is marked; bank questions have unverified mandatory status.
+- Start blank. Keep potential-prefill hints and compact source overview; synthetic examples fill blanks only and mark provenance. Identity is not financial access; employment requires a separate source, statements do not prove balances/limits/all-account coverage, and acknowledgements stay manual. A no-op source action must not invalidate review.
+- Keep historical household examples removed from code, fixtures, UI and docs. Generic explicitly fictional examples and user-entered offer version history are allowed. Never copy private report identities, accounts, email URLs or household terms into fixtures.
+- The owner excluded proposed points 13/14: do not add draft save/reopen/import or a separate user/mobile/accessibility testing programme. Preserve the existing optional reviewed preparation-package export. Routine checks of code changes still apply.
+- Purchase budget derives from requested loan + cash contribution, plus entered MES example funding where active. Guarantees/collateral are not cash; valuation is separate. Other funding is not approved financing. Keep construction budgets and refinancing remaining months distinct.
+- A purchase home may be unchosen. Defer property/valuation shared requirements and active property exports; keep later-stage bank gaps and unverified acceptance visible. Preserve inactive draft entries where supported but exclude irrelevant data/files from the active export.
+- Local previews for all six banks are authorized: deeper partial LHV/Luminor, preparation-only other banks. Preserve missing/unverified mappings. Choose recipients at final review and require current shared/person-recipient review; edits clear simulations. Always record no transmission, receipt or genuine authorization.
+- Comparison follows current prepared application; summary cards precede optional calculation/evidence/negotiation details. Compare original financing separately from hypothetical equal amount/term. Common savings require same schedule/amount/term/currency/reset basis. Constant EUR annuity/equal-principal only; equal-principal totals use varying payments and no fixed-month payback. Unknown costs prevent complete totals/payback. Conditional stress, temporary prices, capped confirmed rebates, percentage/exit fees stay explicit. APR supplied only. No ranking, forecasts, approval, realised/guaranteed savings, representative private-case results or measured time/price claims.
+- One reviewed local final-offer round is authorized: one to three banks, selected competitor fields, example.test recipients. Edits withdraw review/stale the draft. Preserve completed snapshot after manual replies; do not send/repeat a completed round. Handoff/manual contract checks are not legal/bank verification.
+- Local files/ZIP are authorized demo features. No upload, parsing or signature claims; preserve original signed bytes and inactive-owner exclusion. File edits invalidate review. Limits and safe archive paths remain enforced.
+- EMTA choices optional, unselected and separate per person/bank, with refusal/withdrawal/time/version. Identity edits clear that person's choices. Genuine authorization/query execution always false; exact bank scope/process remains unverified.
+- Keep co-applicant profiles independent on one device. Review ticks are demo acknowledgements, not authentication or consent. No invitations, live integrations, uploads, persistence, analytics or automatic messages.
+- Preserve missing vs zero/none, income currency/frequency, debts vs credit limits, dependants vs children, disposable money vs income. Keep canonical refinancing debts even where Coop's illustrative view excludes replacement debts.
+- Invalid values block downloads; incomplete answers stay explicitly incomplete. Require selected recipients/profile/summary review for export, and invalidate in-flight ZIP after relevant changes. No endorsement/accepted channel is established. Never request real identity documents, bank passwords, Smart-ID/Mobile-ID PINs or keys.
 
-## Bank research changes
+## Research changes
 
-Use primary bank sources and record the source and evidence date when changing mappings. F means visible in a public form/PDF; D means a topic/document described in guidance; ? means unverified. Neither F nor D means mandatory. A ? cell does not prove a field is absent.
+Use primary bank sources with date and field evidence. F = public form/PDF, D = described topic, ? = unverified. Neither F nor D means mandatory; ? is not absence. Do not infer a full form from a product page or another bank. Keep document age/format/coverage and declarations separate. Update matrix/model/translations together only when evidence changes; UI rearrangement does not upgrade evidence.
 
-Do not infer a complete field list from a product page, a small-loan form or one bank's longer form. Keep bank-specific declarations and document format/age/coverage rules distinct. If evidence cannot be checked, retain the verification gap and say what remains unresolved. Update the matrix, model and translations together when a verified mapping change affects the demo.
+## Checks
 
-## Checks appropriate to the change
+Run `node --test tests/*.test.js` and syntax-check changed modules plus index.html's inline script. The current suite has 90 tests across model, application, i18n, documents, workflow, offers, journey and prefill. Verify Unicode, all new translation labels/messages, local resources/static IDs, doc links, no unintended network/persistence and exact ZIP-byte boundaries where affected.
 
-For model, translation or document-module changes, run:
+Open index.html and exercise changed interactions when browser tools are available. If unavailable, report that actual interaction/layout remains unverified; Node/static checks are not browser QA or accessibility certification. Do not invent completed checks. Tests should protect behavior/calculation/recipient/privacy invariants rather than mirror implementation or prose.
 
-```sh
-node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js tests/workflow.test.js tests/offers.test.js tests/journey.test.js tests/prefill.test.js
-node --check app-model.js
-node --check app-i18n.js
-node --check app-documents.js
-node --check app-workflow.js
-node --check app-offers.js
-node --check app-stages-ui.js
-node --check app-stage-i18n.js
-node --check app-v5-i18n.js
-node --check app-cases.js
-node --check app-negotiation.js
-node --check app-guided-ui.js
-node --check app-prefill.js
-node --check app-offer-journey-ui.js
-```
+## Collaboration and completion
 
-For controller changes, also check the inline script's syntax and open `index.html` in a browser when available. Browser checks should exercise changed behavior, including relevant ET / EN transitions, preserved entries/files/choices, file selection/removal, ZIP byte fidelity, permission withdrawal, repeated rows, optional co-applicant, purpose branches, selected banks and review/export invalidation. Confirm no unintended network calls or persistence were added.
-
-If a browser cannot run, report that limitation; passing Node tests is not evidence of visual or interaction verification. The expanded demo has 77 Node tests; automated browser interaction/layout verification remains outstanding. Exercise guided source/fill/filter behaviour, all-six simulations, case replacement, cost scenarios, one-round stale/disclosure guards, manual replies, contract checks and ET/EN preservation before a presentation.
-
-For documentation-only changes, check factual consistency, file paths, relative links and the distinction between current and planned behavior. Do not add tests that merely repeat the prose.
-
-## Collaboration and finishing work
-
-Prefer focused task branches and pull requests for parallel teammate work. Follow explicit owner instructions to commit directly to `main` when supplied; do not request approval again for authorized edits or commits.
-
-Inspect current file/branch versions before writing, preserve unrelated changes and avoid force-pushing or rewriting shared history. Resolve a stale branch head by reading the latest state, not by overwriting it.
-
-When behavior or an accepted decision changes, update the affected README, brief, decision log and bank research. Keep project context in these files, not only in chat. In the final handoff, state what changed, checks performed, remaining verification gaps and the commit or pull request link.
+Preserve unrelated changes and inspect current branch/file versions. Prefer focused branches/PRs for concurrent teammate work; explicit owner instructions to commit directly to main authorize this task without another confirmation. Resolve stale heads by reading latest state; never force-push/rewrite shared history. Update affected context docs. Final handoff states changes, actual checks, material gaps and commit/PR link.

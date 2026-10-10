@@ -11,7 +11,7 @@ The shared form now accepts multiple files for each fictional applicant:
 - An optional EMTA tax-data certificate.
 - Other supporting documents.
 
-The main property and optional additional collateral each have a separate valuation-file section. PDF, signed containers and image files can be added for valuations; account/supporting sections additionally accept CSV, XLS/XLSX and XML. Accepted picker types are demo formats, not a guarantee that a bank accepts them.
+All files are grouped in the continuous form's Documents section, with primary/co-applicant ownership kept separate. The main property and optional additional collateral each have a separate valuation-file section. If a purchase home is still unchosen, its valuation section and active export are deferred; bank acceptance of an initial request remains unverified. PDF, signed containers and image files can be added for valuations; account/supporting sections additionally accept CSV, XLS/XLSX and XML. Accepted picker types are demo formats, not a guarantee that a bank accepts them.
 
 Files are held as browser File references. There is no server upload, persistence, parsing, signature validation, virus scan or automatic bank submission. The simulated statement-reading/source buttons do not inspect selected files; their synthetic values never prove file availability, coverage or consent. Use fictional documents. Reload, Start blank and Load fictional example discard the selected files and demo permission choices.
 
@@ -49,7 +49,7 @@ Review lists active files by owner/category and choices by person/bank. Adding o
 - **JSON summary:** metadata, archive paths and permission records; no file contents.
 - **ZIP package:** `application-summary.json`, a demo explanation and the original selected file bytes in owner/category folders.
 
-Signed-file bytes and original filenames in the manifest are preserved. Archive filenames have a document ID prefix and safe separators to avoid collisions or path traversal. Disabled co-applicant and additional-collateral files stay in draft memory but are excluded from both exports. Deselecting a bank excludes its permission records from the export.
+Signed-file bytes and original filenames in the manifest are preserved. Archive filenames have a document ID prefix and safe separators to avoid collisions or path traversal. Disabled co-applicant, additional-collateral and currently unchosen purchase-property files stay in draft memory but are excluded from both exports. Deselecting a bank excludes its permission records from the export.
 
 Invalid values block download. Missing documents or unselected/declined/withdrawn choices remain visible in an explicitly incomplete demo; they are not presented as bank-approved. Both downloads require the selected applicants and summary to be reviewed. No download contacts a bank or EMTA.
 
@@ -57,10 +57,10 @@ Invalid values block download. Missing documents or unselected/declined/withdraw
 
 `app-documents.js` manages local file references, permission choices, preparation checks and ZIP generation. The ZIP library is pinned, bundled locally at `vendor/jszip.min.js` (JSZip 3.10.1) with [its license](../vendor/JSZip-LICENSE.md), used under the MIT option. It needs no runtime download, account or API.
 
-The 12 document regression tests cover owner/category isolation, type/size/count limits, duplicates and safe paths, inactive-owner exclusion, per-bank/person choices and withdrawal/reset, metadata versus file evidence, remaining verification warnings, JSON metadata-only export, ZIP byte/Unicode fidelity and package failures. The complete model/language/document/workflow/offer/journey suite now has 77 tests.
+The 12 document regression tests cover owner/category isolation, type/size/count limits, duplicates and safe paths, inactive-owner exclusion, per-bank/person choices and withdrawal/reset, metadata versus file evidence, remaining verification warnings, JSON metadata-only export, ZIP byte/Unicode fidelity and package failures. The complete model/application/language/document/workflow/offer/journey/prefill suite now has 90 tests.
 
-Automated browser QA remains unavailable in the current execution environment. Manual review: add a statement for each person; switch ET/EN; add/remove valuation files; toggle co-applicant/collateral; choose/refuse/withdraw permissions for different banks; edit an identity; re-review and extract the downloaded ZIP to check its manifest and original files.
+Browser infrastructure was unavailable; actual interaction/layout verification remains outstanding. The v6 scope adds no new draft save/import or separate user/mobile/accessibility testing programme. Existing reviewed JSON/ZIP package downloads are not reopenable draft backups.
 
 ## Shared workflow additions
 
-Schema v5 summaries also include field provenance, source/revision-bound shared reviews, all-six local simulation records, historical/version offer state, cost assumptions/results, one simulated negotiation round, personal actions and manual contract checks. LHV/Luminor are deeper partial forms; the other four previews are preparation summaries. These additions do not change file limits, byte fidelity, genuine permission flags or recipient/owner isolation. Original files are included only in the reviewed ZIP, never in a simulation transmission. See [workflow-demo.md](workflow-demo.md).
+Schema v6 summaries include field provenance, revision-bound shared reviews, all-six local simulation records, manually entered offer versions, cost assumptions/results, one simulated negotiation round, personal actions and manual contract checks. Historical household examples and case state are removed. LHV/Luminor are deeper partial forms; the other four previews are preparation summaries. These additions do not change file limits, byte fidelity, genuine permission flags or recipient/owner isolation. Original files are included only in the reviewed ZIP, never in a simulation transmission. See [workflow-demo.md](workflow-demo.md).

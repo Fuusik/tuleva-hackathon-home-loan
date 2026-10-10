@@ -22,11 +22,11 @@
       emtaPermissions: [], statements: { status: '', months: null, allAccounts: false } };
   }
   function blank() {
-    return { schemaVersion: 5, documents: [], applicationId: 'home-loan-demo', revision: 1, selectedBanks: [],
-      loan: { purpose: 'purchase', amount: null, termYears: null, termMonths: null, price: null, ownContribution: null, contributionSource: '', repaymentSchedule: 'annuity', paymentDay: null, campaignCode: '', notes: '' },
+    return { schemaVersion: 6, documents: [], applicationId: 'home-loan-demo', revision: 1, selectedBanks: [],
+      loan: { purpose: '', amount: null, termYears: null, termMonths: null, price: null, ownContribution: null, otherFunding:null, contributionSource: '', repaymentSchedule: 'unsure', paymentDay: null, campaignCode: '', notes: '' },
       household: { dependants: null, childrenUnder18: null, monthlyExpenses: null, disposableAmount: null },
       applicants: [applicant('primary', 'Primary applicant')],
-      property: { type: '', address: '', country: '', intendedUse: '', owner: '', estimatedValue: null, listingUrl: '', energyClass: '', valuationStatus: '', valuationDate: '', valuationFormat: '' },
+      property: { status: '', type: '', address: '', country: '', intendedUse: '', owner: '', estimatedValue: null, listingUrl: '', energyClass: '', valuationStatus: '', valuationDate: '', valuationFormat: '' },
       financing: { guarantee: '', targetGroup: '', additionalCollateral: false },
       additionalProperty: { type: '', address: '', owner: '', estimatedValue: null, valuationStatus: '', valuationDate: '', valuationFormat: '' },
       construction: { stageBudget: '', permitStatus: '', currentValue: null, futureValue: null } };
@@ -34,14 +34,14 @@
   function sample() {
     const d = blank();
     d.selectedBanks = ['LHV', 'Luminor', 'Coop Pank'];
-    Object.assign(d.loan, { amount: 200000, termYears: 25, price: 250000, ownContribution: 50000, contributionSource: 'Fictional savings', paymentDay: 15 });
+    Object.assign(d.loan, { purpose: 'purchase', repaymentSchedule: 'annuity', amount: 200000, termYears: 25, price: 250000, ownContribution: 50000, contributionSource: 'Fictional savings', paymentDay: 15 });
     Object.assign(d.household, { dependants: 2, childrenUnder18: 2, monthlyExpenses: 1200, disposableAmount: 2150 });
     Object.assign(d.applicants[0], { firstName: 'Demo', lastName: 'Applicant', personalId: 'DEMO-0001', idIssuer: 'EE', residency: 'Estonia', country: 'EE', address: 'Example Street 10, Tallinn', postalCode: '10101', email: 'demo@example.test', phone: '+372 5550 0000', language: 'English', maritalStatus: 'Married', education: 'Higher education', incomesStatus: 'provided', debtsStatus: 'provided', creditsStatus: 'provided' });
     Object.assign(d.applicants[0].employment, { status: 'employed', employer: 'Example Employer', sector: 'Engineering', occupation: 'Engineer', type: 'Permanent', tenureMonths: 36, noFixedEnd: true });
     d.applicants[0].incomes = [{ type: 'Salary', amount: 3500, currency: 'EUR', frequency: 'monthly', evidence: 'Fictional salary evidence' }];
     d.applicants[0].debts = [{ type: 'Car loan', lender: 'Example Lender', balance: 3000, monthlyPayment: 150, maturity: '2028-10-01', refinanced: false }];
     d.applicants[0].creditLimits = [{ type: 'Credit card', lender: 'Example Lender', limit: 2000, usedAmount: 0 }];
-    Object.assign(d.property, { type: 'Apartment', address: 'Example Street 20, Tallinn', country: 'EE', intendedUse: 'Own home', owner: 'Fictional seller', estimatedValue: 250000 });
+    Object.assign(d.property, { status: 'selected', type: 'Apartment', address: 'Example Street 20, Tallinn', country: 'EE', intendedUse: 'Own home', owner: 'Fictional seller', estimatedValue: 250000 });
     d.financing.guarantee = 'none';
     return d;
   }
@@ -50,6 +50,17 @@
     if (!Number.isFinite(principal) || principal <= 0 || !Number.isFinite(annualRate) || annualRate < 0 || !Number.isInteger(months) || months <= 0) return null;
     const r = annualRate / 1200;
     return r === 0 ? principal / months : principal * r / (1 - Math.pow(1 + r, -months));
+  }
+  function amortization(principal,annualRate,months,schedule='annuity',horizon=months){
+    if(!['annuity','equal-principal'].includes(schedule)||payment(principal,annualRate,months)===null||!Number.isInteger(horizon)||horizon<1)return null;
+    const rate=annualRate/1200,fixed=payment(principal,annualRate,months),period=Math.min(horizon,months);
+    let balance=principal,totalInterest=0,totalPayments=0,horizonInterest=0,horizonPayments=0,remainingPrincipal=principal,firstPayment=0,lastPayment=0;
+    for(let i=0;i<months;i++){
+      const interest=balance*rate,principalPart=schedule==='annuity'?Math.min(balance,fixed-interest):Math.min(balance,principal/months),paid=interest+principalPart;
+      if(i===0)firstPayment=paid;lastPayment=paid;totalInterest+=interest;totalPayments+=paid;balance=Math.max(0,balance-principalPart);
+      if(i<period){horizonInterest+=interest;horizonPayments+=paid;remainingPrincipal=i===months-1?0:balance;}
+    }
+    return {schedule,firstPayment,lastPayment,totalInterest,totalPayments,horizonInterest,horizonPayments,remainingPrincipal,horizonMonths:period};
   }
   function missingFields(object, fields, prefix = '') {
     return fields.filter(([key]) => !has(object[key])).map(([, label]) => prefix + label);
@@ -160,6 +171,10 @@
     if (bank === 'Coop Pank') unknown.push('Exact debt-detail fields beyond the documented obligations topic');
     unknown.push('Mandatory flags, dynamic branches, exact option lists, native declarations and submission acceptance');
     unknown.push('EMTA query scope, bank-specific consent text and genuine authorization channel');
+    if(d.loan.purpose==='purchase'&&d.property.status==='searching'){
+      observed.forEach(g=>{if(['Property address / intended use','Listing URL','Valuation report'].includes(g.label))g.laterStage=true;});
+      notes.push('Home not chosen: property details and valuation remain for a later stage; bank acceptance of an initial request is unverified.');
+    }
     return { bank, source: sources[bank], sourceId: sourceIds[bank], researchDate: '2026-10-10', status: 'Needs bank verification', completeBankApplication: false,
       preparation: Documents.preparation(d, bank), observed, missingCount: observed.reduce((n, g) => n + g.missing.length, 0), unverified: [...new Set(unknown)], notes };
   }
@@ -173,7 +188,7 @@
     if (has(d.loan.termMonths) && (!Number.isInteger(d.loan.termMonths) || d.loan.termMonths < 1 || d.loan.termMonths > 360)) out.push('Term must be a whole number from 1 to 360 months (demo range).');
     if (has(d.loan.termMonths) && has(d.loan.termYears) && d.loan.termMonths !== d.loan.termYears*12) out.push('Year and month terms disagree; use one term input.');
     if (has(d.loan.paymentDay) && (!Number.isInteger(d.loan.paymentDay) || d.loan.paymentDay < 1 || d.loan.paymentDay > 31)) out.push('Payment day must be 1-31.');
-    nonnegative(d.loan.ownContribution, 'Own contribution');
+    nonnegative(d.loan.ownContribution, 'Own contribution');nonnegative(d.loan.otherFunding,'Other financing');
     if (has(d.loan.ownContribution) && has(d.loan.price) && d.loan.ownContribution > d.loan.price) out.push('Own contribution cannot exceed the stated price / budget.');
     for (const [key, label] of [['dependants', 'Dependants'], ['childrenUnder18', 'Children under 18']]) if (has(d.household[key]) && (!Number.isInteger(d.household[key]) || d.household[key] < 0)) out.push(label + ' must be a non-negative whole number.');
     nonnegative(d.household.monthlyExpenses, 'Household expenses');
@@ -202,9 +217,11 @@
     if (!['construction', 'renovation'].includes(copy.loan.purpose)) delete copy.construction;
     if (!copy.financing.additionalCollateral) delete copy.additionalProperty;
     if (copy.financing.guarantee !== 'EIS') delete copy.financing.targetGroup;
+    if (copy.financing.guarantee !== 'MES') delete copy.loan.otherFunding;
+    if(copy.loan.purpose==='purchase'&&copy.property.status==='searching')copy.property={status:'searching'};
     return { demo: true, completeBankApplication: false, createdAt, application: copy,
       validationErrors: errors(d), bankChecks: d.selectedBanks.map(b => bankCheck(d, b, createdAt.slice(0, 10))),
       mappingStatus: 'Partial research mapping; not a native application or bank approval', documentsAttached: false, filesIncluded: false, fileExportMode: 'metadata-only-json', documentsSelectedInBrowser: copy.documents.length, bankConsentObtained: false, emtaQueriesExecuted: false };
   }
-  return { banks, sources, sourceIds, groups, applicant, blank, sample, has, payment, errors, bankCheck, exportSummary };
+  return { banks, sources, sourceIds, groups, applicant, blank, sample, has, payment, amortization, errors, bankCheck, exportSummary };
 });

@@ -4,6 +4,7 @@
 const translations={
   ...(typeof module==='object'&&module.exports?require('./app-stage-i18n.js'):globalThis.StageTranslations),
   ...(typeof module==='object'&&module.exports?require('./app-v5-i18n.js'):globalThis.V5Translations),
+  ...(typeof module==='object'&&module.exports?require('./app-v6-i18n.js'):globalThis.V6Translations),
   "One Home Loan - shared application demo": "\u00dcks kodulaen \u2013 \u00fchise taotluse demo",
   "Demo home loan profile with transparent research checks for six Estonian banks.": "Kodulaenutaotluse demo kuue Eesti panga andmev\u00e4ljade ja kontrollnimekirjadega.",
   "ONE HOME LOAN": "\u00dcKS KODULAEN",

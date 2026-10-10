@@ -11,37 +11,37 @@
     .document-section{border-top:1px solid #d6dfd2;margin-top:22px;padding-top:14px}.document-slot{padding:14px;background:#f4f6f2;border:1px solid #d6dfd2;border-radius:8px;margin:14px 0}.document-list{padding-left:20px}.document-list li{overflow-wrap:anywhere;margin:8px 0}.document-list button{margin-left:12px}input[type=file]{font-weight:400;font-size:13px}
     .source-badge{font-size:11px;font-weight:400;color:#667a6e}.prefill-hint{font-size:12px;font-weight:600;color:#315b31;margin-top:7px}.prefill-hint[data-prefill-kind=manual]{font-weight:400;color:#536d65}.prefill-overview{border:2px solid #8ba637;background:#fbfcf5}.prefill-overview>h3{margin-top:0}.prefill-source-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0}.prefill-source{background:white;border:1px solid #d6dfd2;border-radius:10px;padding:14px}.prefill-source h4{margin:0 0 8px;font-size:15px}.prefill-source p{font-size:14px;margin:0}.mini-table{white-space:normal}.mini-table th,.mini-table td{vertical-align:top}.source-badge:empty{display:none}@media(max-width:760px){.prefill-source-grid{grid-template-columns:1fr}}
     .check.with-prefill{display:grid;grid-template-columns:18px minmax(0,1fr);column-gap:8px}.check.with-prefill input{grid-column:1;margin-right:0}.check.with-prefill small{grid-column:2;margin-top:4px}
+    .journey-map{display:flex;flex-wrap:wrap;gap:12px;list-style-position:inside;padding:0;color:#536d65}.journey-map li{padding:8px 12px;background:#e8eee1;border-radius:8px}.field-help{font-weight:400;font-size:12px}.optional-mark{font-weight:400;font-size:11px;color:#667a6e}.field-error{color:#942d27;font-weight:600}input[readonly]{background:#eef3e6}.offer-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.offer-summary-grid article{border:1px solid #d6dfd2;border-radius:12px;padding:18px}.offer-summary-grid h3{margin-top:0}.key-payment{font-size:26px;font-weight:700}.offer-summary-grid p{margin:8px 0}#schedule-help{margin-top:20px}details>summary{padding:10px 0}section[id],input[id]{scroll-margin-top:20px}
   </style>
 </head>
 <body>
-<header><strong>ONE HOME LOAN</strong><div class="header-tools"><span class="badge">Hackathon demo &#183; v5.1</span><div class="language-switch" id="language-switch" role="group" aria-label="Interface language"><button type="button" data-language="et" aria-pressed="true">ET &#183; Eesti</button><button type="button" data-language="en" aria-pressed="false">EN &#183; English</button></div></div></header>
+<header><strong>ONE HOME LOAN</strong><div class="header-tools"><span class="badge">Hackathon demo &#183; v6</span><div class="language-switch" id="language-switch" role="group" aria-label="Interface language"><button type="button" data-language="et" aria-pressed="true">ET &#183; Eesti</button><button type="button" data-language="en" aria-pressed="false">EN &#183; English</button></div></div></header>
 <main>
   <p class="muted">ONE PROFILE &#183; A CLEARER DECISION</p><h1>Your next home starts here.</h1>
-  <p class="muted">Prepare once. See what is missing. Compare on shared assumptions.</p>
+  <p class="muted">One application. Less repeated work. Understand the offers.</p>
   <p class="notice">Use fictional information only. Files and entries stay in this browser and disappear on reload. Nothing is sent to a bank or EMTA. Bank mappings are partly unverified.</p>
   <div class="toolbar"><button id="load-sample" class="secondary" type="button">Load fictional example</button><button id="start-blank" class="secondary" type="button">Start blank</button><span class="muted" id="revision">Draft 1</span></div>
   <p id="feedback" role="status" aria-live="polite"></p>
-  <nav aria-label="Prototype pages"><button type="button" data-page="application" aria-current="page">1. Shared form</button><button type="button" data-page="checks">2. Bank readiness</button><button type="button" data-page="review">3. Review & export</button><button type="button" data-page="simulation">4. Transmission simulation</button><button type="button" data-page="compare">5. Offer comparison</button></nav>
+  <nav aria-label="Prototype pages"><button type="button" data-page="application" aria-current="page">Application</button><button type="button" data-page="compare" id="offers-tab" hidden>Offers and next actions</button></nav>
   <section id="application" aria-labelledby="application-title">
-    <h2 id="application-title">Shared application</h2>
-    <p class="muted">Blank answers stay unknown. The checklist uses researched topics, not a confirmed list of mandatory bank fields. You can inspect checks before completing the form.</p>
-    <div id="guided-controls"></div>
+    <h2 id="application-title">Prepare your application</h2>
+    <p class="muted">Scroll through one form. Required answers are for this shared demo; exact bank requirements still need verification. Optional answers are marked.</p>
+    <ol class="journey-map"><li>Loan goal</li><li>Applicants</li><li>Home and financing</li><li>Documents</li><li>Review</li></ol>
+    <p id="form-progress" class="muted" role="status"></p>
     <form id="profile" novalidate>
-      <div class="card" id="bank-selection"><h2>Banks to consider</h2><div class="banks" id="banks"></div></div>
-      <div class="card" id="financing-card"><h2>Your financing</h2><div class="grid" id="loan-fields"></div><div id="guarantee-fields"><h3>Guarantee and collateral</h3><div class="grid" id="guarantee-grid"></div><div id="eis-branch" hidden></div></div><div id="construction-branch" hidden><h3>Construction / renovation</h3><p class="muted">A stage budget should separate own funds and loan funds. Permit status can be unknown or not applicable; this demo does not verify evidence.</p><div class="grid" id="construction-fields"></div></div><div id="refinancing-branch" hidden><p class="notice">Mark each loan being refinanced in the relevant applicant's debt list. Keep it in the shared profile. Coop's native application has a different display rule, shown in its checklist.</p></div></div>
-      <div id="primary-container"></div>
-      <div class="card"><h2>Applying together?</h2><label class="check"><input type="checkbox" id="has-co">Include a fictional co-applicant</label><p class="muted">Both profiles are entered on this device for the demo. There is no invitation, separate sign-in or bank authentication.</p><div id="co-container" hidden></div></div>
-      <div class="card"><h2>Your shared household</h2><p class="muted">Enter shared expenses once. Dependants and children under 18 are separate counts. Disposable money is a separate answer; we do not derive it from mixed-currency income.</p><div class="grid" id="household-fields"></div></div>
-      <details class="card" open><summary>Main property</summary><div class="grid" id="property-fields"></div><h3>Valuation metadata</h3><p class="muted">Add the original valuation file and record its date and format. Contents and signatures are not checked.</p><div class="grid" id="valuation-fields"></div><div id="property-documents"></div></details>
-      <div class="card"><label class="check"><input type="checkbox" id="has-collateral" data-path="financing.additionalCollateral">Include additional property as collateral</label><div id="collateral-branch" hidden><h3>Additional collateral</h3><div class="grid" id="collateral-fields"></div><div id="collateral-documents"></div></div></div>
-      <div class="actions"><button type="submit">View bank checks</button></div>
+      <section class="card" id="goal-card"><h2>1. Loan goal</h2><div class="grid" id="purpose-fields"></div><div id="property-status-fields" class="grid"></div></section>
+      <section id="applicants-card"><h2>2. Applicants</h2><div id="guided-controls"></div><div id="primary-container"></div><div class="card"><h3>Applying together?</h3><label class="check"><input type="checkbox" id="has-co">Include a fictional co-applicant</label><div id="co-container" hidden></div></div><div class="card"><h3>Your shared household</h3><p class="muted">Enter shared expenses once. Dependants and children under 18 are separate counts. Disposable money is a separate answer; we do not derive it from mixed-currency income.</p><div class="grid" id="household-fields"></div></div></section>
+      <section class="card" id="financing-card"><h2>3. Home and financing</h2><div class="grid" id="loan-fields"></div><p id="funding-formula" class="notice"></p><div id="construction-branch" hidden><h3>Construction / renovation</h3><p class="muted">A stage budget should separate own funds and loan funds. Permit status can be unknown or not applicable; this demo does not verify evidence.</p><div class="grid" id="construction-fields"></div></div><div id="refinancing-branch" hidden><p class="notice">Mark each loan being refinanced in the relevant applicant's debt list. Keep it in the shared profile. Coop's native application has a different display rule, shown in its checklist.</p></div><div id="property-details"><h3>Home details</h3><div class="grid" id="property-fields"></div></div><p id="property-later" class="notice" hidden>Home not chosen: add the address and valuation later. Acceptance of an initial request must be checked with each bank.</p><details id="guarantee-fields"><summary>Guarantee and additional collateral (optional)</summary><p class="muted">A guarantee or additional property is not a cash down payment. Eligibility and bank acceptance are not checked.</p><div class="grid" id="guarantee-grid"></div><div id="eis-branch" hidden></div><label class="check"><input type="checkbox" id="has-collateral" data-path="financing.additionalCollateral">Include additional property as collateral</label><div id="collateral-branch" hidden><h3>Additional collateral</h3><div class="grid" id="collateral-fields"></div></div></details><details id="schedule-help"><summary>Understand repayment schedules</summary><p>Annuity: a level payment while the interest rate stays the same. Useful when you want a lower initial payment.</p><p>Equal principal: a higher initial payment that falls as the balance decreases. At the same amount, term and constant rate, total interest is lower.</p><p>Changing interest rates can change both schedules. Your preference is not a bank commitment.</p><label class="field">Example total interest rate (%)<input id="schedule-rate" type="number" min="0" max="30" step="0.01" value="4.5"></label><div id="schedule-example"></div></details></section>
+      <section class="card" id="documents-card"><h2>4. Documents</h2><p class="muted">Add each file once for its owner. Reuse it for selected banks. No file contents or signatures are verified.</p><div id="applicant-documents"></div><div id="valuation-document-block"><h3>Valuation report</h3><p class="muted">Add the original valuation file and record its date and format. Contents and signatures are not checked.</p><div class="grid" id="valuation-fields"></div><div id="property-documents"></div></div><div id="collateral-document-block" hidden><h3>Additional collateral valuation</h3><div class="grid" id="collateral-valuation-fields"></div><div id="collateral-documents"></div></div></section>
+      <section class="card" id="bank-selection"><h2>5. Review and choose banks</h2><div id="application-errors" tabindex="-1"></div><p id="application-summary"></p><h3>Banks to consider</h3><p class="muted">You can prepare the form before choosing banks. Selection reveals researched extra questions; it does not confirm bank requirements.</p><div class="banks" id="banks"></div><div id="bank-gap-summary"></div><div id="application-permissions"></div></section>
     </form>
     <div id="dataset-review" class="card"></div>
+    <div class="actions"><button type="submit" form="profile" id="send-all">Send to selected banks — demo</button></div><p id="send-status" class="notice" role="status" hidden></p><div id="next-actions" class="card" hidden><h3>Application prepared. What next?</h3><p>Nothing was sent. You can now add demo offers, compare terms and prepare a reviewed final-offer request.</p><button type="button" data-go="compare">Add and compare offers</button></div>
+    <details class="card" id="checks-details"><summary>See what is missing for each bank</summary><section id="checks" aria-labelledby="checks-title"><h2 id="checks-title">Questions and information to check</h2><p class="muted">Researched topics are not a certified list of mandatory fields. Unverified requirements remain separate.</p><div id="check-errors"></div><div id="shared-readiness"></div><div id="bank-checks"></div></section></details>
+    <details class="card" id="simulation-details"><summary>View example bank forms — nothing is sent</summary><section id="simulation" aria-labelledby="simulation-title"><h2 id="simulation-title">Example forms for selected banks</h2><p class="notice">Local simulation with fictional information only. These are illustrative layouts based on research, not working bank forms. No request, file or consent is sent. Missing and unverified mappings stay in the preview.</p><p id="simulation-progress" role="status"></p><div id="simulation-forms"></div></section></details>
+    <details class="card" id="export-details"><summary>Download the reviewed preparation package (optional)</summary><section id="review" aria-labelledby="review-title"><h2 id="review-title">Review your demo summary</h2><p class="notice">This export is a shared summary with research gaps, not an accepted bank application. Incomplete answers can be exported as an explicitly incomplete draft.</p><div id="review-errors"></div><div class="review-facts" id="review-facts"></div><div id="review-persons"></div><div id="review-banks"></div><div id="review-documents"></div><div id="review-permissions"></div><div id="review-workflow"></div><details><summary>Full JSON preview</summary><pre id="json-preview"></pre></details><label class="check"><input id="confirm" type="checkbox">I reviewed this fictional draft and understand that bank requirements remain unverified.</label><p><button id="export" type="button">Download demo JSON summary</button> <button id="export-package" type="button">Download ZIP with original files</button></p><p id="export-status" role="status" aria-live="polite"></p></section></details>
   </section>
-  <section id="checks" hidden aria-labelledby="checks-title"><h2 id="checks-title">Research checks for your selected banks</h2><p class="notice">F = field visible in a public form. D = topic in official guidance. Neither proves that a field is mandatory. Every bank still needs verification, even when you fill all researched items.</p><div id="check-errors"></div><div id="shared-readiness" class="card"></div><div id="bank-checks"></div><div class="actions"><button class="secondary" type="button" data-go="application">Edit application</button><button type="button" data-go="review">Review summary</button><button type="button" data-go="simulation">Open transmission simulation</button></div></section>
-  <section id="simulation" hidden aria-labelledby="simulation-title"><h2 id="simulation-title">Six bank simulations, one shared dataset</h2><p class="notice">Local simulation with fictional information only. These are illustrative layouts based on research, not working bank forms. No request, file or consent is sent. Missing and unverified mappings stay in the preview.</p><p class="muted">Select any of the six banks in the shared form. Review each fictional person for each selected recipient. LHV and Luminor have deeper partial mappings; the other previews are preparation summaries with unverified native fields.</p><p id="simulation-progress" role="status"></p><div id="simulation-forms"></div></section>
-  <section id="compare" hidden aria-labelledby="compare-title"><div class="card"><h2 id="compare-title">Compare demo and historical offers</h2><p>After the local application simulation, load fictional offers or enter demo offer terms manually. These are not bank quotes. Unknown costs stay unknown; 0 means an explicitly absent cost.</p><p id="offer-stage-status" class="notice" role="status"></p><div id="case-controls"></div><div class="actions"><button id="load-offers" type="button">Load fictional offers after simulation</button><button id="add-offer" class="secondary" type="button">Add demo offer manually</button></div><div class="grid"><label class="field">Assumed benchmark (%)<input id="benchmark" type="number" min="0" max="20" step="0.01" value="3"></label><label class="field">Scenario reference date<input id="reference-date" type="date" value="2026-10-10"></label><label class="field">Shared reset interval (months)<input id="comparison-reset" type="number" min="1" max="60" step="1" value="6"></label><label class="field">Cost horizon (years)<input id="horizon-years" type="number" min="1" max="30" step="1" value="5"></label><label class="field">Shared benchmark period<select id="comparison-period"><option value="3M">3M</option><option value="6M" selected>6M</option><option value="12M">12M</option></select></label></div><div id="comparison-controls"></div><p class="muted">This scenario assumes a constant benchmark, margin and entered costs, with the selected rate reset. Different currencies, benchmark/reset periods and special schedules are not combined. Equal-amount modelling is explicitly hypothetical. Rates and insurance costs can change.</p><p class="notice">Cost over the chosen horizon means interest plus entered fees and recurring costs. Repaid principal is excluded; remaining principal is shown separately. Full-term outflow includes repaid principal. Unknown fees prevent a complete total. Bank-provided APR is recorded separately, never calculated here.</p><div class="scroll"><table><caption>Cost comparison on shared assumptions</caption><thead><tr><th>Fictional offer</th><th>Loan payment / month</th><th>Known upfront costs</th><th>Monthly outflow with costs</th><th>Cost over chosen horizon</th><th>Remaining principal</th><th>Full-term outflow</th></tr></thead><tbody id="offer-results"></tbody></table></div><small>No ranking or recommendation. Compare insurance cover and contractual conditions alongside cost.</small></div><div id="offer-insights"></div><div id="negotiation"></div><div id="contract-check"></div><div id="offer-gaps"></div><div id="offer-inputs"></div></section>
-  <section id="review" hidden aria-labelledby="review-title"><div class="card"><h2 id="review-title">Review your demo summary</h2><p class="notice">This export is a shared summary with research gaps, not an accepted bank application. Incomplete answers can be exported as an explicitly incomplete draft.</p><div id="review-errors"></div><div class="review-facts" id="review-facts"></div><div id="review-persons"></div><div id="review-banks"></div><div id="review-documents"></div><div id="review-permissions"></div><div id="review-workflow"></div><details><summary>Full JSON preview</summary><pre id="json-preview"></pre></details><label class="check"><input id="confirm" type="checkbox">I reviewed this fictional draft and understand that bank requirements remain unverified.</label><p><button id="export" type="button">Download demo JSON summary</button> <button id="export-package" type="button">Download ZIP with original files</button></p><p id="export-status" role="status" aria-live="polite"></p></div></section>
+  <section id="compare" hidden aria-labelledby="compare-title"><div class="card"><h2 id="compare-title">Compare your offers</h2><p>Compare the monthly payment, initial costs, financing gap and conditions. Enter demo terms only; unknown costs remain unknown.</p><p id="offer-stage-status" class="notice" role="status"></p><div class="actions"><button id="add-offer" type="button">Add demo offer manually</button><button id="load-offers" class="secondary" type="button">Try fictional offers</button></div><div id="offer-summary" class="offer-summary-grid"></div><details id="comparison-details"><summary>Calculation assumptions and detailed comparison</summary><div class="grid"><label class="field">Assumed benchmark (%)<input id="benchmark" type="number" min="0" max="20" step="0.01" value="3"></label><label class="field">Scenario reference date<input id="reference-date" type="date" value="2026-10-10"></label><label class="field">Shared reset interval (months)<input id="comparison-reset" type="number" min="1" max="60" step="1" value="6"></label><label class="field">Cost horizon (years)<input id="horizon-years" type="number" min="1" max="30" step="1" value="5"></label><label class="field">Shared benchmark period<select id="comparison-period"><option value="3M">3M</option><option value="6M" selected>6M</option><option value="12M">12M</option></select></label></div><div id="comparison-controls"></div><p class="muted">This scenario assumes a constant benchmark, margin and entered costs, with the selected rate reset. Different currencies, benchmark/reset periods and special schedules are not combined. Equal-amount modelling is explicitly hypothetical. Rates and insurance costs can change.</p><p class="notice">Cost over the chosen horizon means interest plus entered fees and recurring costs. Repaid principal is excluded; remaining principal is shown separately. Full-term outflow includes repaid principal. Unknown fees prevent a complete total. Bank-provided APR is recorded separately, never calculated here.</p><div class="scroll"><table><caption>Cost comparison on shared assumptions</caption><thead><tr><th>Fictional offer</th><th>Loan payment / month</th><th>Known upfront costs</th><th>Monthly outflow with costs</th><th>Cost over chosen horizon</th><th>Remaining principal</th><th>Full-term outflow</th></tr></thead><tbody id="offer-results"></tbody></table></div><div id="offer-insights"></div><div id="offer-gaps"></div></details></div><div id="offer-value"></div><div id="offer-inputs"></div><details class="card"><summary>Ask favourite banks for a final offer</summary><div id="negotiation"></div></details><details class="card"><summary>Check promises against the contract draft</summary><div id="contract-check"></div></details></section>
   <footer>Independent hackathon concept. No Tuleva or bank endorsement implied. <a href="https://github.com/Fuusik/tuleva-hackathon-home-loan/blob/main/docs/bank-field-matrix.md" target="_blank" rel="noopener noreferrer">Research and verification gaps</a>.</footer>
 </main>
 <script src="vendor/jszip.min.js"></script>
@@ -49,10 +49,11 @@
 <script src="app-model.js"></script>
 <script src="app-stage-i18n.js"></script>
 <script src="app-v5-i18n.js"></script>
+<script src="app-v6-i18n.js"></script>
 <script src="app-i18n.js"></script>
 <script src="app-workflow.js"></script>
 <script src="app-offers.js"></script>
-<script src="app-cases.js"></script>
+<script src="app-application.js"></script>
 <script src="app-negotiation.js"></script>
 <script src="app-prefill.js"></script>
 <script src="app-guided-ui.js"></script>
@@ -61,6 +62,8 @@
 <script>
 'use strict';
 const M = LoanModel;
+const A = LoanApplication;
+let attempted = false;
 const D = DemoDocuments;
 const documentStore = D.createStore();
 const permissionRecords = new Map();
@@ -108,7 +111,11 @@ function addField(target, def, prefix, object) {
   else input.value = value == null ? '' : value;
   wrap.htmlFor = input.id;
   if (def.type === 'checkbox') wrap.append(input, node('span', def.label));
-  else wrap.append(node('span', def.label), input);
+  else wrap.append(node('span', def.label, 'field-label'), input);
+  const banks=A.extraBanks(input.dataset.path);if(banks.length)input.dataset.bankExtra=banks.join('|');
+  const hints={'loan.amount':'The amount you want to borrow. This is not a lending decision.','loan.ownContribution':'Cash you contribute. A guarantee or additional property is not cash.','property.estimatedValue':'A valuation estimate is separate from the purchase price.','household.monthlyExpenses':'Shared recurring living expenses, excluding loan repayments entered above.','household.disposableAmount':'A separate bank question; do not substitute total income.','personalId':'Use a fictional identifier such as DEMO-0001.','amount':'Enter income received after deductions; preserve its currency and frequency.','limit':'The full approved credit limit, including the unused part.','usedAmount':'The portion of the credit limit currently used.','balance':'The unpaid loan balance, not the monthly payment.','loan.repaymentSchedule':'You may ask the bank to calculate both schedules. See the explanation below.','loan.price':'For a purchase, calculated from the loan and cash down payment.'};
+  const hint=hints[input.dataset.path]||hints[def.key];if(hint){const text=node('small',hint,'field-help');text.id=input.id+'-help';input.setAttribute('aria-describedby',text.id);wrap.append(text);}
+  if(def.key==='personalId')input.pattern='DEMO-[A-Za-z0-9-]+';if(def.type==='email')input.pattern='.+@example[.]test';
   target.append(wrap);
   return input;
 }
@@ -144,36 +151,23 @@ function collection(target, prefix, applicant, key, statusKey, label, defs) {
   applicant[key].forEach(item => addRow(prefix + '.' + key, defs, item));
 }
 function renderApplicant(target, a, index) {
-  target.replaceChildren(); const details = node('details', undefined, 'card'); details.open = true; details.append(node('summary', a.role));
-  const prefix = 'applicants.' + index;
-  const identity = node('div', undefined, 'grid'); fields(identity, identityFields, prefix, a);
-  if (index === 1) addField(identity, choice('relationship', 'Relationship to primary applicant', ['Spouse', 'Partner', 'Other']), prefix, a);
-  details.append(identity);
-  details.append(node('h3', 'Employment / activity'));
-  addField(details, choice('status', 'Current activity', [['employed', 'Employed'], ['self-employed', 'Self-employed'], ['retired', 'Retired'], ['parental-leave', 'Parental leave'], ['student', 'Student'], ['unemployed', 'Unemployed'], ['other', 'Other']]), prefix + '.employment', a.employment);
-  const employed = node('div', undefined, 'grid'); employed.dataset.employedBranch = prefix;
-  fields(employed, [field('employer', 'Employer'), field('sector', 'Employer sector'), field('occupation', 'Occupation'), choice('type', 'Employment relationship type', ['Permanent', 'Fixed-term', 'Other']), num('tenureMonths', 'Tenure (months)', { step: '1' }), field('noFixedEnd', 'No fixed contract end date', 'checkbox'), field('endDate', 'Contract end date (if fixed)', 'date')], prefix + '.employment', a.employment);
-  details.append(employed);
-  collection(details, prefix, a, 'incomes', 'incomesStatus', 'Income', incomeFields);
-  collection(details, prefix, a, 'debts', 'debtsStatus', 'Debt / obligation', debtFields);
-  collection(details, prefix, a, 'creditLimits', 'creditsStatus', 'Credit limit', creditFields);
-  details.append(node('h3', 'Account statement metadata'));
-  const statements = node('div', undefined, 'grid'); fields(statements, [choice('status', 'Statement availability', [['available', 'Available / ready to add'], ['missing', 'Not available'], ['unknown', 'Unknown']]), num('months', 'Months covered', { step: '1', max: 120 }), field('allAccounts', 'Covers all existing accounts', 'checkbox')], prefix + '.statements', a.statements);
-  details.append(statements, node('small', 'Added files remain in this browser only. No identity checks or separate user access in this demo.'));
-  const docs = node('div', undefined, 'document-section');
-  docs.append(node('h3', 'Applicant documents'), node('p', 'Use fictional documents. Add statements from all relevant accounts; set the covered months separately. Files are not inspected.', 'muted'));
-  for (const [kind, title] of [['statement', 'Bank statements'], ['income-evidence', 'Other income evidence'], ['tax-certificate', 'EMTA tax-data certificate (optional alternative)'], ['other', 'Other supporting files']]) renderDocumentSlot(docs, a.id, kind, title);
-  details.append(docs);
-  const permissions = node('div'); permissions.id = 'permissions-' + a.id; permissions.dataset.permissionOwner = a.id;
-  details.append(permissions);
-  target.append(details);
+  target.replaceChildren();const card=node('div',undefined,'card');card.append(node('h3',a.role));const prefix='applicants.'+index;
+  const identity=node('div',undefined,'grid');fields(identity,identityFields.filter(f=>!['country','postalCode','language'].includes(f.key)),prefix,a);if(index===1)addField(identity,choice('relationship','Relationship to primary applicant',['Spouse','Partner','Other']),prefix,a);const more=node('details');more.append(node('summary','Additional contact information (optional)'));const moreGrid=node('div',undefined,'grid');fields(moreGrid,identityFields.filter(f=>['country','postalCode','language'].includes(f.key)),prefix,a);more.append(moreGrid);card.append(identity,more,node('h3','Employment / activity'));
+  addField(card,choice('status','Current activity',[['employed','Employed'],['self-employed','Self-employed'],['retired','Retired'],['parental-leave','Parental leave'],['student','Student'],['unemployed','Unemployed'],['other','Other']]),prefix+'.employment',a.employment);
+  const employed=node('div',undefined,'grid');employed.dataset.employedBranch=prefix;fields(employed,[field('employer','Employer'),num('tenureMonths','Tenure (months)',{step:'1'}),field('sector','Employer sector'),field('occupation','Occupation'),choice('type','Employment relationship type',['Permanent','Fixed-term','Other']),field('noFixedEnd','No fixed contract end date','checkbox'),field('endDate','Contract end date (if fixed)','date')],prefix+'.employment',a.employment);card.append(employed);
+  collection(card,prefix,a,'incomes','incomesStatus','Income',incomeFields);collection(card,prefix,a,'debts','debtsStatus','Debt / obligation',debtFields);collection(card,prefix,a,'creditLimits','creditsStatus','Credit limit',creditFields);target.append(card);
+  const docs=node('div',undefined,'document-section');docs.id='person-documents-'+index;docs.append(node('h3',a.role));const statements=node('div',undefined,'grid');fields(statements,[choice('status','Statement availability',[['available','Available / ready to add'],['missing','Not available'],['unknown','Unknown']]),num('months','Months covered',{step:'1',max:120}),field('allAccounts','Covers all existing accounts','checkbox')],prefix+'.statements',a.statements);docs.append(statements);renderDocumentSlot(docs,a.id,'statement','Bank statements');const extras=node('details');extras.append(node('summary','Other supporting documents (optional)'));for(const [kind,title] of [['income-evidence','Other income evidence'],['tax-certificate','EMTA tax-data certificate (optional alternative)'],['other','Other supporting files']])renderDocumentSlot(extras,a.id,kind,title);docs.append(extras);$('applicant-documents').append(docs);
+  const permissions=node('div');permissions.id='permissions-'+a.id;permissions.dataset.permissionOwner=a.id;$('application-permissions').append(permissions);
 }
 function rebuild(d, source = 'fictional-example') {
   documentStore.clear(); permissionRecords.clear();
-  repeaters.clear(); $('banks').replaceChildren();
+  repeaters.clear(); $('banks').replaceChildren();$('applicant-documents').replaceChildren();$('application-permissions').replaceChildren();attempted=false;
   for (const bank of M.banks) { const label = node('label'); const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.dataset.bank = bank; checkbox.checked = d.selectedBanks.includes(bank); label.append(checkbox, document.createTextNode(bank)); $('banks').append(label); }
-  for (const id of ['loan-fields', 'guarantee-grid', 'eis-branch', 'construction-fields', 'household-fields', 'property-fields', 'valuation-fields', 'collateral-fields']) $(id).replaceChildren();
-  fields($('loan-fields'), [choice('purpose', 'Loan purpose', [['purchase', 'Purchase'], ['construction', 'Construction'], ['renovation', 'Renovation'], ['refinancing', 'Refinancing']]), num('amount', 'Loan amount (\u20ac)', { min: 1 }), num('termYears', 'Term (years)', { min: 1, max: 30, step: '1' }), num('termMonths', 'Term in months (alternative)', { min: 1, max: 360, step: '1' }), num('price', 'Purchase price / project budget (\u20ac)', { min: 1 }), num('ownContribution', 'Own contribution (\u20ac)'), field('contributionSource', 'Source of own contribution'), choice('repaymentSchedule', 'Preferred schedule (demo choice)', [['annuity', 'Annuity'], ['special', 'Special / interest-only schedule'], ['unsure', 'Undecided']]), num('paymentDay', 'Preferred payment day', { min: 1, max: 31, step: '1' }), field('campaignCode', 'Campaign code (optional)'), field('notes', 'Additional notes', 'textarea', { wide: true })], 'loan', d.loan);
+  for (const id of ['purpose-fields','property-status-fields','loan-fields', 'guarantee-grid', 'eis-branch', 'construction-fields', 'household-fields', 'property-fields', 'valuation-fields', 'collateral-fields','collateral-valuation-fields']) $(id).replaceChildren();
+  fields($('purpose-fields'),[choice('purpose','Loan purpose',[['purchase','Purchase'],['construction','Construction'],['renovation','Renovation'],['refinancing','Refinancing']])],'loan',d.loan);
+  fields($('property-status-fields'),[choice('status','Have you chosen a home?',[['selected','Yes, I have chosen a home'],['searching','I am still looking']])],'property',d.property);
+  fields($('loan-fields'),[num('amount','Loan amount (€)',{min:1}),num('ownContribution','Cash down payment (€)'),num('otherFunding','Other financing (€)'),num('price','Purchase price / project budget (€)',{min:1}),num('termYears','Term (years)',{min:1,max:30,step:'1'}),num('termMonths','Term (months)',{min:1,max:360,step:'1'}),choice('repaymentSchedule','Preferred repayment schedule',[['unsure','Ask the bank to calculate both'],['annuity','Annuity'],['equal-principal','Equal principal payments']]),field('contributionSource','Source of own contribution'),num('paymentDay','Preferred payment day',{min:1,max:31,step:'1'})],'loan',d.loan);
+  const notes=node('details');notes.append(node('summary','Additional information (optional)'));const notesGrid=node('div',undefined,'grid');fields(notesGrid,[field('campaignCode','Campaign code (optional)'),field('notes','Additional notes','textarea',{wide:true})],'loan',d.loan);notes.append(notesGrid);$('loan-fields').append(notes);
   fields($('guarantee-grid'), [choice('guarantee', 'Guarantee / other financing', [['none', 'None'], ['EIS', 'EIS (former KredEx)'], ['MES', 'MES co-loan'], ['unsure', 'Undecided']])], 'financing', d.financing);
   addField($('eis-branch'), field('targetGroup', 'EIS target group (eligibility not verified)'), 'financing', d.financing);
   fields($('construction-fields'), [field('stageBudget', 'Stage budget with own / loan funding split', 'textarea', { wide: true }), choice('permitStatus', 'Permit status', [['available', 'Available'], ['pending', 'Pending'], ['not-applicable', 'Not applicable'], ['unknown', 'Unknown']]), num('currentValue', 'Current property valuation (\u20ac)'), num('futureValue', 'Future property valuation (\u20ac)')], 'construction', d.construction);
@@ -183,7 +177,7 @@ function rebuild(d, source = 'fictional-example') {
   fields($('household-fields'), [num('dependants', 'All dependants', { step: '1' }), num('childrenUnder18', 'Children under 18', { step: '1' }), num('monthlyExpenses', 'Shared monthly household expenses (\u20ac)'), field('disposableAmount', 'Household monthly disposable money (\u20ac)', 'number', { step: '0.01' })], 'household', d.household);
   fields($('property-fields'), propertyFields, 'property', d.property);
   fields($('valuation-fields'), valuationFields, 'property', d.property);
-  fields($('collateral-fields'), [...propertyFields.filter(f => !['country', 'intendedUse', 'listingUrl', 'energyClass'].includes(f.key)), ...valuationFields], 'additionalProperty', d.additionalProperty);
+  fields($('collateral-fields'),propertyFields.filter(f=>!['country','intendedUse','listingUrl','energyClass'].includes(f.key)),'additionalProperty',d.additionalProperty);fields($('collateral-valuation-fields'),valuationFields,'additionalProperty',d.additionalProperty);
   $('has-collateral').checked = d.financing.additionalCollateral;
   $('property-documents').replaceChildren(); renderDocumentSlot($('property-documents'), 'property', 'valuation', 'Main property valuation file');
   $('collateral-documents').replaceChildren(); renderDocumentSlot($('collateral-documents'), 'additionalProperty', 'valuation', 'Additional collateral valuation file');
@@ -192,9 +186,16 @@ function rebuild(d, source = 'fictional-example') {
 function pathInput(path) { return [...form.querySelectorAll('[data-path]')].find(el => el.dataset.path === path); }
 function branch(el, enabled) { el.hidden = !enabled; el.querySelectorAll('input,select,textarea,button').forEach(x => x.disabled = !enabled); }
 function syncBranches() {
+  for(const input of form.querySelectorAll('[data-bank-extra]'))input.disabled=false;
+  updateFinance();
   renderPermissions();
   branch($('co-container'), $('has-co').checked);
   const purpose = pathInput('loan.purpose').value;
+  branch($('property-status-fields'),purpose==='purchase');
+  const chosen=purpose!==''&&(purpose!=='purchase'||pathInput('property.status').value==='selected');
+  branch($('property-details'),chosen);branch($('valuation-document-block'),chosen);$('property-later').hidden=purpose!=='purchase'||pathInput('property.status').value!=='searching';
+  branch($('person-documents-1'),$('has-co').checked);branch($('collateral-document-block'),$('has-collateral').checked);
+  for(const [path,visible] of [['loan.otherFunding',pathInput('financing.guarantee').value==='MES'],['loan.termYears',purpose!=='refinancing'],['loan.termMonths',purpose==='refinancing'],['loan.ownContribution',purpose!=='refinancing'],['loan.price',purpose!=='refinancing']]){const input=pathInput(path);input.disabled=!visible;input.closest('label').hidden=!visible;}
   branch($('construction-branch'), ['construction', 'renovation'].includes(purpose));
   $('refinancing-branch').hidden = purpose !== 'refinancing';
   branch($('eis-branch'), pathInput('financing.guarantee').value === 'EIS');
@@ -205,6 +206,7 @@ function syncBranches() {
     branch(e, pathInput(prefix + '.employment.status').value === 'employed');
     pathInput(prefix + '.employment.endDate').disabled = e.hidden || pathInput(prefix + '.employment.noFixedEnd').checked;
   }
+  const d=read(),required=new Set(A.requirements(d).map(r=>r[0]));for(const input of form.querySelectorAll('[data-bank-extra]')){const visible=required.has(input.dataset.path)||input.dataset.bankExtra.split('|').some(b=>d.selectedBanks.includes(b));input.closest('label').hidden=!visible;if(!visible)input.disabled=true;}
   for (const el of form.querySelectorAll('[data-collection-branch]')) {
     if (el.dataset.collectionBranch.startsWith('applicants.1') && !$('has-co').checked) continue;
     branch(el, pathInput(el.dataset.collectionBranch).value === 'provided');
@@ -218,6 +220,7 @@ function read() {
     const value = input.type === 'checkbox' ? input.checked : input.type === 'number' ? (input.value === '' ? null : input.valueAsNumber) : input.value.trim();
     set(d, input.dataset.path, value);
   }
+  if(d.loan.purpose!=='purchase')d.property.status=d.loan.purpose?'selected':'';
   d.selectedBanks = [...form.querySelectorAll('[data-bank]:checked')].map(el => el.dataset.bank);
   d.documents = documentStore.manifest(d);
   for (const a of d.applicants) a.emtaPermissions = D.permissionsFor(permissionRecords, a.id, d.selectedBanks);
@@ -227,8 +230,10 @@ function changed() {
   revision++; $('revision').textContent = t('Draft {n}', { n: revision });
   reviewPayload = null; $('confirm').checked = false; $('export-status').textContent = '';
   for (const input of $('review-persons').querySelectorAll('[data-review-person]')) input.checked = false;
-  if (stageUI) stageUI.invalidate(); if (guidedUI) guidedUI.refresh();
-  if (currentPage === 'checks') renderChecks();
+  if (stageUI) stageUI.invalidate(); if (guidedUI) guidedUI.refresh();updateOverview();
+  if ($('checks-details').open) renderChecks();
+  if ($('simulation-details').open) stageUI.renderSimulation();
+  if ($('export-details').open) renderReview();
 }
 function invalidateExport() {
   reviewGeneration++; reviewPayload = null; $('confirm').checked = false; $('export-status').textContent = '';
@@ -236,16 +241,17 @@ function invalidateExport() {
 }
 form.addEventListener('input', event => {
   const path = event.target.dataset.path || '';
+  if(!path&&!event.target.dataset.bank&&!['has-co','has-collateral'].includes(event.target.id)&&!event.target.id.startsWith('permission-'))return;
   if(path==='loan.termYears')pathInput('loan.termMonths').value='';if(path==='loan.termMonths')pathInput('loan.termYears').value='';
   const identity = path.match(/^applicants\.(0|1)\.(firstName|lastName|personalId)$/);
   if (identity) { D.clearPersonPermissions(permissionRecords, identity[1] === '0' ? 'primary' : 'co'); renderPermissions(true); }
   syncBranches(); changed(); if (guidedUI) guidedUI.edited(path);
 });
 form.addEventListener('change', () => { syncBranches(); });
-form.onsubmit = event => { event.preventDefault(); show('checks'); };
+form.onsubmit=event=>{event.preventDefault();attempted=true;updateOverview();const d=read();if(A.issues(d).length||invalidMessages(d).length||!d.selectedBanks.length){$('application-errors').focus();$('application-errors').scrollIntoView({block:'start'});return;}try{stageUI.sendAll();$('send-status').hidden=false;$('send-status').textContent=t('Demo complete for {banks}. Nothing was sent; bank requirements remain unverified.',{banks:d.selectedBanks.join(', ')});$('next-actions').hidden=false;$('offers-tab').hidden=false;}catch(error){$('send-status').hidden=false;$('send-status').textContent=t(error.message);$('dataset-review').scrollIntoView({block:'start'});}renderChecks();stageUI.renderSimulation();};
 function invalidMessages(d) {
   const out = M.errors(d);
-  for (const input of form.querySelectorAll('input,select,textarea')) if (!input.disabled && !input.checkValidity()) {
+  for (const input of form.querySelectorAll('[data-path]')) if (!input.disabled && !input.checkValidity()) {
     const label = input.closest('label'); const labelNode = label && label.querySelector('[data-i18n]');
     const title = labelNode ? translate(labelNode.dataset.i18n) : t('Field');
     const v = input.validity;
@@ -264,6 +270,24 @@ function renderChecks() {
   stageUI.sharedReadiness(d); d.selectedBanks.forEach(bank => target.append(stageUI.bankCard(d, bank)));
 }
 const money = v => new Intl.NumberFormat(I.getLocale() === 'et' ? 'et-EE' : 'en-IE', { style: 'currency', currency: 'EUR' }).format(v);
+function updateFinance(){const purpose=pathInput('loan.purpose')?.value;if(!purpose)return;const price=pathInput('loan.price');price.readOnly=purpose==='purchase';if(purpose==='purchase'){const number=p=>{const x=pathInput(p);return x.value===''?null:x.valueAsNumber;};const derived=A.purchasePrice(number('loan.amount'),number('loan.ownContribution'),pathInput('financing.guarantee').value==='MES'?number('loan.otherFunding'):0);price.value=derived===null?'':derived;price.dataset.demoSource='Calculated from your answers';}}
+function jumpToField(path){const input=path==='selectedBanks'?$('banks').querySelector('input'):pathInput(path);if(!input)return;show('application');let el=input.parentElement;while(el){if(el.tagName==='DETAILS')el.open=true;el=el.parentElement;}input.scrollIntoView({block:'center'});input.focus();}
+function updateOverview(){
+  if(!pathInput('loan.amount'))return;const d=read(),required=A.requirements(d),issues=A.issues(d),filled=required.filter(([p])=>M.has(A.get(d,p))).length;
+  $('form-progress').textContent=t('{filled} of {total} shared answers completed. You can scroll and edit freely.',{filled,total:required.length});
+  $('application-summary').textContent=t('Loan {amount}; cash down payment {cash}; purchase price / budget {price}; {people} applicants; {files} files.',{amount:M.has(d.loan.amount)?money(d.loan.amount):t('Not answered'),cash:M.has(d.loan.ownContribution)?money(d.loan.ownContribution):t('Not answered'),price:M.has(d.loan.price)?money(d.loan.price):t('Not answered'),people:d.applicants.length,files:d.documents.length});
+  $('funding-formula').hidden=!d.loan.purpose;$('funding-formula').textContent=t(d.loan.purpose==='purchase'?(d.financing.guarantee==='MES'?'Purchase budget = loan + cash down payment + entered other financing. No funding approval is implied.':'Purchase price / home budget = loan amount + cash down payment. Valuation and guarantees are separate.'):d.loan.purpose==='refinancing'?'Enter the requested refinancing amount and remaining term. Mark the debts being replaced.':'Project budget and stage funding are entered separately; they may include other financing.');
+  $('bank-gap-summary').replaceChildren();for(const bank of d.selectedBanks){const c=M.bankCheck(d,bank),p=node('p',undefined,'notice warn');p.append(node('span',t('{bank}: {n} researched items to review; {u} unverified topics. Needs bank verification.',{bank,n:c.missingCount,u:c.unverified.length}),undefined,true));const link=node('a','See questions and requirements');link.href='#checks';link.onclick=e=>{e.preventDefault();show('checks');};p.append(document.createTextNode(' '),link);$('bank-gap-summary').append(p);}
+  const needed=new Set(required.map(r=>r[0]));for(const input of form.querySelectorAll('[data-path]')){const label=input.closest('label');if(!label)continue;let mark=label.querySelector('.optional-mark');if(!needed.has(input.dataset.path)&&!input.readOnly&&input.type!=='checkbox'&&!/optional/i.test(label.querySelector('[data-i18n]')?.dataset.i18n||'')){if(!mark){mark=node('small',undefined,'optional-mark');label.append(mark);}const key=input.dataset.bankExtra?'Bank question; confirm whether required':'Optional';mark.dataset.i18n=key;mark.textContent=t(key);mark.hidden=false;}else if(mark)mark.hidden=true;}
+  $('application-errors').replaceChildren();for(const el of form.querySelectorAll('.field-error'))el.remove();for(const input of form.querySelectorAll('[aria-invalid]')){input.removeAttribute('aria-invalid');if($(input.id+'-help'))input.setAttribute('aria-describedby',input.id+'-help');else input.removeAttribute('aria-describedby');}
+  if(attempted){const all=[...issues];if(!d.selectedBanks.length)all.push({path:'selectedBanks',label:'Banks to consider',message:'Select at least one bank before sending the demo'});for(const input of form.querySelectorAll('[data-path]'))if(!input.disabled&&!input.checkValidity())all.push({path:input.dataset.path,label:input.closest('label').querySelector('[data-i18n]')?.dataset.i18n||'Field',message:'Check the format and allowed range; use fictional demo data'});
+    const list=node('ul',undefined,'list');const seen=new Set();for(const issue of all){const key=issue.path;if(seen.has(key))continue;seen.add(key);const person=issue.path.match(/^applicants\.(\d+)\./),text=(person?t(d.applicants[Number(person[1])].role)+': ':'')+t(issue.label)+': '+t(issue.message),li=node('li'),link=node('a',text,undefined,true);link.href='#'+(issue.path==='selectedBanks'?'bank-selection':pathInput(issue.path)?.id||'bank-selection');link.onclick=e=>{e.preventDefault();jumpToField(issue.path);};li.append(link);list.append(li);const input=pathInput(issue.path);if(input){input.setAttribute('aria-invalid','true');const error=node('small',t(issue.message),'field-error',true);error.id=input.id+'-error';input.closest('label').append(error);input.setAttribute('aria-describedby',[input.id+'-help',error.id].filter(id=>$(id)).join(' '));}}
+    if(seen.size){$('application-errors').className='notice error';$('application-errors').append(node('strong',t('{n} answers need attention',{n:seen.size}),undefined,true),list);}else $('application-errors').className='';}
+  const prepared=!!stageUI?.isPrepared();$('next-actions').hidden=!prepared;$('offers-tab').hidden=!prepared;if(!prepared)$('send-status').hidden=true;
+  ctxSchedule();
+}
+function ctxSchedule(){const target=$('schedule-example');if(!target||!pathInput('loan.amount'))return;target.replaceChildren();const d=read(),months=LoanOffers.monthsOf(d.loan),rate=$('schedule-rate').value===''?null:$('schedule-rate').valueAsNumber;
+  for(const [schedule,label] of [['annuity','Annuity'],['equal-principal','Equal principal payments']]){const r=M.amortization(d.loan.amount,rate,months,schedule);if(!r){target.append(node('p','Enter amount, term and example rate to compare schedules.'));break;}const box=node('div',undefined,'notice');box.append(node('strong',label),node('p',t('First payment {first}; last payment {last}; total interest {interest}. Constant-rate example, excluding fees.',{first:money(r.firstPayment),last:money(r.lastPayment),interest:money(r.totalInterest)}),undefined,true));target.append(box);}}
 function calculate() { if (stageUI) stageUI.calculate(); }
 function renderReview() {
   const d = read(); reviewPayload = localizedSummary(d); const errs = [...invalidMessages(d), ...stageUI.offerErrors()]; messageList($('review-errors'), errs, 'Correct invalid values before download');
@@ -279,10 +303,12 @@ function renderReview() {
   $('json-preview').textContent = JSON.stringify(reviewPayload, null, 2); $('confirm').checked = false; $('export-status').textContent = '';
 }
 function show(page) {
-  currentPage = page; document.querySelectorAll('main>section').forEach(s => s.hidden = s.id !== page);
-  document.querySelectorAll('nav button').forEach(b => b.dataset.page === page ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'));
-  if (page === 'checks') renderChecks(); if (page === 'compare') calculate(); if (page === 'review') renderReview(); if (page === 'simulation') stageUI.renderSimulation(); if (page === 'application') stageUI.renderDataset();
-  const title = $(page).querySelector('h2'); title.tabIndex = -1; title.focus();
+  const sub=['checks','review','simulation'].includes(page)?page:null;if(sub)page='application';
+  if(page==='compare'&&!stageUI.isPrepared()){ $('feedback').textContent=t('Prepare the current application before opening offers.');return; }
+  currentPage=page;document.querySelectorAll('main>section').forEach(s=>s.hidden=s.id!==page);document.querySelectorAll('nav button').forEach(b=>b.dataset.page===page?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current'));
+  if(page==='compare')calculate();else{stageUI.renderDataset();updateOverview();}
+  if(sub==='checks')renderChecks();if(sub==='review')renderReview();if(sub==='simulation')stageUI.renderSimulation();
+  if(sub){const target=$(sub);target.closest('details').open=true;target.scrollIntoView({block:'start'});}else{const title=$(page).querySelector('h2');title.tabIndex=-1;title.focus();}
 }
 document.querySelectorAll('[data-page]').forEach(b => b.onclick = () => show(b.dataset.page));
 document.querySelectorAll('[data-go]').forEach(b => b.onclick = () => show(b.dataset.go));
@@ -309,7 +335,7 @@ async function exportDraft(includeFiles) {
     if (revision !== d.revision || generation !== reviewGeneration) { $('export-status').textContent = t('The draft changed. Review it again before download.'); return; }
     if (!$('confirm').checked || ![...$('review-persons').querySelectorAll('[data-review-person]')].every(input => input.checked)) { $('export-status').textContent = t('Review each fictional applicant profile and tick the summary confirmation.'); return; }
     const url = URL.createObjectURL(new Blob([data], { type: includeFiles ? 'application/zip' : 'application/json' }));
-    const a = document.createElement('a'); a.href = url; a.download = includeFiles ? 'home-loan-demo-package-v5.zip' : 'home-loan-demo-summary-v5.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const a = document.createElement('a'); a.href = url; a.download = includeFiles ? 'home-loan-demo-package-v6.zip' : 'home-loan-demo-summary-v6.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
     $('export-status').textContent = t(includeFiles ? 'ZIP downloaded with original files and demo permission choices. Nothing was sent to a bank or EMTA.' : 'JSON downloaded with file metadata only. Use ZIP to include original files. Nothing was sent to a bank or EMTA.');
   } catch (error) {
     $('export-status').textContent = t('Could not prepare the local package. Review the files and try again.');
@@ -361,10 +387,10 @@ function renderFileList(box) {
 }
 function renderAllDocumentLists() { form.querySelectorAll('[data-document-owner]').forEach(renderFileList); }
 function renderPermissions(force = false) {
-  const banks = selectedBanks(), signature = banks.join('|') + '|' + I.getLocale();
+  const banks = selectedBanks(), signature = banks.join('|') + '|' + I.getLocale()+'|'+$('has-co').checked;
   for (const ownerId of ['primary','co']) {
     const target = $('permissions-' + ownerId); if (!target || !force && target.dataset.signature === signature) continue;
-    target.dataset.signature = signature; target.replaceChildren();
+    target.dataset.signature = signature;target.hidden=!banks.length||(ownerId==='co'&&!$('has-co').checked); target.replaceChildren();
     target.append(node('h3', 'Permission for EMTA queries'), node('p', 'Choose separately for each applicant and selected bank. Demo choices do not authorize a real query. Each person must authorize their own data in the accepted bank or state-portal flow.', 'notice'));
     target.append(node('p', 'Tax-data certificate scope: employment register entries, declared income and tax-debt information. Exact data blocks and the bank authorization process remain unverified.', 'muted'));
     const source = node('a', 'EMTA guidance on certificates and permissions'); source.href = D.permissionSource; source.target = '_blank'; source.rel = 'noopener noreferrer'; target.append(source);
@@ -445,10 +471,11 @@ function applyLanguage(language) {
   $('revision').textContent = t('Draft {n}', { n: revision });
   $('export-status').textContent = '';
   renderAllDocumentLists(); renderPermissions(true); syncBranches();
-  if (stageUI) stageUI.translatePage(); if (guidedUI) guidedUI.translate();
-  if (currentPage === 'checks') renderChecks();
+  if (stageUI) stageUI.translatePage(); if (guidedUI) guidedUI.translate();updateOverview();ctxSchedule();
+  if ($('checks-details').open) renderChecks();
+  if ($('simulation-details').open) stageUI.renderSimulation();
   if (currentPage === 'compare') calculate();
-  if (currentPage === 'review') {
+  if ($('export-details').open) {
     renderReview();
     [...$('review-persons').querySelectorAll('[data-review-person]')].forEach((input, index) => input.checked = !!reviewStates[index]);
     $('confirm').checked = summaryReviewed;
@@ -458,10 +485,11 @@ document.querySelectorAll('[data-language]').forEach(button => button.onclick = 
   applyLanguage(button.dataset.language);
   $('feedback').textContent = t(button.dataset.language === 'et' ? 'Language changed to Estonian.' : 'Language changed to English.');
 });
-stageUI = createStageUI({W:LoanWorkflow,O:LoanOffers,M,I,read,t,node,money,pathInput,show,renderPreparation,invalidMessages,invalidateExport,currentPage:()=>currentPage,loadFinancingCase:(meta,banks)=>{for(const [key,value] of Object.entries({purpose:meta.id==='existing2025'?'refinancing':'purchase',amount:meta.principal,termYears:'',termMonths:meta.months,price:meta.principal,ownContribution:0,contributionSource:t('Fictional case financing assumption')})){const input=pathInput('loan.'+key);input.value=value;}document.querySelectorAll('[data-bank]').forEach(input=>input.checked=banks.includes(input.dataset.bank));syncBranches();changed();if(guidedUI){guidedUI.mark(['purpose','amount','termMonths','price','ownContribution','contributionSource'].map(key=>'loan.'+key),'Fictional case financing assumption');}}});
+$('checks-details').ontoggle=()=>{if($('checks-details').open)renderChecks();};$('simulation-details').ontoggle=()=>{if($('simulation-details').open)stageUI.renderSimulation();};$('export-details').ontoggle=()=>{if($('export-details').open)renderReview();};$('schedule-rate').oninput=()=>{ctxSchedule();};
+stageUI = createStageUI({W:LoanWorkflow,O:LoanOffers,M,I,read,t,node,money,pathInput,show,renderPreparation,invalidMessages,invalidateExport,currentPage:()=>currentPage,onPreparationChange:()=>{updateOverview();if($('simulation-details').open)stageUI.renderSimulation();},jumpToField});
 stageUI.initialize();
 guidedUI = createGuidedUI({M,t,node,pathInput,read,changed,syncBranches,clearIdentityChoices:owner=>{D.clearPersonPermissions(permissionRecords,owner);renderPermissions(true);},addIncome:(prefix,row)=>addRow(prefix+'.incomes',incomeFields,row)});
-rebuild(sampleForUI());
+rebuild(M.blank(), 'blank');
 applyLanguage('et');
 </script>
 </body>

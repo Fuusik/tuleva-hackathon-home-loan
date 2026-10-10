@@ -104,9 +104,9 @@ See [document-permissions.md](document-permissions.md). Confirm genuine consent 
 
 The owner initially requested two recipient-form demonstrations and later expanded the demo to all six banks. LHV and Luminor retain deeper partial local adapters from the same reviewed dataset; Swedbank, SEB, Coop and Bigbank have preparation summaries with explicit unmapped shared data, not certified native forms. They illustrate the documented differences above, preserve missing/unknown mappings and never submit anything. LHV amount/term mapping remains unresolved. Luminor's whole-year/month term representation is an illustrative adapter choice, not a verified live schema. The Coop illustrative refinancing view excludes marked replacement debts separately while canonical data retains them; this does not establish a complete Coop form. There is no upgrade to evidence or mandatory flags. See [workflow-demo.md](workflow-demo.md).
 
-## Historical cases are not current requirements
+## Demo examples do not establish bank requirements
 
-The v5 comparison demos use owner-authorised, anonymised 2020/2025 terms documented in [demo-cases.md](demo-cases.md). Historical salary-routing, valuation, statement-period and co-applicant observations do not upgrade any F/D/? cell or mandatory flag. Private emails and identities are excluded from the repository. Simulated Smart-ID/EMTA/statement source buttons use synthetic data and establish no integration or access entitlement.
+The v6 application and offer examples are entirely fictional. No historical household cases are included. Demonstrations and source suggestions do not upgrade any F/D/? cell or mandatory flag. Property details may be deferred while the applicant is still looking; acceptance of such an initial request remains unverified for each bank. Smart-ID/EMTA/statement buttons use synthetic values and establish no integration or access entitlement. The v6 interface revision changes no bank research evidence.
 
 ## Implementation and verification backlog
 

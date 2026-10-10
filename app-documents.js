@@ -15,7 +15,7 @@
   function validSlot(ownerId, kind) {
     return ['primary', 'co'].includes(ownerId) ? ['statement', 'income-evidence', 'tax-certificate', 'other'].includes(kind) : ['property', 'additionalProperty'].includes(ownerId) && kind === 'valuation';
   }
-  function activeOwners(d) { return new Set([...d.applicants.map(a => a.id), 'property', ...(d.financing.additionalCollateral ? ['additionalProperty'] : [])]); }
+  function activeOwners(d) { const pending=d.loan.purpose==='purchase'&&['','searching'].includes(d.property.status);return new Set([...d.applicants.map(a => a.id), ...(!pending?['property']:[]), ...(d.financing.additionalCollateral ? ['additionalProperty'] : [])]); }
   function activeManifest(d) { const owners = activeOwners(d); return (d.documents || []).filter(r => owners.has(r.ownerId)); }
   function createStore() {
     const records = new Map(); let serial = 0;
