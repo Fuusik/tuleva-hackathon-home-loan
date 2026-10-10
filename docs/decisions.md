@@ -18,6 +18,7 @@ All entries below were recorded on 10 October 2026. Dates indicate when the repo
 | D06 | Use GitHub as the shared source of project code and written context. | Owner created and connected `Fuusik/tuleva-hackathon-home-loan` and requested commits and collaborator documentation. Collaborators should not depend on private chat access. |
 | D07 | Keep the prototype easy to run without a paid API. | Owner's setup/cost constraint and current implementation. Open `index.html` with its local scripts; no server, installation or API keys are needed to run the demo. |
 | D08 | Add statements for both people, valuation files and separate EMTA permission choices in the shared application. | Explicit owner instruction on 10 October 2026. Implement actual local file selection and reviewed ZIP packaging; preserve demo-only operation and keep genuine queries/authorization unimplemented. |
+| D09 | Prioritize one checked/pre-filled dataset, recipient readiness, two bank-form simulations and comprehensive post-application offer comparison. | Explicit four-point owner instruction. The core remains reducing repeated applications. Demonstrate LHV/Luminor partial mappings locally; compare costs and conditions without bank quotes, receipt claims or rankings. |
 
 ## Implemented and research-driven baseline
 
@@ -29,12 +30,13 @@ These are the current design choices, not a claim of bank confirmation. All were
 | B02 | Build from the union of observed fields and validate mappings per bank. | A single "most complex" form has not been verified. F/D evidence does not establish required-field flags; unresolved mappings remain visible. |
 | B03 | Preserve original data and distinct meanings. | Unknown differs from zero/none. Keep original income currency/frequency, credit limits, dependants/children, disposable money and refinancing debt flags separate. |
 | B04 | Use separate fictional applicant and co-applicant profiles on the same device. | There are no invitations, independent accounts or genuine bank consents. Per-person export review is a demo acknowledgement. |
-| B05 | Export a canonical JSON summary and optional ZIP with original local files after review. | Retain missing answers and gaps; block invalid values and require a selected bank. Application edits invalidate earlier review. The JSON is not an accepted native bank application and does not implement the Coop-specific debt exclusion. |
-| B06 | Compare fictional annuity scenarios only. | Use the same principal, term and assumed benchmark. Special schedules are not calculated. Totals are scenario payments plus a contract fee, not complete APR or a binding offer. Do not rank or recommend a bank. |
+| B05 | Export a canonical JSON summary and optional ZIP with original local files after review. | Retain missing answers and gaps; block invalid values and require a selected bank. Application edits invalidate earlier shared/recipient/export review and simulations; offer/assumption edits invalidate export review. Schema v4 also exports current review, local simulations and offer assumptions/results. The JSON is not an accepted native bank application and does not implement the Coop-specific debt exclusion. |
+| B06 | Compare fictional annuity scenarios only. | Use the same principal, term and assumed benchmark. Special schedules are not calculated. Include upfront and recurring costs plus qualitative terms. Horizon borrowing cost excludes repaid principal; full-term outflow includes it. Unknown fees suppress complete totals. Incompatible/expired offers are withheld. APR is recorded only as supplied. Do not rank or recommend a bank. |
 | B07 | Keep entries, selected files and demo permission choices in page memory. | No persistence or uploads. Reloading discards the draft. The user may explicitly download JSON metadata or a ZIP containing active original files. Reload or resetting the draft clears the references and choices. |
 | B08 | Preserve stable export keys while translating descriptions. | JSON records `uiLanguage`; checklist messages follow that language. Switching the interface does not translate user data or alter canonical option values. |
-| B09 | Keep production services outside the current implementation. | Local file selection and ZIP packaging are built. Server uploads, bank/EMTA integrations, genuine authorization, file verification, real offer parsing, independent co-applicant access and negotiation drafts remain unimplemented. |
+| B09 | Keep production services outside the current implementation. | Local file selection and ZIP packaging are built. Server uploads, bank/EMTA integrations, genuine authorization, file verification, received-offer parsing, independent co-applicant access and negotiation drafts remain unimplemented. |
 | B10 | Keep EMTA choices separate for each applicant and selected bank. | Nothing is preselected. Record status, time and demo text version; permit refusal/withdrawal. A demo choice never becomes genuine authorization. Exact bank scope and the accepted process remain unverified. |
+| B11 | Keep two illustrative adapters separate from the canonical dataset. | Research-backed differences are demonstrated for LHV/Luminor. Preserve income currency, household meanings and unknown mappings; adapters are partial and never sent. |
 
 ## Collaboration workflow
 
@@ -54,7 +56,7 @@ GitHub Desktop keeps a collaborator's local clone in sync: fetch remote changes 
 
 - Which complete bank specifications and submission channels can be confirmed?
 - What genuine co-applicant and recipient-specific disclosure flow should a live service use?
-- How will real offers, additional costs and different schedules be compared?
+- How will genuine received offers, variable rates, financed fees and different schedules be compared? Demo manual intake and constant-rate detailed comparison are implemented.
 - What operating model, regulatory review, security and retention design are appropriate before launch?
 - What business model and pricing should be used?
 - Is a hosted demo needed, and where should it run? There is no hosted deployment yet.

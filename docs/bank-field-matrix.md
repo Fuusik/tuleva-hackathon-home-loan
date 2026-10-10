@@ -100,6 +100,10 @@ EMTA describes tax-data certificates and consent-based requests by participating
 
 See [document-permissions.md](document-permissions.md). Confirm genuine consent and bank-specific document handling before any live integration.
 
+## Illustrative mappings in the demo
+
+The owner requested demonstrations of two different recipient forms. LHV and Luminor now have partial local adapters from the same reviewed dataset. They illustrate the documented differences above, preserve missing/unknown mappings and never submit anything. LHV amount/term mapping remains unresolved. Luminor's term-to-months transformation is an illustrative adapter choice, not a verified live schema. There is no upgrade to evidence or mandatory flags. See [workflow-demo.md](workflow-demo.md).
+
 ## Implementation and verification backlog
 
 1. Confirm complete forms for each bank using authorized walkthroughs or bank-provided specifications. Record exact field labels, option values, mandatory/conditional status, formats, limits and evidence date.

@@ -44,7 +44,7 @@ This is a hackathon concept associated with the Tuleva hackathon project. It doe
 - Comparison of margin, benchmark and reset period, repayment schedule, fees, monthly payment, insurance/account conditions, early repayment terms and offer expiry.
 - A negotiation draft that uses actual competing offers only when supplied by the applicant.
 
-The bullets above describe the target scope. The implemented demo is described under Repository status below; genuine co-applicant access, bank-specific accepted exports, real offer intake and negotiation drafts are not implemented.
+The bullets above describe the target scope. The implemented demo is described under Repository status below; genuine co-applicant access, accepted bank exports, received-offer parsing and negotiation drafts are not implemented. Manual demo offer intake and local transmission simulations are now implemented.
 
 The demo uses synthetic data. Real bank submission, identity verification, credit decisions, account-data access and autonomous negotiation are outside the initial MVP.
 
@@ -87,29 +87,33 @@ The expanded demo includes:
 - Conditional construction/renovation fields, and debt-level refinancing flags.
 - A checklist for every selected bank with missing researched items, unverified mappings and source links. F/D evidence does not establish mandatory bank requirements. All banks remain labelled "Needs bank verification".
 - Separate statement/supporting-file sections for each applicant, valuation files for the main property and optional collateral, and per-person/per-bank EMTA demo permission choices.
-- Fictional annuity offer scenarios and reviewed JSON/ZIP exports that include outstanding gaps. JSON contains metadata; ZIP includes the original selected files.
+- A user-reviewed shared dataset with a labelled fictional prefill source and revision-bound section confirmations.
+- Recipient readiness: reusable shared answers, only each bank's additional researched topics, editable missing extras and permission/file preparation.
+- Two different illustrative LHV/Luminor form mappings and timestamped local transmission simulations with separate per-person recipient review. Nothing is sent.
+- Manual demo offer intake and post-simulation fictional offers with upfront/recurring costs, insurance, account costs, APR as supplied, expiry and conditions. Unknown fees and incompatible offers stay visible.
+- Reviewed JSON/ZIP exports including shared review, simulations, offer assumptions/results and unresolved gaps. JSON contains metadata; ZIP includes original active files.
 
-See [docs/document-permissions.md](docs/document-permissions.md) for file limits, scope, review and export behavior.
+See [docs/workflow-demo.md](docs/workflow-demo.md) for the five-page demo walkthrough, mappings and cost definitions, and [docs/document-permissions.md](docs/document-permissions.md) for file limits and permissions.
 
-Use **Laadi näidisandmed / Load fictional example** or **Alusta tühjalt / Start blank**. Go to **Pankade kontroll / Bank checks** at any time, even with incomplete answers. For export, choose at least one bank and review each fictional applicant profile plus the summary. Invalid values block download; missing answers can remain in an explicitly incomplete draft. Editing the application clears earlier review confirmations.
+Use **Laadi näidisandmed / Load fictional example** or **Alusta tühjalt / Start blank**. Go to **Pankade valmisolek / Bank readiness** at any time, even with incomplete answers. For export, choose at least one bank and review each fictional applicant profile plus the summary. Invalid values block download; missing answers can remain in an explicitly incomplete draft. Editing the application clears earlier review confirmations.
 
-Entries, file references and demo permission choices exist only in page memory. No files or data are uploaded to a server or sent to a bank/EMTA. Reloading clears them. Co-applicants are entered on the same device; invitations, separate access, authentication and genuine bank consents are not implemented. The export remains a canonical summary, not a native bank form. Local file selection and ZIP packaging are implemented; server uploads, bank/EMTA integrations, genuine authorization, file-content/signature verification, offer parsing and negotiation drafts are not.
+Entries, file references and demo permission choices exist only in page memory. No files or data are uploaded to a server or sent to a bank/EMTA. Reloading clears them. Co-applicants are entered on the same device; invitations, separate access, authentication and genuine bank consents are not implemented. The export remains a canonical summary, not a native bank form. Local file selection and ZIP packaging are implemented; server uploads, bank/EMTA integrations, genuine authorization, file-content/signature verification, received-offer parsing and negotiation drafts are not.
 
-Keep the repository folder structure, including `index.html`, `app-model.js`, `app-i18n.js`, `app-documents.js` and `vendor/`. The page loads local scripts and the bundled JSZip 3.10.1 library; no installation or external runtime resources are needed. JSON exports keep stable field keys and original application values, and include the selected `uiLanguage` plus localized checklist messages.
+Keep the repository folder structure, including `index.html`, `app-model.js`, `app-i18n.js`, `app-documents.js`, `app-workflow.js`, `app-offers.js`, `app-stages-ui.js`, `app-stage-i18n.js` and `vendor/`. The page loads local scripts and the bundled JSZip 3.10.1 library; no installation or external runtime resources are needed. JSON exports keep stable field keys and original application values, and include the selected `uiLanguage` plus localized checklist messages.
 
 ### Validation
 
-Run the model, language and document regression checks with Node.js (no installation required):
+Run the 50 model, language, document, workflow and comparison checks with Node.js:
 
 ```sh
-node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js
+node --test tests/model.test.js tests/i18n.test.js tests/documents.test.js tests/workflow.test.js tests/offers.test.js
 ```
 
-The 14 model tests cover missing versus unverified requirements, unknown versus zero/none, repeated debt gaps, co-applicant isolation, household definitions, employment end dates, original income currency/frequency, conditional construction, refinancing debt retention, statement coverage, valuation format/age, additional collateral, numeric contradictions and annuity calculations. Six additional language tests cover the Estonian default, both language directions, canonical data preservation, bank checklist and field translation coverage, and safe template values. The 12 document tests cover file isolation and limits, safe paths, inactive-owner exclusion, permission boundaries and withdrawal, preparation gaps, JSON metadata and ZIP original-byte preservation. There are 32 tests in total. JavaScript syntax, HTML structure, unique static IDs and absence of persistence/network calls were also checked.
+The original 32 tests cover the shared model, languages and document/permission boundaries. Eight workflow tests cover current-revision review, recipient extras, distinct illustrative mappings, co-applicant isolation and simulated-only results. Ten comparison tests cover all cost categories, unknown versus zero, interest/principal separation, compatible assumptions, expiry, invalid inputs, provided APR and bilingual labels. JavaScript syntax, static HTML structure, local dependencies and translation coverage are also checked.
 
-Automated browser launch failed in the current execution environment, so browser interactions and visual layout for this expanded version remain unverified. Manual checks: add/remove files for each person and property, change/withdraw each bank permission, extract the ZIP and check its original files; switch ET / EN on each page and confirm entries, files and selected banks are retained; add/remove repeated entries, toggle the co-applicant and purposes, inspect all six banks, change a reviewed draft and download its JSON. The original prototype was successfully opened and reviewed by the project owner.
+Browser infrastructure was unavailable, so interactions and visual layout remain unverified. Follow [the demo walkthrough](docs/workflow-demo.md) manually: fill a missing bank extra and confirm it updates the shared form; check the five shared sections; simulate both recipients; load/edit offers; test ET / EN preservation and review invalidation; add/remove files and extract the ZIP. No bank request or server upload should occur.
 
-Suggested build order: shared form → conditional validation → exports → manually entered offer comparison → reviewed negotiation drafts. Validate mappings with banks and review the operating model before adding live submissions.
+Next: validate complete mappings and submission channels with banks, test the workflow with users, and then design genuine authorization, secure storage, offer intake and applicant-reviewed negotiation. No hosted deployment is configured.
 
 ## Demo acceptance criteria
 

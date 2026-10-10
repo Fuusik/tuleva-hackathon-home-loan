@@ -57,6 +57,10 @@ Invalid values block download. Missing documents or unselected/declined/withdraw
 
 `app-documents.js` manages local file references, permission choices, preparation checks and ZIP generation. The ZIP library is pinned, bundled locally at `vendor/jszip.min.js` (JSZip 3.10.1) with [its license](../vendor/JSZip-LICENSE.md), used under the MIT option. It needs no runtime download, account or API.
 
-The 12 document regression tests cover owner/category isolation, type/size/count limits, duplicates and safe paths, inactive-owner exclusion, per-bank/person choices and withdrawal/reset, metadata versus file evidence, remaining verification warnings, JSON metadata-only export, ZIP byte/Unicode fidelity and package failures. Together with the existing model/language tests, 32 tests pass.
+The 12 document regression tests cover owner/category isolation, type/size/count limits, duplicates and safe paths, inactive-owner exclusion, per-bank/person choices and withdrawal/reset, metadata versus file evidence, remaining verification warnings, JSON metadata-only export, ZIP byte/Unicode fidelity and package failures. The complete model/language/document/workflow/offer suite now has 50 tests.
 
 Automated browser QA remains unavailable in the current execution environment. Manual review: add a statement for each person; switch ET/EN; add/remove valuation files; toggle co-applicant/collateral; choose/refuse/withdraw permissions for different banks; edit an identity; re-review and extract the downloaded ZIP to check its manifest and original files.
+
+## Shared workflow additions
+
+Schema v4 summaries also include source/revision-bound shared section reviews, local-only illustrative LHV/Luminor simulation records and entered demo offer assumptions/results. These additions do not change file limits, byte fidelity, genuine permission flags or recipient/owner isolation. Original files are included only in the reviewed ZIP, never in a simulation transmission. See [workflow-demo.md](workflow-demo.md).

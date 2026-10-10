@@ -22,7 +22,7 @@
       emtaPermissions: [], statements: { status: '', months: null, allAccounts: false } };
   }
   function blank() {
-    return { schemaVersion: 3, documents: [], applicationId: 'home-loan-demo', revision: 1, selectedBanks: [],
+    return { schemaVersion: 4, documents: [], applicationId: 'home-loan-demo', revision: 1, selectedBanks: [],
       loan: { purpose: 'purchase', amount: null, termYears: null, price: null, ownContribution: null, contributionSource: '', repaymentSchedule: 'annuity', paymentDay: null, campaignCode: '', notes: '' },
       household: { dependants: null, childrenUnder18: null, monthlyExpenses: null, disposableAmount: null },
       applicants: [applicant('primary', 'Primary applicant')],

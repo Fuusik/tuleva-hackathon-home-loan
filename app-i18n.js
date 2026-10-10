@@ -2,6 +2,7 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.AppI18n=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
 'use strict';
 const translations={
+  ...(typeof module==='object'&&module.exports?require('./app-stage-i18n.js'):globalThis.StageTranslations),
   "One Home Loan - shared application demo": "\u00dcks kodulaen \u2013 \u00fchise taotluse demo",
   "Demo home loan profile with transparent research checks for six Estonian banks.": "Kodulaenutaotluse demo kuue Eesti panga andmev\u00e4ljade ja kontrollnimekirjadega.",
   "ONE HOME LOAN": "\u00dcKS KODULAEN",

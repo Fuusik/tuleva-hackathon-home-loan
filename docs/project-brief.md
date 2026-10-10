@@ -31,10 +31,11 @@ Steps involving bank submission, genuine co-applicant access and negotiation are
 
 | Area | Implemented demo | Future work / unresolved |
 | --- | --- | --- |
-| Shared profile | Primary and optional co-applicant identity, contacts and employment; repeated income, debts and separate credit limits; household and financing details; separate statement/supporting-file sections | Genuine identity verification, separate access and control of disclosures |
+| Shared profile | Fictional prefill, source/revision-bound user section review; primary and optional co-applicant identity, contacts and employment; repeated income, debts and separate credit limits; household and financing details; separate statement/supporting-file sections | Genuine identity verification, separate access and control of disclosures |
 | Property and loan purpose | Main property, optional additional collateral, valuation metadata and original files, EIS target group, construction/renovation questions and refinancing flags | Confirm eligibility rules, document acceptance and all purpose-specific branches with banks |
-| Bank checklists | Swedbank, SEB, LHV, Luminor, Coop Pank and Bigbank; missing researched items and unverified mappings shown separately | Complete, bank-confirmed field specifications and mandatory flags |
-| Comparison | Editable fictional annuity scenarios using one principal, term and assumed benchmark; margin, contract fee, monthly payment and scenario total | Real offer intake, benchmark/reset differences, APR as supplied, insurance/account conditions, expiry and early-repayment terms |
+| Bank checklists | Six selected-bank readiness views with reused shared answers, bank-specific researched extras (editable where supported), file/permission preparation and unverified mappings | Complete, bank-confirmed field specifications and mandatory flags |
+| Comparison | Manual demo offers and post-simulation fictional examples; upfront/recurring fees, insurance/account costs, validity, provided APR and conditions; compatible constant-rate annuity scenarios | Received-offer documents/parsing, variable rates, special schedules and verified comprehensive terms |
+| Transmission simulation | Two partial illustrative LHV/Luminor form mappings from one reviewed dataset, separately reviewed per person/recipient, with local-only status/timestamps | Bank-confirmed schemas, genuine authorization and accepted submission channels |
 | Export | Reviewed canonical JSON summary with file metadata, plus ZIP with original files; unresolved gaps and selected interface language included; invalid values block download | Accepted bank-specific forms, declarations, consents, attachments and submission channels |
 | EMTA permissions | Separate optional demo choices for each person and selected bank, with version/timestamp and refusal/withdrawal | Genuine authorization and queries; confirm each bank scope and accepted process |
 | Negotiation | Product concept only | Applicant-reviewed drafts using genuine supplied competing offers; no fabricated offers or automatic sending |
@@ -65,7 +66,8 @@ Preserve separate meanings: credit limits versus loan balances; dependants versu
 - Invalid values cannot be downloaded; incomplete answers remain explicitly incomplete.
 - Applicant and valuation files can be added and removed; active originals go into a reviewed ZIP package.
 - Each person has separate bank-specific EMTA choices; the demo neither grants authorization nor makes a query.
-- Comparison results stay labelled fictional and use compatible calculation assumptions.
+- The same reviewed dataset feeds two visibly different local form simulations, with no bank receipt or transmission claim.
+- Comparison includes upfront/recurring costs and terms, keeps unknown costs distinct from zero, and withholds incompatible calculations.
 - No demo action submits applicant information, documents or messages to a bank.
 
 ## Open questions and next work
@@ -78,7 +80,7 @@ Preserve separate meanings: credit limits versus loan balances; dependants versu
 6. What operating model, regulatory review and data-handling design are needed before a live launch?
 7. What sustainable business model avoids conflicts with the applicant's interests? Pricing and revenue are not agreed.
 
-Suggested implementation order: improve the shared form and conditional checks, verify exports, develop manual offer intake, then add reviewed negotiation drafts. Bank verification and live-service design remain separate workstreams.
+The current implementation follows the owner's four priorities: one user-reviewed shared dataset, recipient readiness, two fictional local form simulations and detailed offer comparison after simulation. See [workflow-demo.md](workflow-demo.md). Next validate with users/banks and develop received-offer intake and reviewed negotiation drafts. Bank verification and live-service design remain separate workstreams.
 
 ## Shared context
 
