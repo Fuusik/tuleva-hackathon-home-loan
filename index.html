@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="et">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,12 +7,13 @@
   <title>One Home Loan - shared application demo</title>
   <style>
     :root{font-family:system-ui,sans-serif;color:#193b35;background:#f2f5ee;line-height:1.5}*{box-sizing:border-box}body{margin:0}header{padding:24px 6%;background:#193b35;color:white;display:flex;justify-content:space-between;align-items:center;gap:12px}main{max-width:1180px;margin:auto;padding:36px 24px}h1{font-size:clamp(30px,5vw,52px);letter-spacing:-2px;margin:8px 0}h2{margin:0 0 12px}h3{margin:20px 0 10px}p{margin:10px 0}.muted,small{color:#536d65}.badge{background:#ddec7c;color:#193b35;padding:8px 14px;border-radius:30px;font-size:14px}.toolbar,nav,.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:22px 0}button{padding:12px 18px;background:#193b35;color:white;border:1px solid #193b35;border-radius:8px;font:inherit;cursor:pointer}button.secondary,nav button{background:white;color:#193b35}button.small{padding:6px 12px;font-size:14px}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #799c00;outline-offset:3px}nav button[aria-current=page]{background:#193b35;color:white}.card{background:white;border:1px solid #d6dfd2;border-radius:16px;padding:24px;margin:18px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.wide{grid-column:1/-1}label.field{display:block;font-size:14px;font-weight:600}input:not([type=checkbox]),select,textarea{display:block;width:100%;padding:11px;margin-top:6px;border:1px solid #afbeb6;border-radius:7px;font:inherit;background:white;color:#193b35}textarea{min-height:90px;resize:vertical}input[type=checkbox]{accent-color:#193b35;width:18px;height:18px;vertical-align:middle;margin:0 8px 0 0}.check{display:flex;gap:0;align-items:start;margin:12px 0;font-size:14px}.check input{flex-shrink:0;margin-top:2px}fieldset{border:0;padding:0;margin:16px 0;min-width:0}legend{font-weight:700;margin-bottom:10px}.banks{display:flex;gap:12px;flex-wrap:wrap}.banks label{border:1px solid #bccabc;border-radius:8px;padding:9px 12px;font-size:14px}.notice{border-left:4px solid #b4cb42;padding:14px;background:#f3f6e8}.warn{border-left-color:#bf752b;background:#fff5e9}.error{border-left-color:#a43838;background:#fff0ee;color:#7a2424}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th,td{text-align:left;padding:12px;border-bottom:1px solid #ddd}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:430px;overflow:auto;font-size:13px;background:#f4f6f2;padding:14px;border-radius:8px}[hidden]{display:none!important}small{display:block;margin-top:8px}footer{margin-top:30px;color:#56716a}summary{cursor:pointer;font-weight:650;list-style-position:outside;margin-left:18px}details.card>summary{font-size:20px}.row{border:1px solid #d6dfd2;border-radius:10px;padding:16px;background:#fafbf8}.row legend{padding:0 5px}.row-top{display:flex;justify-content:flex-end;margin-bottom:10px}.status{font-size:14px;background:#fff1d8;border-radius:8px;padding:6px 10px;display:inline-block}.bank-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.bank-heading h3{margin:0}.counts{color:#536d65;margin:12px 0}.list{padding-left:23px}.list li{margin:6px 0;overflow-wrap:anywhere}.good{color:#326849}.warning-item{color:#79541b}.review-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.review-facts>div{background:#f4f6ef;padding:14px;border-radius:8px}.review-facts strong{display:block}.section-links{display:flex;gap:16px;flex-wrap:wrap}#feedback:empty{display:none}#feedback{padding:12px;background:#eef3df;border-radius:8px}.empty{padding:18px;border:1px dashed #afbeb6;border-radius:8px;color:#536d65}.inline-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.mobile-only{display:none}@media(max-width:680px){.grid,.review-facts{grid-template-columns:1fr}.wide{grid-column:auto}header{padding:18px}main{padding:24px 16px}.card{padding:18px}nav button{flex:1 1 40%;font-size:14px;padding:10px}.badge{font-size:12px}.banks label{flex:1 1 42%}}
+    .header-tools{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}.language-switch{display:flex;gap:4px;padding:3px;border:1px solid #a8baaf;border-radius:9px}.language-switch button{padding:7px 10px;background:transparent;color:white;border:0;font-size:13px}.language-switch button[aria-pressed=true]{background:#ddec7c;color:#193b35}.language-switch button:focus-visible{outline-color:#ddec7c}@media(max-width:680px){header{flex-wrap:wrap}.header-tools{justify-content:flex-start}}
   </style>
 </head>
 <body>
-<header><strong>ONE HOME LOAN</strong><span class="badge">Hackathon demo � v2</span></header>
+<header><strong>ONE HOME LOAN</strong><div class="header-tools"><span class="badge">Hackathon demo &#183; v2</span><div class="language-switch" id="language-switch" role="group" aria-label="Interface language"><button type="button" data-language="et" aria-pressed="true">ET &#183; Eesti</button><button type="button" data-language="en" aria-pressed="false">EN &#183; English</button></div></div></header>
 <main>
-  <p class="muted">ONE PROFILE � A CLEARER DECISION</p><h1>Your next home starts here.</h1>
+  <p class="muted">ONE PROFILE &#183; A CLEARER DECISION</p><h1>Your next home starts here.</h1>
   <p class="muted">Prepare once. See what is missing. Compare on shared assumptions.</p>
   <p class="notice">Use fictional information only. Nothing is submitted or uploaded. Entries stay in this page's memory and disappear on reload. Bank mappings are partly unverified.</p>
   <div class="toolbar"><button id="load-sample" class="secondary" type="button">Load fictional example</button><button id="start-blank" class="secondary" type="button">Start blank</button><span class="muted" id="revision">Draft 1</span></div>
@@ -33,14 +34,25 @@
     </form>
   </section>
   <section id="checks" hidden aria-labelledby="checks-title"><h2 id="checks-title">Research checks for your selected banks</h2><p class="notice">F = field visible in a public form. D = topic in official guidance. Neither proves that a field is mandatory. Every bank still needs verification, even when you fill all researched items.</p><div id="check-errors"></div><div id="bank-checks"></div><div class="actions"><button class="secondary" type="button" data-go="application">Edit application</button><button type="button" data-go="review">Review summary</button></div></section>
-  <section id="compare" hidden aria-labelledby="compare-title"><div class="card"><h2 id="compare-title">Compare fictional offers</h2><p>All examples use an annuity schedule and the same assumed six-month benchmark. Amount and term come from your application. These are not quotes from the selected banks.</p><div class="grid"><label class="field">Assumed benchmark (%)<input id="benchmark" type="number" min="0" max="20" step="0.01" value="3"></label><label class="field">Scenario reference date<input id="reference-date" type="date" value="2026-10-10"></label></div><p class="muted">Rates stay constant in this scenario. Variable payments will change. Fees are separate; APR, insurance, account costs, expiry and early-repayment terms are unknown.</p><p id="comparison-message" class="notice" hidden></p><div class="scroll"><table><thead><tr><th>Fictional offer</th><th>Margin (%)</th><th>Contract fee (?)</th><th>Monthly scenario</th><th>Total payments + fee</th></tr></thead><tbody id="offers"></tbody></table></div><small>No ranking or recommendation. Special or interest-only schedules are not calculated in this comparison.</small></div></section>
+  <section id="compare" hidden aria-labelledby="compare-title"><div class="card"><h2 id="compare-title">Compare fictional offers</h2><p>All examples use an annuity schedule and the same assumed six-month benchmark. Amount and term come from your application. These are not quotes from the selected banks.</p><div class="grid"><label class="field">Assumed benchmark (%)<input id="benchmark" type="number" min="0" max="20" step="0.01" value="3"></label><label class="field">Scenario reference date<input id="reference-date" type="date" value="2026-10-10"></label></div><p class="muted">Rates stay constant in this scenario. Variable payments will change. Fees are separate; APR, insurance, account costs, expiry and early-repayment terms are unknown.</p><p id="comparison-message" class="notice" hidden></p><div class="scroll"><table><thead><tr><th>Fictional offer</th><th>Margin (%)</th><th>Contract fee (&#8364;)</th><th>Monthly scenario</th><th>Total payments + fee</th></tr></thead><tbody id="offers"></tbody></table></div><small>No ranking or recommendation. Special or interest-only schedules are not calculated in this comparison.</small></div></section>
   <section id="review" hidden aria-labelledby="review-title"><div class="card"><h2 id="review-title">Review your demo summary</h2><p class="notice">This export is a shared summary with research gaps, not an accepted bank application. Incomplete answers can be exported as an explicitly incomplete draft.</p><div id="review-errors"></div><div class="review-facts" id="review-facts"></div><div id="review-persons"></div><div id="review-banks"></div><details><summary>Full JSON preview</summary><pre id="json-preview"></pre></details><label class="check"><input id="confirm" type="checkbox">I reviewed this fictional draft and understand that bank requirements remain unverified.</label><p><button id="export" type="button">Download demo JSON summary</button></p><p id="export-status" role="status" aria-live="polite"></p></div></section>
   <footer>Independent hackathon concept. No Tuleva or bank endorsement implied. <a href="https://github.com/Fuusik/tuleva-hackathon-home-loan/blob/main/docs/bank-field-matrix.md" target="_blank" rel="noopener noreferrer">Research and verification gaps</a>.</footer>
 </main>
 <script src="app-model.js"></script>
+<script src="app-i18n.js"></script>
 <script>
 'use strict';
 const M = LoanModel;
+const I = AppI18n;
+const t = (key, vars) => I.t(key, vars);
+const translate = text => I.message(text);
+const staticTexts = [];
+const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT);
+while (walker.nextNode()) {
+  const text = walker.currentNode;
+  if (!text.parentElement || text.parentElement.closest('script,style') || !text.nodeValue.trim()) continue;
+  staticTexts.push({ node: text, source: text.nodeValue.trim(), leading: text.nodeValue.match(/^\s*/)[0], trailing: text.nodeValue.match(/\s*$/)[0] });
+}
 const $ = id => document.getElementById(id);
 let revision = 1;
 let currentPage = 'application';
@@ -51,7 +63,7 @@ const form = $('profile');
 const field = (key, label, type = 'text', extra = {}) => ({ key, label, type, ...extra });
 const choice = (key, label, options) => field(key, label, 'select', { options });
 const num = (key, label, extra = {}) => field(key, label, 'number', { min: 0, step: '0.01', ...extra });
-function node(tag, text, className) { const el = document.createElement(tag); if (text !== undefined) el.textContent = text; if (className) el.className = className; return el; }
+function node(tag, text, className, raw = false) { const el = document.createElement(tag); if (text !== undefined) { el.textContent = raw ? text : translate(text); if (!raw) el.dataset.i18n = text; } if (className) el.className = className; return el; }
 function get(object, path) { return path.split('.').reduce((o, k) => o == null ? undefined : o[k], object); }
 function set(object, path, value) { const keys = path.split('.'); let o = object; keys.forEach((k, i) => { if (i === keys.length - 1) o[k] = value; else { if (!o[k]) o[k] = /^\d+$/.test(keys[i + 1]) ? [] : {}; o = o[k]; } }); }
 function addField(target, def, prefix, object) {
@@ -64,35 +76,36 @@ function addField(target, def, prefix, object) {
     const empty = node('option', 'Not answered'); empty.value = ''; input.append(empty);
     for (const item of def.options) { const [value, label] = Array.isArray(item) ? item : [item, item]; const option = node('option', label); option.value = value; input.append(option); }
   }
-  for (const attr of ['min', 'max', 'step', 'placeholder']) if (def[attr] !== undefined) input.setAttribute(attr, def[attr]);
+  for (const attr of ['min', 'max', 'step']) if (def[attr] !== undefined) input.setAttribute(attr, def[attr]);
+  if (def.placeholder) { input.dataset.i18nPlaceholder = def.placeholder; input.placeholder = t(def.placeholder); }
   const value = object[def.key];
   if (def.type === 'checkbox') input.checked = !!value;
   else input.value = value == null ? '' : value;
   wrap.htmlFor = input.id;
-  if (def.type === 'checkbox') wrap.append(input, document.createTextNode(def.label));
-  else wrap.append(document.createTextNode(def.label), input);
+  if (def.type === 'checkbox') wrap.append(input, node('span', def.label));
+  else wrap.append(node('span', def.label), input);
   target.append(wrap);
   return input;
 }
 function fields(target, defs, prefix, object) { defs.forEach(def => addField(target, def, prefix, object)); }
 const identityFields = [field('firstName', 'First name'), field('lastName', 'Last name'), field('personalId', 'Fictional personal ID', 'text', { placeholder: 'DEMO-0001 - no real ID' }), field('idIssuer', 'ID issuer (country)'), field('residency', 'Residency'), field('country', 'Address country'), field('address', 'Current address', 'text', { wide: true }), field('postalCode', 'Postcode'), field('email', 'Email (fictional)', 'email'), field('phone', 'Phone (fictional)', 'tel'), choice('language', 'Communication language', ['Estonian', 'English', 'Other']), choice('maritalStatus', 'Marital status', ['Single', 'Married', 'Cohabiting', 'Divorced', 'Widowed', 'Other']), choice('education', 'Education', ['Basic', 'Secondary', 'Vocational', 'Higher education', 'Other'])];
 const incomeFields = [choice('type', 'Income type', ['Salary', 'Self-employment', 'Dividends', 'Rent', 'Benefit', 'Maintenance', 'Parental benefit', 'Pension', 'Other']), num('amount', 'Net amount in original currency'), choice('currency', 'Currency', ['EUR', 'USD', 'GBP', 'SEK', 'NOK', 'DKK', 'Other']), choice('frequency', 'Frequency', ['monthly', 'annual', 'one-off', 'irregular']), field('evidence', 'Evidence note (no upload)')];
-const debtFields = [field('type', 'Debt / obligation type'), field('lender', 'Lender / payee'), num('balance', 'Outstanding balance (?)'), num('monthlyPayment', 'Monthly payment (?)'), field('maturity', 'Maturity date', 'date'), field('refinanced', 'This debt is being refinanced', 'checkbox')];
-const creditFields = [field('type', 'Credit limit type'), field('lender', 'Lender'), num('limit', 'Authorised limit (?)'), num('usedAmount', 'Used amount (?) - optional')];
-const propertyFields = [choice('type', 'Property type', ['Apartment', 'House', 'Land', 'Other']), field('address', 'Property address', 'text', { wide: true }), field('country', 'Country'), field('owner', 'Owner'), choice('intendedUse', 'Intended use', ['Own home', 'Rental', 'Other']), num('estimatedValue', 'Estimated value (?)'), field('listingUrl', 'Listing URL (if available)', 'url'), choice('energyClass', 'Energy class (optional proposal)', ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'Unknown'])];
+const debtFields = [field('type', 'Debt / obligation type'), field('lender', 'Lender / payee'), num('balance', 'Outstanding balance (\u20ac)'), num('monthlyPayment', 'Monthly payment (\u20ac)'), field('maturity', 'Maturity date', 'date'), field('refinanced', 'This debt is being refinanced', 'checkbox')];
+const creditFields = [field('type', 'Credit limit type'), field('lender', 'Lender'), num('limit', 'Authorised limit (\u20ac)'), num('usedAmount', 'Used amount (\u20ac) - optional')];
+const propertyFields = [choice('type', 'Property type', ['Apartment', 'House', 'Land', 'Other']), field('address', 'Property address', 'text', { wide: true }), field('country', 'Country'), field('owner', 'Owner'), choice('intendedUse', 'Intended use', ['Own home', 'Rental', 'Other']), num('estimatedValue', 'Estimated value (\u20ac)'), field('listingUrl', 'Listing URL (if available)', 'url'), choice('energyClass', 'Energy class (optional proposal)', ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'Unknown'])];
 const valuationFields = [choice('valuationStatus', 'Valuation availability', [['available', 'Available (not attached)'], ['missing', 'Not available'], ['unknown', 'Unknown']]), field('valuationDate', 'Valuation date', 'date'), choice('valuationFormat', 'Original file format', [['asice', 'ASiC-E (.asice)'], ['pdf', 'PDF'], ['other', 'Other']])];
 function addRow(base, defs, item = {}) {
   const config = repeaters.get(base);
   const index = config.rows.children.length;
   const fs = node('fieldset', undefined, 'row'); fs.dataset.row = index;
   fs.append(node('legend', config.label + ' ' + (index + 1)));
-  const bar = node('div', undefined, 'row-top'); const remove = node('button', 'Remove', 'secondary small'); remove.type = 'button'; remove.setAttribute('aria-label', 'Remove ' + config.label + ' ' + (index + 1));
+  const bar = node('div', undefined, 'row-top'); const remove = node('button', 'Remove', 'secondary small'); remove.type = 'button'; remove.dataset.i18nAria = 'Remove ' + config.label + ' ' + (index + 1); remove.setAttribute('aria-label', translate(remove.dataset.i18nAria));
   remove.onclick = () => { fs.remove(); reindex(base); changed(); syncBranches(); };
   bar.append(remove); fs.append(bar); const grid = node('div', undefined, 'grid'); fields(grid, defs, base + '.' + index, item); fs.append(grid); config.rows.append(fs);
 }
 function reindex(base) {
   const config = repeaters.get(base);
-  [...config.rows.children].forEach((row, index) => { row.dataset.row = index; row.querySelector('legend').textContent = config.label + ' ' + (index + 1); row.querySelector('button').setAttribute('aria-label', 'Remove ' + config.label + ' ' + (index + 1)); row.querySelectorAll('[data-path]').forEach(el => { const last = el.dataset.path.split('.').pop(); el.dataset.path = base + '.' + index + '.' + last; }); });
+  [...config.rows.children].forEach((row, index) => { row.dataset.row = index; row.querySelector('legend').dataset.i18n = config.label + ' ' + (index + 1); row.querySelector('legend').textContent = translate(row.querySelector('legend').dataset.i18n); row.querySelector('button').dataset.i18nAria = 'Remove ' + config.label + ' ' + (index + 1); row.querySelector('button').setAttribute('aria-label', translate(row.querySelector('button').dataset.i18nAria)); row.querySelectorAll('[data-path]').forEach(el => { const last = el.dataset.path.split('.').pop(); el.dataset.path = base + '.' + index + '.' + last; }); });
 }
 function collection(target, prefix, applicant, key, statusKey, label, defs) {
   const block = node('div'); block.append(node('h3', label));
@@ -128,14 +141,14 @@ function rebuild(d) {
   repeaters.clear(); $('banks').replaceChildren();
   for (const bank of M.banks) { const label = node('label'); const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.dataset.bank = bank; checkbox.checked = d.selectedBanks.includes(bank); label.append(checkbox, document.createTextNode(bank)); $('banks').append(label); }
   for (const id of ['loan-fields', 'guarantee-grid', 'eis-branch', 'construction-fields', 'household-fields', 'property-fields', 'valuation-fields', 'collateral-fields']) $(id).replaceChildren();
-  fields($('loan-fields'), [choice('purpose', 'Loan purpose', [['purchase', 'Purchase'], ['construction', 'Construction'], ['renovation', 'Renovation'], ['refinancing', 'Refinancing']]), num('amount', 'Loan amount (?)', { min: 1 }), num('termYears', 'Term (years)', { min: 1, max: 30, step: '1' }), num('price', 'Purchase price / project budget (?)', { min: 1 }), num('ownContribution', 'Own contribution (?)'), field('contributionSource', 'Source of own contribution'), choice('repaymentSchedule', 'Preferred schedule (demo choice)', [['annuity', 'Annuity'], ['special', 'Special / interest-only schedule'], ['unsure', 'Undecided']]), num('paymentDay', 'Preferred payment day', { min: 1, max: 31, step: '1' }), field('campaignCode', 'Campaign code (optional)'), field('notes', 'Additional notes', 'textarea', { wide: true })], 'loan', d.loan);
+  fields($('loan-fields'), [choice('purpose', 'Loan purpose', [['purchase', 'Purchase'], ['construction', 'Construction'], ['renovation', 'Renovation'], ['refinancing', 'Refinancing']]), num('amount', 'Loan amount (\u20ac)', { min: 1 }), num('termYears', 'Term (years)', { min: 1, max: 30, step: '1' }), num('price', 'Purchase price / project budget (\u20ac)', { min: 1 }), num('ownContribution', 'Own contribution (\u20ac)'), field('contributionSource', 'Source of own contribution'), choice('repaymentSchedule', 'Preferred schedule (demo choice)', [['annuity', 'Annuity'], ['special', 'Special / interest-only schedule'], ['unsure', 'Undecided']]), num('paymentDay', 'Preferred payment day', { min: 1, max: 31, step: '1' }), field('campaignCode', 'Campaign code (optional)'), field('notes', 'Additional notes', 'textarea', { wide: true })], 'loan', d.loan);
   fields($('guarantee-grid'), [choice('guarantee', 'Guarantee / other financing', [['none', 'None'], ['EIS', 'EIS (former KredEx)'], ['MES', 'MES co-loan'], ['unsure', 'Undecided']])], 'financing', d.financing);
   addField($('eis-branch'), field('targetGroup', 'EIS target group (eligibility not verified)'), 'financing', d.financing);
-  fields($('construction-fields'), [field('stageBudget', 'Stage budget with own / loan funding split', 'textarea', { wide: true }), choice('permitStatus', 'Permit status', [['available', 'Available'], ['pending', 'Pending'], ['not-applicable', 'Not applicable'], ['unknown', 'Unknown']]), num('currentValue', 'Current property valuation (?)'), num('futureValue', 'Future property valuation (?)')], 'construction', d.construction);
+  fields($('construction-fields'), [field('stageBudget', 'Stage budget with own / loan funding split', 'textarea', { wide: true }), choice('permitStatus', 'Permit status', [['available', 'Available'], ['pending', 'Pending'], ['not-applicable', 'Not applicable'], ['unknown', 'Unknown']]), num('currentValue', 'Current property valuation (\u20ac)'), num('futureValue', 'Future property valuation (\u20ac)')], 'construction', d.construction);
   renderApplicant($('primary-container'), d.applicants[0], 0);
   renderApplicant($('co-container'), d.applicants[1] || M.applicant('co', 'Co-applicant'), 1);
   $('has-co').checked = d.applicants.length === 2;
-  fields($('household-fields'), [num('dependants', 'All dependants', { step: '1' }), num('childrenUnder18', 'Children under 18', { step: '1' }), num('monthlyExpenses', 'Shared monthly household expenses (?)'), field('disposableAmount', 'Household monthly disposable money (?)', 'number', { step: '0.01' })], 'household', d.household);
+  fields($('household-fields'), [num('dependants', 'All dependants', { step: '1' }), num('childrenUnder18', 'Children under 18', { step: '1' }), num('monthlyExpenses', 'Shared monthly household expenses (\u20ac)'), field('disposableAmount', 'Household monthly disposable money (\u20ac)', 'number', { step: '0.01' })], 'household', d.household);
   fields($('property-fields'), propertyFields, 'property', d.property);
   fields($('valuation-fields'), valuationFields, 'property', d.property);
   fields($('collateral-fields'), [...propertyFields.filter(f => !['country', 'intendedUse', 'listingUrl', 'energyClass'].includes(f.key)), ...valuationFields], 'additionalProperty', d.additionalProperty);
@@ -174,7 +187,7 @@ function read() {
   return d;
 }
 function changed() {
-  revision++; $('revision').textContent = 'Draft ' + revision;
+  revision++; $('revision').textContent = t('Draft {n}', { n: revision });
   reviewPayload = null; $('confirm').checked = false; $('export-status').textContent = '';
   for (const input of $('review-persons').querySelectorAll('[data-review-person]')) input.checked = false;
   if (currentPage === 'checks') renderChecks();
@@ -185,7 +198,11 @@ form.onsubmit = event => { event.preventDefault(); show('checks'); };
 function invalidMessages(d) {
   const out = M.errors(d);
   for (const input of form.querySelectorAll('input,select,textarea')) if (!input.disabled && !input.checkValidity()) {
-    const label = input.closest('label'); out.push((label ? label.firstChild.textContent : 'Field') + ': ' + input.validationMessage);
+    const label = input.closest('label'); const labelNode = label && label.querySelector('[data-i18n]');
+    const title = labelNode ? translate(labelNode.dataset.i18n) : t('Field');
+    const v = input.validity;
+    const problem = v.badInput ? t('Enter a number.') : v.typeMismatch ? t(input.type === 'email' ? 'Enter a valid email address.' : 'Enter a valid URL.') : v.rangeUnderflow ? t('Choose a value of {min} or more.', { min: input.min }) : v.rangeOverflow ? t('Choose a value of {max} or less.', { max: input.max }) : v.stepMismatch ? t('Choose a value in steps of {step}.', { step: input.step }) : t('Check the format of this value.');
+    out.push(title + ': ' + problem);
   }
   return [...new Set(out)];
 }
@@ -196,8 +213,8 @@ function messageList(target, messages, title) {
 function checkCard(d, bank) {
   const check = M.bankCheck(d, bank); const card = node('article', undefined, 'card');
   const head = node('div', undefined, 'bank-heading'); head.append(node('h3', bank), node('span', check.status, 'status')); card.append(head);
-  card.append(node('p', check.missingCount + ' researched items to review � ' + check.unverified.length + ' unverified mapping topics', 'counts'));
-  const source = node('a', 'Official source � ' + check.sourceId); source.href = check.source; source.target = '_blank'; source.rel = 'noopener noreferrer'; card.append(source, node('small', 'Research baseline: ' + check.researchDate + '. Mandatory flags remain unverified.'));
+  card.append(node('p', t('{n} researched items to review \u00b7 {u} unverified mapping topics', { n: check.missingCount, u: check.unverified.length }), 'counts', true));
+  const source = node('a', t('Official source \u00b7 {id}', { id: check.sourceId }), undefined, true); source.href = check.source; source.target = '_blank'; source.rel = 'noopener noreferrer'; card.append(source, node('small', t('Research baseline: {date}. Mandatory flags remain unverified.', { date: check.researchDate }), undefined, true));
   const gaps = node('details'); gaps.open = true; gaps.append(node('summary', 'Missing or unresolved researched items'));
   const ul = node('ul', undefined, 'list');
   const unresolved = check.observed.filter(g => g.missing.length);
@@ -208,8 +225,8 @@ function checkCard(d, bank) {
   const covered = node('details'); covered.append(node('summary', 'Filled researched groups (not confirmed bank-ready)')); const filled = node('ul', undefined, 'list'); check.observed.filter(g => !g.missing.length).forEach(g => filled.append(node('li', '[' + g.evidence + '] ' + g.label))); covered.append(filled); card.append(covered);
   check.notes.forEach(text => card.append(node('p', text, 'notice warn')));
   if (bank === 'Coop Pank' && d.loan.purpose === 'refinancing') {
-    const preserved = d.applicants.flatMap(a => a.debts.filter(r => r.refinanced).map(r => a.role + ': ' + (r.lender || 'Unnamed lender')));
-    card.append(node('p', preserved.length ? 'Refinanced loans retained in the summary: ' + preserved.join('; ') : 'No debt is marked as being refinanced yet.', 'muted'));
+    const preserved = d.applicants.flatMap(a => a.debts.filter(r => r.refinanced).map(r => t(a.role) + ': ' + (r.lender || t('Unnamed lender'))));
+    card.append(node('p', preserved.length ? t('Refinanced loans retained in the summary: {loans}', { loans: preserved.join('; ') }) : t('No debt is marked as being refinanced yet.'), 'muted', true));
   }
   return card;
 }
@@ -218,12 +235,12 @@ function renderChecks() {
   if (!d.selectedBanks.length) target.append(node('p', 'Select at least one bank in the shared form to see its research checklist.', 'empty'));
   d.selectedBanks.forEach(bank => target.append(checkCard(d, bank)));
 }
-const money = v => new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' }).format(v);
+const money = v => new Intl.NumberFormat(I.getLocale() === 'et' ? 'et-EE' : 'en-IE', { style: 'currency', currency: 'EUR' }).format(v);
 const offers = [['Example A', 1.5, 500], ['Example B', 1.7, 0], ['Example C', 1.4, 900]];
 offers.forEach(([name, margin, fee], i) => {
   const tr = node('tr'); tr.append(node('td', name));
   for (const [kind, value] of [['margin', margin], ['fee', fee]]) {
-    const td = node('td'); const input = document.createElement('input'); input.type = 'number'; input.min = 0; input.max = kind === 'margin' ? 20 : 100000; input.step = kind === 'margin' ? '0.01' : '1'; input.value = value; input.id = kind + i; input.setAttribute('aria-label', name + ' ' + kind); input.oninput = calculate; td.append(input); tr.append(td);
+    const td = node('td'); const input = document.createElement('input'); input.type = 'number'; input.min = 0; input.max = kind === 'margin' ? 20 : 100000; input.step = kind === 'margin' ? '0.01' : '1'; input.value = value; input.id = kind + i; input.dataset.offerName = name; input.dataset.offerKind = kind; input.setAttribute('aria-label', t(name) + ' ' + t(kind)); input.oninput = calculate; td.append(input); tr.append(td);
   }
   for (const kind of ['monthly', 'total']) { const td = node('td'); td.id = kind + i; tr.append(td); } $('offers').append(tr);
 });
@@ -231,25 +248,25 @@ function calculate() {
   const d = read(); const amountOK = M.has(d.loan.amount) && d.loan.amount > 0; const termOK = Number.isInteger(d.loan.termYears) && d.loan.termYears >= 1 && d.loan.termYears <= 30;
   const scheduleOK = d.loan.repaymentSchedule === 'annuity';
   const msg = !scheduleOK ? 'Choose an annuity schedule to use this calculator. Special schedules need a separate calculation.' : !amountOK || !termOK ? 'Enter a positive loan amount and a term of 1-30 whole years in the shared form.' : '';
-  $('comparison-message').hidden = !msg; $('comparison-message').textContent = msg;
+  $('comparison-message').hidden = !msg; $('comparison-message').textContent = t(msg);
   offers.forEach((_, i) => {
     const inputs = [$('benchmark'), $('margin' + i), $('fee' + i)]; const ok = amountOK && termOK && scheduleOK && inputs.every(input => input.value !== '' && input.checkValidity());
     const monthly = ok ? M.payment(d.loan.amount, $('benchmark').valueAsNumber + $('margin' + i).valueAsNumber, d.loan.termYears * 12) : null;
-    $('monthly' + i).textContent = monthly === null ? 'Enter valid values' : money(monthly);
+    $('monthly' + i).textContent = monthly === null ? t('Enter valid values') : money(monthly);
     $('total' + i).textContent = monthly === null ? '-' : money(monthly * d.loan.termYears * 12 + $('fee' + i).valueAsNumber);
   });
 }
 $('benchmark').oninput = calculate;
 function renderReview() {
-  const d = read(); reviewPayload = M.exportSummary(d); const errs = invalidMessages(d); messageList($('review-errors'), errs, 'Correct invalid values before download');
+  const d = read(); reviewPayload = localizedSummary(d); const errs = invalidMessages(d); messageList($('review-errors'), errs, 'Correct invalid values before download');
   $('review-facts').replaceChildren();
-  const facts = [['Purpose', d.loan.purpose || 'Not answered'], ['Loan request', M.has(d.loan.amount) ? money(d.loan.amount) : 'Not answered'], ['Applicants', String(d.applicants.length)], ['Selected banks', d.selectedBanks.join(', ') || 'None selected']];
-  facts.forEach(([label, value]) => { const box = node('div'); box.append(node('strong', label), node('span', value)); $('review-facts').append(box); });
+  const facts = [['Purpose', d.loan.purpose ? t(d.loan.purpose) : t('Not answered')], ['Loan request', M.has(d.loan.amount) ? money(d.loan.amount) : t('Not answered')], ['Applicants', String(d.applicants.length)], ['Selected banks', d.selectedBanks.join(', ') || t('None selected')]];
+  facts.forEach(([label, value]) => { const box = node('div'); box.append(node('strong', label), node('span', value, undefined, true)); $('review-facts').append(box); });
   $('review-persons').replaceChildren();
-  d.applicants.forEach((a, index) => { const wrap = node('div'); wrap.append(node('h3', a.role), node('p', [a.firstName, a.lastName].filter(Boolean).join(' ') || 'Name not entered')); const label = node('label', undefined, 'check'); const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.dataset.reviewPerson = index; label.append(checkbox, document.createTextNode('Fictional ' + a.role.toLowerCase() + ' profile reviewed for this export (demo only; not bank consent).')); wrap.append(label); $('review-persons').append(wrap); });
+  d.applicants.forEach((a, index) => { const wrap = node('div'); wrap.append(node('h3', a.role), node('p', [a.firstName, a.lastName].filter(Boolean).join(' ') || t('Name not entered'), undefined, true)); const label = node('label', undefined, 'check'); const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.dataset.reviewPerson = index; label.append(checkbox, document.createTextNode(t('Fictional {role} profile reviewed for this export (demo only; not bank consent).', { role: t(a.role.toLowerCase()) }))); wrap.append(label); $('review-persons').append(wrap); });
   $('review-banks').replaceChildren();
   if (!d.selectedBanks.length) $('review-banks').append(node('p', 'Select at least one bank before downloading the demo summary.', 'notice warn'));
-  d.selectedBanks.forEach(b => { const c = M.bankCheck(d, b); $('review-banks').append(node('p', b + ': ' + c.missingCount + ' researched items to review; ' + c.unverified.length + ' unverified topics. Needs bank verification.', 'notice warn')); });
+  d.selectedBanks.forEach(b => { const c = M.bankCheck(d, b); $('review-banks').append(node('p', t('{bank}: {n} researched items to review; {u} unverified topics. Needs bank verification.', { bank: b, n: c.missingCount, u: c.unverified.length }), 'notice warn', true)); });
   $('json-preview').textContent = JSON.stringify(reviewPayload, null, 2); $('confirm').checked = false; $('export-status').textContent = '';
 }
 function show(page) {
@@ -260,21 +277,72 @@ function show(page) {
 }
 document.querySelectorAll('[data-page]').forEach(b => b.onclick = () => show(b.dataset.page));
 document.querySelectorAll('[data-go]').forEach(b => b.onclick = () => show(b.dataset.go));
-$('load-sample').onclick = () => { if (window.confirm('Replace this draft with the fictional example? Current entries will be lost.')) { rebuild(M.sample()); show('application'); $('feedback').textContent = 'Fictional example loaded. Documents and bank verification are intentionally incomplete.'; } };
-$('start-blank').onclick = () => { if (window.confirm('Clear this draft and start blank?')) { rebuild(M.blank()); show('application'); $('feedback').textContent = 'Blank draft started. No data has been saved or sent.'; } };
+$('load-sample').onclick = () => { if (window.confirm(t('Replace this draft with the fictional example? Current entries will be lost.'))) { rebuild(sampleForUI()); show('application'); $('feedback').textContent = t('Fictional example loaded. Documents and bank verification are intentionally incomplete.'); } };
+$('start-blank').onclick = () => { if (window.confirm(t('Clear this draft and start blank?'))) { rebuild(M.blank()); show('application'); $('feedback').textContent = t('Blank draft started. No data has been saved or sent.'); } };
 $('export').onclick = () => {
   const d = read(); const errs = invalidMessages(d);
-  if (errs.length) { $('export-status').textContent = 'Correct invalid values in the shared form before download. Missing answers may remain as unknown.'; return; }
-  if (!d.selectedBanks.length) { $('export-status').textContent = 'Select at least one bank before download.'; return; }
-  if (!reviewPayload || reviewPayload.application.revision !== d.revision) { renderReview(); $('export-status').textContent = 'The draft changed. Review it again before download.'; return; }
+  if (errs.length) { $('export-status').textContent = t('Correct invalid values in the shared form before download. Missing answers may remain as unknown.'); return; }
+  if (!d.selectedBanks.length) { $('export-status').textContent = t('Select at least one bank before download.'); return; }
+  if (!reviewPayload || reviewPayload.application.revision !== d.revision) { renderReview(); $('export-status').textContent = t('The draft changed. Review it again before download.'); return; }
   const reviewed = [...$('review-persons').querySelectorAll('[data-review-person]')];
-  if (!$('confirm').checked || !reviewed.every(x => x.checked)) { $('export-status').textContent = 'Review each fictional applicant profile and tick the summary confirmation.'; return; }
+  if (!$('confirm').checked || !reviewed.every(x => x.checked)) { $('export-status').textContent = t('Review each fictional applicant profile and tick the summary confirmation.'); return; }
   d.applicants.forEach(a => a.demoReviewed = true);
-  const payload = M.exportSummary(d); payload.demoReview = { revision: d.revision, reviewedAt: payload.createdAt, applicantIds: d.applicants.map(a => a.id), selectedBanks: d.selectedBanks, bankConsentObtained: false };
+  const payload = localizedSummary(d); payload.demoReview = { revision: d.revision, reviewedAt: payload.createdAt, applicantIds: d.applicants.map(a => a.id), selectedBanks: d.selectedBanks, bankConsentObtained: false };
   const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })); const a = document.createElement('a'); a.href = url; a.download = 'home-loan-demo-summary-v2.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-  $('export-status').textContent = 'Demo summary downloaded with missing items and verification gaps. Nothing was sent to a bank.';
+  $('export-status').textContent = t('Demo summary downloaded with missing items and verification gaps. Nothing was sent to a bank.');
 };
-rebuild(M.sample());
+function sampleForUI() {
+  const d = M.sample();
+  if (I.getLocale() === 'et') {
+    d.loan.contributionSource = 'N\u00e4idiss\u00e4\u00e4stud';
+    Object.assign(d.applicants[0], { firstName: 'N\u00e4idis', lastName: 'Taotleja', residency: 'Eesti', address: 'N\u00e4idist\u00e4nav 10, Tallinn', language: 'Estonian' });
+    Object.assign(d.applicants[0].employment, { employer: 'N\u00e4idisettev\u00f5te', sector: 'Inseneeria', occupation: 'Insener' });
+    d.applicants[0].incomes[0].evidence = 'N\u00e4idist\u00f5end t\u00f6\u00f6tasu kohta';
+    Object.assign(d.applicants[0].debts[0], { type: 'Autolaen', lender: 'N\u00e4idislaenuandja' });
+    Object.assign(d.applicants[0].creditLimits[0], { type: 'Krediitkaart', lender: 'N\u00e4idislaenuandja' });
+    Object.assign(d.property, { address: 'N\u00e4idist\u00e4nav 20, Tallinn', owner: 'N\u00e4idism\u00fc\u00fcja' });
+  }
+  return d;
+}
+function localizedSummary(d) {
+  const payload = M.exportSummary(d);
+  payload.uiLanguage = I.getLocale();
+  payload.mappingStatus = translate(payload.mappingStatus);
+  payload.validationErrors = payload.validationErrors.map(translate);
+  payload.bankChecks = payload.bankChecks.map(check => ({ ...check, status: translate(check.status), observed: check.observed.map(g => ({ ...g, label: translate(g.label), missing: g.missing.map(translate) })), unverified: check.unverified.map(translate), notes: check.notes.map(translate) }));
+  return payload;
+}
+function applyLanguage(language) {
+  const reviewStates = [...$('review-persons').querySelectorAll('[data-review-person]')].map(input => input.checked);
+  const summaryReviewed = $('confirm').checked;
+  I.setLocale(language);
+  document.documentElement.lang = language;
+  for (const entry of staticTexts) entry.node.nodeValue = entry.leading + t(entry.source) + entry.trailing;
+  document.querySelector('meta[name=description]').content = t('Demo home loan profile with transparent research checks for six Estonian banks.');
+  document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = translate(el.dataset.i18n));
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => el.placeholder = t(el.dataset.i18nPlaceholder));
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', translate(el.dataset.i18nAria)));
+  document.querySelectorAll('[data-offer-name]').forEach(el => el.setAttribute('aria-label', t(el.dataset.offerName) + ' ' + t(el.dataset.offerKind)));
+  document.querySelector('nav').setAttribute('aria-label', t('Prototype pages'));
+  $('language-switch').setAttribute('aria-label', t('Interface language'));
+  document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
+  $('revision').textContent = t('Draft {n}', { n: revision });
+  $('export-status').textContent = '';
+  if (currentPage === 'checks') renderChecks();
+  if (currentPage === 'compare') calculate();
+  if (currentPage === 'review') {
+    renderReview();
+    [...$('review-persons').querySelectorAll('[data-review-person]')].forEach((input, index) => input.checked = !!reviewStates[index]);
+    $('confirm').checked = summaryReviewed;
+  }
+}
+document.querySelectorAll('[data-language]').forEach(button => button.onclick = () => {
+  applyLanguage(button.dataset.language);
+  $('feedback').textContent = t(button.dataset.language === 'et' ? 'Language changed to Estonian.' : 'Language changed to English.');
+});
+rebuild(sampleForUI());
+applyLanguage('et');
 </script>
 </body>
 </html>
+
